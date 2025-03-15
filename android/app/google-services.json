@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949169566044",
+    "project_id": "egypto-ai",
+    "storage_bucket": "egypto-ai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949169566044:android:f0df61c93e0c5a40199199",
+        "android_client_info": {
+          "package_name": "com.anas.egypto_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlyv3EMPncotfFnbcftscUSZSerO8G558"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
