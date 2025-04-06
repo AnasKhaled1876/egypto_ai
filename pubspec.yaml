@@ -33,6 +33,7 @@ dependencies:
   firebase_crashlytics: ^4.3.4
   firebase_analytics: ^11.4.4
   firebase_auth: ^5.5.1
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -60,8 +61,8 @@ flutter:
 
   assets:
     - assets/images/
-    # - assets/icons/
-    # - assets/fonts
+    - assets/icons/
+    - assets/fonts/
 
   # ...existing code...
 
