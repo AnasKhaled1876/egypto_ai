@@ -44,9 +44,9 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "images/launcher_icon.png" # Default icon for older Android versions
-  adaptive_icon_foreground: "images/launcher_icon.png" # Foreground layer for adaptive icon
-  adaptive_icon_background: "#000000" # Background color (or use an image path)
+  image_path: "assets/images/egypto_ai_logo.png" # Default icon for older Android versions
+  adaptive_icon_foreground: "assets/images/egypto_ai_logo.png" # Foreground layer for adaptive icon
+  adaptive_icon_background: "#0D0D0D" # Background color (or use an image path)
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
