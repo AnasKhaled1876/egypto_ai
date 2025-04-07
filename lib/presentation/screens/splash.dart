@@ -85,20 +85,23 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
               child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/logo.svg",
-                      width: _logoSizeAnimation.value,
-                      height: _logoSizeAnimation.value,
-                    ),
-                    SizedBox(width: 12),
-                    SvgPicture.asset(
-                      "assets/icons/word-logo.svg",
-                      width: _wordLogoSizeAnimation.value,
-                    ),
-                  ],
+                child: Hero(
+                  tag: 'logo',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/logo.svg",
+                        width: _logoSizeAnimation.value,
+                        height: _logoSizeAnimation.value,
+                      ),
+                      SizedBox(width: 12),
+                      SvgPicture.asset(
+                        "assets/icons/word-logo.svg",
+                        width: _wordLogoSizeAnimation.value,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // child: ,

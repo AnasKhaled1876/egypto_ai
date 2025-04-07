@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:egypto_ai/config/theme/dark.dart';
+import 'package:egypto_ai/locator.dart';
 import 'package:egypto_ai/utils/helpers/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -31,9 +33,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 393;
+
+    double fem = MediaQuery.sizeOf(context).width / baseWidth;
+
+    double ffem = fem * 0.97;
+
+    textSize = ffem;
+
+    ratio = fem;
+    
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: router,
+      theme: darkTheme,
+      themeMode: ThemeMode.dark,
     );
   }
 }
