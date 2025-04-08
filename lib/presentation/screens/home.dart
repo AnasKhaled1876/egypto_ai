@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widgets/home/chat_text_field.dart';
+import '../widgets/home/quick_prompt.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   static const String routeName = 'home';
@@ -58,120 +61,43 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ChatTextField(),
+            SizedBox(height: 40),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 14,
+              runSpacing: 14,
+              children: [
+                QuickPrompts(title: 'Study', iconPath: ''),
+                QuickPrompts(title: 'Diet Plan', iconPath: ''),
+                QuickPrompts(title: 'Sports', iconPath: ''),
+                QuickPrompts(title: '3D Design', iconPath: ''),
+                QuickPrompts(title: 'Dinner Meal', iconPath: ''),
+                QuickPrompts(title: 'Study', iconPath: ''),
+                QuickPrompts(title: 'Diet Plan', iconPath: ''),
+                QuickPrompts(title: 'Sports', iconPath: ''),
+              ],
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/home.svg"),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/planet.svg"),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/chats-circle.svg"),
-            label: 'Chats',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ChatTextField extends StatefulWidget {
-  const ChatTextField({super.key});
-
-  @override
-  State<ChatTextField> createState() => _ChatTextFieldState();
-}
-
-class _ChatTextFieldState extends State<ChatTextField> {
-  final TextEditingController _textFieldController = TextEditingController();
-  bool _isTyping = false;
-  bool _isRecording = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _textFieldController.addListener(() {
-      setState(() {
-        _isTyping = _textFieldController.text.isNotEmpty;
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(8),
-      clipBehavior: Clip.antiAlias,
-      decoration: ShapeDecoration(
-        color: const Color(0xFF0F0F0F),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1.50, color: const Color(0xFF618B4A)),
-          borderRadius: BorderRadius.circular(200),
+      bottomNavigationBar: Material(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/home.svg"),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/planet.svg"),
+              label: 'Explore',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/chats-circle.svg"),
+              label: 'Chats',
+            ),
+          ],
         ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: ShapeDecoration(
-              color: const Color(0xFF191919),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(166.67),
-              ),
-            ),
-            child: Center(
-              child: Icon(Icons.add, color: Colors.white, size: 20),
-            ),
-          ),
-          SizedBox(width: 28),
-          Expanded(
-            child: TextField(
-              controller: _textFieldController,
-              decoration: InputDecoration(
-                hintText: 'Talk to egypto',
-                hintStyle: TextStyle(
-                  color: const Color(0xFF666666),
-                  fontSize: 18,
-                  fontFamily: 'Outfit',
-                  fontWeight: FontWeight.w400,
-                ),
-                border: InputBorder.none,
-              ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontFamily: 'Outfit',
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          Container(
-            width: 40,
-            height: 40,
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(166.67),
-              ),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                 "assets/icons/microphone.svg",
-                width: 20,
-                height: 20,
-              ),
-            ),
-          ),
-          SizedBox(height: 40),
-        ],
       ),
     );
   }

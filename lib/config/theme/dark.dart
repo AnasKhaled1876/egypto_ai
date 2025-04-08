@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: const Color(0xFF0A0A0A),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: const Color(0xFF191919),
+    
+    backgroundColor: const Color(0xFF0F0F0F),
     showSelectedLabels: true,
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,
