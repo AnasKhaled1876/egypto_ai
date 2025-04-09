@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,7 +11,7 @@ class ChatTextField extends StatefulWidget {
 class _ChatTextFieldState extends State<ChatTextField> {
   final TextEditingController _textFieldController = TextEditingController();
   bool _isTyping = false;
-  bool _isRecording = false;
+  // bool _isRecording = false;
 
   @override
   void initState() {
