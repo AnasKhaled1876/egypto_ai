@@ -13,7 +13,9 @@ abstract class ChatApiService {
   Future<HttpResponse<GetChatResponse>> getChat();
 
   @GET('/')
-  Future<HttpResponse<SendMessageResponse>> sendMessage();
+  Future<HttpResponse<SendMessageResponse>> sendMessage({
+    @Query('message') required String message,
+  });
 
 
 }
