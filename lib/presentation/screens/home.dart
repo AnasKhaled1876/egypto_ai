@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../widgets/home/chat_text_field.dart';
@@ -15,6 +16,12 @@ class HomeScreen extends StatelessWidget {
         toolbarHeight: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: const Color(0xFF0F0F0F),
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
@@ -69,35 +76,35 @@ class HomeScreen extends StatelessWidget {
               children: [
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.study,
-                  iconPath: '',
+                  emoji: '📖',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.dietPlan,
-                  iconPath: '',
+                  emoji: '🥦',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.sports,
-                  iconPath: '',
+                  emoji: '⚾',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.dDesign,
-                  iconPath: '',
+                  emoji: '🎨',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.dinnerMeal,
-                  iconPath: '',
+                  emoji: '🍗',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.study,
-                  iconPath: '',
+                  emoji: '📖',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.dietPlan,
-                  iconPath: '',
+                  emoji: '🥦',
                 ),
                 QuickPrompts(
                   title: AppLocalizations.of(context)!.sports,
-                  iconPath: '',
+                  emoji: '⚾',
                 ),
               ],
             ),
