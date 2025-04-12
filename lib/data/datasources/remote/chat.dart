@@ -12,9 +12,9 @@ abstract class ChatApiService {
   @GET('')
   Future<HttpResponse<GetChatResponse>> getChat();
 
-  @GET('/')
+  @POST('/')
   Future<HttpResponse<SendMessageResponse>> sendMessage({
-    @Query('message') required String message,
+    @Body() required Map<String, dynamic> body,
   });
 
 

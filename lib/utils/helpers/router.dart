@@ -1,3 +1,4 @@
+import 'package:egypto_ai/presentation/screens/chat.dart';
 import 'package:egypto_ai/presentation/screens/home.dart';
 import 'package:egypto_ai/presentation/screens/get_started.dart';
 import 'package:egypto_ai/presentation/screens/splash.dart';
@@ -20,6 +21,14 @@ final router = GoRouter(
           path: HomeScreen.routeName,
           name: HomeScreen.routeName,
           builder: (context, state) => HomeScreen(),
+        ),
+        GoRoute(
+          path: ChatScreen.routeName,
+          name: ChatScreen.routeName,
+          builder: (context, state) {
+            final String senderMessage = state.extra as String;
+            return ChatScreen(senderMessage: senderMessage);
+          },
         ),
       ],
     ),

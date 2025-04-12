@@ -21,7 +21,7 @@ class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
     required String message,
   }) {
     return getStateOf<SendMessageResponse>(
-      request: () => _chatApiService.sendMessage(message: message),
+      request: () => _chatApiService.sendMessage(body: {"prompt": message}),
     );
   }
 }

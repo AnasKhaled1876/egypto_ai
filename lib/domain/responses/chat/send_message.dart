@@ -2,62 +2,62 @@
 import 'dart:convert';
 
 class SendMessageResponse {
-  final String messageId;
-  final String status;
-  final DateTime timestamp;
+  final String message;
+  final bool status;
+  final String? data;
+
   SendMessageResponse({
-    required this.messageId,
+    required this.message,
     required this.status,
-    required this.timestamp,
+    this.data,
   });
 
-  
-
   SendMessageResponse copyWith({
-    String? messageId,
-    String? status,
-    DateTime? timestamp,
+    String? message,
+    bool? status,
+    String? data,
   }) {
     return SendMessageResponse(
-      messageId: messageId ?? this.messageId,
+      message: message ?? this.message,
       status: status ?? this.status,
-      timestamp: timestamp ?? this.timestamp,
+      data: data ?? this.data,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'messageId': messageId,
+      'message': message,
       'status': status,
-      'timestamp': timestamp.millisecondsSinceEpoch,
+      'data': data,
     };
   }
 
   factory SendMessageResponse.fromMap(Map<String, dynamic> map) {
     return SendMessageResponse(
-      messageId: map['messageId'] as String,
-      status: map['status'] as String,
-      timestamp: DateTime.fromMillisecondsSinceEpoch(map['timestamp'] as int),
+      message: map['message'] as String,
+      status: map['status'] as bool,
+      data: map['data'] != null ? map['data'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory SendMessageResponse.fromJson(String source) => SendMessageResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory SendMessageResponse.fromJson(String source) =>
+      SendMessageResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'SendMessageResponse(messageId: $messageId, status: $status, timestamp: $timestamp)';
+  String toString() => 'SendMessageResponse(message: $message, status: $status, data: $data)';
 
   @override
   bool operator ==(covariant SendMessageResponse other) {
     if (identical(this, other)) return true;
   
     return 
-      other.messageId == messageId &&
+      other.message == message &&
       other.status == status &&
-      other.timestamp == timestamp;
+      other.data == data;
   }
 
   @override
-  int get hashCode => messageId.hashCode ^ status.hashCode ^ timestamp.hashCode;
+  int get hashCode => message.hashCode ^ status.hashCode ^ data.hashCode;
 }

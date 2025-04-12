@@ -5,6 +5,7 @@ import 'package:egypto_ai/data/repositories/chat.dart';
 import 'package:egypto_ai/domain/entities/enum/flavor.dart';
 import 'package:egypto_ai/domain/repositories/chat.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
@@ -14,11 +15,12 @@ double ratio = 0;
 
 GetIt locator = GetIt.instance;
 
-Flavor flavor = Flavor.development;
-
 String languageCode = 'ar';
 
-Future initializeDependencies() async {
+final ValueNotifier<Locale> localeNotifier = ValueNotifier(Locale('ar'));
+
+
+Future initializeDependencies({Flavor flavor = Flavor.development}) async {
   const storage = FlutterSecureStorage();
 
   // NotificationHelper notificationHelper = NotificationHelper();
@@ -55,9 +57,7 @@ Future initializeDependencies() async {
 
   FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
-  DateFormat dateFormat = DateFormat('dd MMMM yyyy', languageCode);
-
-  locator.registerSingleton<DateFormat>(dateFormat);
+  Intl.defaultLocale = "ar";
 
   locator.registerSingleton<FirebaseAnalytics>(analytics);
 
@@ -70,9 +70,9 @@ Future initializeDependencies() async {
   // userCurrentAddress = locator<FlutterSecureStorage>().read(key: 'userAddress');
 
   final baseUrl = switch (flavor) {
-    Flavor.development => 'http://16.171.135.150:3001/api',
-    Flavor.production => 'http://16.171.135.150:3001/api',
-    Flavor.staging => 'http://16.171.135.150:3001/api',
+    Flavor.development => 'https://egyptoai-backend.onrender.com/api',
+    Flavor.production => 'https://egyptoai-backend.onrender.com/api',
+    Flavor.staging => 'https://egyptoai-backend.onrender.com/api',
   };
 
   final Dio dio = Dio(
@@ -97,7 +97,7 @@ Future initializeDependencies() async {
   locator.registerSingleton<Dio>(dio);
 
   locator.registerSingleton<ChatApiService>(
-    ChatApiService(locator<Dio>()..options.baseUrl = "$baseUrl/Chat"),
+    ChatApiService(locator<Dio>()..options.baseUrl = "$baseUrl/chat"),
   );
 
   locator.registerSingleton<ChatRepository>(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../widgets/home/chat_text_field.dart';
 import '../widgets/home/quick_prompt.dart';
 
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 48),
             Text(
-              'Hello ! Anas',
+              AppLocalizations.of(context)!.hello,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF618B4A),
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Text(
-              'How can I help you today ?',
+              AppLocalizations.of(context)!.howCanIHelpYou,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -67,14 +67,38 @@ class HomeScreen extends StatelessWidget {
               spacing: 14,
               runSpacing: 14,
               children: [
-                QuickPrompts(title: 'Study', iconPath: ''),
-                QuickPrompts(title: 'Diet Plan', iconPath: ''),
-                QuickPrompts(title: 'Sports', iconPath: ''),
-                QuickPrompts(title: '3D Design', iconPath: ''),
-                QuickPrompts(title: 'Dinner Meal', iconPath: ''),
-                QuickPrompts(title: 'Study', iconPath: ''),
-                QuickPrompts(title: 'Diet Plan', iconPath: ''),
-                QuickPrompts(title: 'Sports', iconPath: ''),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.study,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.dietPlan,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.sports,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.dDesign,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.dinnerMeal,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.study,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.dietPlan,
+                  iconPath: '',
+                ),
+                QuickPrompts(
+                  title: AppLocalizations.of(context)!.sports,
+                  iconPath: '',
+                ),
               ],
             ),
           ],
@@ -86,15 +110,16 @@ class HomeScreen extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/home.svg"),
-              label: 'Home',
+              // activeIcon: ,
+              label: AppLocalizations.of(context)!.home,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/planet.svg"),
-              label: 'Explore',
+              label: AppLocalizations.of(context)!.explore,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/chats-circle.svg"),
-              label: 'Chats',
+              label: AppLocalizations.of(context)!.chats,
             ),
           ],
         ),

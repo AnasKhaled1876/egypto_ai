@@ -1,0 +1,26 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "A simple greeting message",
+    "type": "text"
+  },
+  "programming": "Programming",
+  "first": "The First",
+  "ai": "Ai",
+  "chatbotEgypt": "Chatbot in Egypt",
+  "get_started": "Get Started Now",
+  "hello": "Hello !",
+  "howCanIHelpYou": "How can I help you today ?",
+  "talkToEgypto": "Talk to egypto",
+  "study": "Study",
+  "dietPlan": "Diet Plan",
+  "sports": "Sports",
+  "dDesign": "3D Design",
+  "dinnerMeal": "Dinner Meal",
+  "home": "Home",
+  "explore": "Explore",
+  "chats": "Chats",
+  "egypto": "egypto",
+  "copied": "Copied"
+}

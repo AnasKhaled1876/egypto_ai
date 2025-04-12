@@ -30,6 +30,7 @@ final ThemeData darkTheme = ThemeData(
       ),
     ),
   ),
+  fontFamily: 'Outfit',
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFF1A1A1A),
     elevation: 0,
