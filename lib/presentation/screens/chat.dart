@@ -77,11 +77,11 @@ class _ChatScreenState extends State<ChatScreen> {
                               SizedBox(height: 12),
                     ),
                   ),
+                  ChatTextField(),
                 ],
               ),
             ),
           ),
-          bottomNavigationBar: ChatTextField(),
         );
       },
     );

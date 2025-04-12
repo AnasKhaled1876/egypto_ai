@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gpt_markdown/gpt_markdown.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
@@ -76,12 +77,16 @@ class ChatBubble extends StatelessWidget {
             ),
             SizedBox(height: 8),
           ],
-          Text(
+          GptMarkdown(
             message,
+            textDirection:
+                localeNotifier.value.languageCode == 'ar'
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: 'Outfit',
+              fontFamily: 'SomarSans',
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -90,6 +95,7 @@ class ChatBubble extends StatelessWidget {
             Row(
               children: [
                 InkWell(
+                  borderRadius: BorderRadius.circular(200),
                   onTap: () {
                     Clipboard.setData(ClipboardData(text: message));
                     ScaffoldMessenger.of(context).showSnackBar(
