@@ -89,7 +89,7 @@ class GetStartedScreen extends StatelessWidget {
                       //         style: TextStyle(
                       //           color: Colors.white,
                       //           fontSize: 24,
-                      //           fontFamily: 'Outfit',
+                      //           fontFamily: 'SomarSans',
                       //           fontWeight: FontWeight.w600,
                       //           height: 1.50,
                       //           letterSpacing: 0.09,
@@ -133,7 +133,7 @@ class GetStartedScreen extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 24,
-                                fontFamily: 'Outfit',
+                                fontFamily: 'SomarSans',
                                 fontWeight: FontWeight.w600,
                                 height: 1.50,
                                 letterSpacing: 0.09,
@@ -154,7 +154,7 @@ class GetStartedScreen extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: textSize * 64,
-                              fontFamily: 'Outfit',
+                              fontFamily: 'SomarSans',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -163,7 +163,7 @@ class GetStartedScreen extends StatelessWidget {
                             style: TextStyle(
                               color: const Color(0xFF618B4A),
                               fontSize: textSize * 64,
-                              fontFamily: 'Outfit',
+                              fontFamily: 'SomarSans',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -173,7 +173,7 @@ class GetStartedScreen extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: textSize * 64,
-                              fontFamily: 'Outfit',
+                              fontFamily: 'SomarSans',
                               fontWeight: FontWeight.w700,
                             ),
                           ),

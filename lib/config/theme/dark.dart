@@ -25,12 +25,12 @@ final ThemeData darkTheme = ThemeData(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       textStyle: const TextStyle(
         fontSize: 16,
-        fontFamily: 'Outfit',
+        fontFamily: 'SomarSans',
         fontWeight: FontWeight.w600,
       ),
     ),
   ),
-  fontFamily: 'Outfit',
+  fontFamily: 'SomarSans',
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFF1A1A1A),
     elevation: 0,
@@ -38,7 +38,7 @@ final ThemeData darkTheme = ThemeData(
     titleTextStyle: TextStyle(
       color: Colors.white,
       fontSize: 20,
-      fontFamily: 'Outfit',
+      fontFamily: 'SomarSans',
       fontWeight: FontWeight.w600,
     ),
   ),

@@ -81,7 +81,7 @@ class ChatBubble extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: 'Outfit',
+              fontFamily: 'SomarSans',
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -90,6 +90,7 @@ class ChatBubble extends StatelessWidget {
             Row(
               children: [
                 InkWell(
+                  borderRadius: BorderRadius.circular(200),
                   onTap: () {
                     Clipboard.setData(ClipboardData(text: message));
                     ScaffoldMessenger.of(context).showSnackBar(

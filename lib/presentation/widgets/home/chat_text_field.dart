@@ -93,7 +93,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
                     hintStyle: TextStyle(
                       color: const Color(0xFF666666),
                       fontSize: 18,
-                      fontFamily: 'Outfit',
+                      fontFamily: 'SomarSans',
                       fontWeight: FontWeight.w400,
                     ),
                     border: InputBorder.none,
@@ -101,7 +101,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
-                    fontFamily: 'Outfit',
+                    fontFamily: 'SomarSans',
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -139,7 +139,15 @@ class _ChatTextFieldState extends State<ChatTextField> {
                     child:
                         state is SendMessageLoading
                             ? Center(
-                              child: CircularProgressIndicator.adaptive(),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: CircularProgressIndicator.adaptive(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white,
+                                  ),
+                                  strokeWidth: 2,
+                                ),
+                              ),
                             )
                             : _isTyping
                             ? Center(
