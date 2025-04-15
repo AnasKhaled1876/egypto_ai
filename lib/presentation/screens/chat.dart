@@ -57,20 +57,49 @@ class _ChatScreenState extends State<ChatScreen> {
                                         false)
                                     ? AlignmentDirectional.centerEnd
                                     : AlignmentDirectional.centerStart,
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                maxWidth: MediaQuery.sizeOf(context).width - 32,
-                              ),
-                              child: ChatBubble(
-                                message:
-                                    chatCubit.chatMessages[index].text ?? '',
-                                isUserMessage:
-                                    chatCubit
-                                        .chatMessages[index]
-                                        .isUserMessage ??
-                                    false,
-                              ),
-                            ),
+                            child:
+                                index == (chatCubit.chatMessages.length - 1)
+                                    ? Hero(
+                                      tag: "chat_text_field",
+                                      child: ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          maxWidth:
+                                              MediaQuery.sizeOf(context).width -
+                                              32,
+                                        ),
+                                        child: ChatBubble(
+                                          message:
+                                              chatCubit
+                                                  .chatMessages[index]
+                                                  .text ??
+                                              '',
+                                          isUserMessage:
+                                              chatCubit
+                                                  .chatMessages[index]
+                                                  .isUserMessage ??
+                                              false,
+                                        ),
+                                      ),
+                                    )
+                                    : ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        maxWidth:
+                                            MediaQuery.sizeOf(context).width -
+                                            32,
+                                      ),
+                                      child: ChatBubble(
+                                        message:
+                                            chatCubit
+                                                .chatMessages[index]
+                                                .text ??
+                                            '',
+                                        isUserMessage:
+                                            chatCubit
+                                                .chatMessages[index]
+                                                .isUserMessage ??
+                                            false,
+                                      ),
+                                    ),
                           ),
                       separatorBuilder:
                           (BuildContext context, int index) =>

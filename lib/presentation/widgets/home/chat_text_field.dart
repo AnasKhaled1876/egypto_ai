@@ -31,26 +31,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChatCubit, ChatState>(
-      listener: (context, state) {
-        if (state is SendMessageSuccess) {
-          setState(() {
-            _isTyping = false;
-          });
-          context.pushNamed(
-            ChatScreen.routeName,
-            extra: _textFieldController.text,
-          );
-          _textFieldController.clear();
-        }
-        if (state is SendMessageError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Error sending message'),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         ChatCubit chatCubit = ChatCubit.get(context);
         return Container(
@@ -81,28 +62,31 @@ class _ChatTextFieldState extends State<ChatTextField> {
               ),
               SizedBox(width: 28),
               Expanded(
-                child: TextField(
-                  controller: _textFieldController,
-                  onEditingComplete: () {
-                    if (_isTyping) {
-                      chatCubit.sendMessage(_textFieldController.text);
-                    }
-                  },
-                  decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context)!.talkToEgypto,
-                    hintStyle: TextStyle(
-                      color: const Color(0xFF666666),
+                child: Hero(
+                  tag: "chat_text_field",
+                  child: TextField(
+                    controller: _textFieldController,
+                    onEditingComplete: () {
+                      if (_isTyping) {
+                        chatCubit.sendMessage(_textFieldController.text);
+                      }
+                    },
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)!.talkToEgypto,
+                      hintStyle: TextStyle(
+                        color: const Color(0xFF666666),
+                        fontSize: 18,
+                        fontFamily: 'SomarSans',
+                        fontWeight: FontWeight.w400,
+                      ),
+                      border: InputBorder.none,
+                    ),
+                    style: TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                       fontFamily: 'SomarSans',
                       fontWeight: FontWeight.w400,
                     ),
-                    border: InputBorder.none,
-                  ),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontFamily: 'SomarSans',
-                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
@@ -110,6 +94,11 @@ class _ChatTextFieldState extends State<ChatTextField> {
                 onTap: () {
                   if (_isTyping) {
                     chatCubit.sendMessage(_textFieldController.text);
+                    FocusScope.of(context).unfocus();
+                    context.pushNamed(
+                      ChatScreen.routeName,
+                      extra: _textFieldController.text,
+                    );
                   }
                 },
                 child: AnimatedContainer(
