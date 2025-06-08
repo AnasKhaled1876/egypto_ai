@@ -2,12 +2,15 @@ import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
 import 'package:egypto_ai/presentation/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../config/resources/colors.dart';
+import '../../../l10n/app_localizations.dart';
+
 class ChatTextField extends StatefulWidget {
-  const ChatTextField({super.key});
+  const ChatTextField({super.key, required this.fromHome});
+  final bool fromHome;
 
   @override
   State<ChatTextField> createState() => _ChatTextFieldState();
@@ -41,7 +44,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
           decoration: ShapeDecoration(
             color: const Color(0xFF0F0F0F),
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1.50, color: const Color(0xFF618B4A)),
+              side: BorderSide(width: 1.50, color: primaryColor),
               borderRadius: BorderRadius.circular(200),
             ),
           ),
@@ -63,7 +66,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
               SizedBox(width: 28),
               Expanded(
                 child: Hero(
-                  tag: "chat_text_field",
+                  tag: "chat_text_field${_textFieldController.text}",
                   child: TextField(
                     controller: _textFieldController,
                     onEditingComplete: () {
@@ -72,6 +75,8 @@ class _ChatTextFieldState extends State<ChatTextField> {
                       }
                     },
                     decoration: InputDecoration(
+                      filled: false,
+                      contentPadding: EdgeInsets.zero,
                       hintText: AppLocalizations.of(context)!.talkToEgypto,
                       hintStyle: TextStyle(
                         color: const Color(0xFF666666),
@@ -95,6 +100,9 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   if (_isTyping) {
                     chatCubit.sendMessage(_textFieldController.text);
                     FocusScope.of(context).unfocus();
+                    if (widget.fromHome) {
+                      chatCubit.getTitle();
+                    }
                     context.pushNamed(
                       ChatScreen.routeName,
                       extra: _textFieldController.text,
@@ -105,7 +113,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   width: 40,
                   height: 40,
                   decoration: ShapeDecoration(
-                    color: _isTyping ? Color(0xFF618B4A) : Colors.white,
+                    color: _isTyping ? primaryColor : Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(166.67),
                     ),

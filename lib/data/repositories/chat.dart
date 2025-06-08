@@ -19,9 +19,23 @@ class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
   @override
   Future<DataState<SendMessageResponse>> sendMessage({
     required String message,
+    required String model,
   }) {
     return getStateOf<SendMessageResponse>(
-      request: () => _chatApiService.sendMessage(body: {"prompt": message}),
+      request: () => _chatApiService.sendMessage(body: {"prompt": message, "model": model}),
+    );
+  }
+
+  @override
+  Future<DataState<SendMessageResponse>> generateTitle({
+    required String conversation,
+    required String model,
+  }) {
+    return getStateOf<SendMessageResponse>(
+      request:
+          () => _chatApiService.generateTitle(
+            body: {"conversation": conversation, "model": model},
+          ),
     );
   }
 }

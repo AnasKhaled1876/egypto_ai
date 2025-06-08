@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../config/resources/colors.dart';
+import '../../l10n/app_localizations.dart';
 import '../widgets/home/chat_text_field.dart';
 import '../widgets/home/quick_prompt.dart';
 
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
               AppLocalizations.of(context)!.hello,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: const Color(0xFF618B4A),
+                color:  primaryColor,
                 fontSize: 23,
                 fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w600,
@@ -67,7 +68,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            ChatTextField(),
+            ChatTextField(fromHome: true),
             SizedBox(height: 40),
             Wrap(
               alignment: WrapAlignment.center,

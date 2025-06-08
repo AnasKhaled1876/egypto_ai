@@ -4,6 +4,9 @@ import 'package:egypto_ai/presentation/screens/get_started.dart';
 import 'package:egypto_ai/presentation/screens/splash.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../presentation/screens/auth/register.dart';
+import '../../presentation/screens/start/welcome.dart';
+
 // GoRouter configuration
 final router = GoRouter(
   routes: [
@@ -16,6 +19,16 @@ final router = GoRouter(
           path: GetStartedScreen.routeName,
           name: GetStartedScreen.routeName,
           builder: (context, state) => GetStartedScreen(),
+        ),
+        GoRoute(
+          path: WelcomeScreen.routeName,
+          name: WelcomeScreen.routeName,
+          builder: (context, state) => WelcomeScreen(),
+        ),
+        GoRoute(
+          path: RegisterScreen.routeName,
+          name: RegisterScreen.routeName,
+          builder: (context, state) => RegisterScreen(),
         ),
         GoRoute(
           path: HomeScreen.routeName,

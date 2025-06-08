@@ -30,20 +30,27 @@ class _ChatScreenState extends State<ChatScreen> {
                 spacing: 16,
                 children: [
                   Row(
+                    spacing: 24,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconContainer(
                         icon: SvgPicture.asset("assets/icons/drawer.svg"),
                       ),
-                      Text(
-                        '${"Greeting"} ${"egypto"}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                      state is GetTitleLoadingState
+                          ? CircularProgressIndicator.adaptive()
+                          : Expanded(
+                            child: Text(
+                              chatCubit.chatTitle ?? '',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                       IconContainer(icon: Icon(Icons.more_vert, size: 20)),
                     ],
                   ),
@@ -60,7 +67,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             child:
                                 index == (chatCubit.chatMessages.length - 1)
                                     ? Hero(
-                                      tag: "chat_text_field",
+                                      tag:
+                                          "chat_text_field${chatCubit.chatMessages[chatCubit.chatMessages.length - 1]}",
                                       child: ConstrainedBox(
                                         constraints: BoxConstraints(
                                           maxWidth:
@@ -106,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               SizedBox(height: 12),
                     ),
                   ),
-                  ChatTextField(),
+                  ChatTextField(fromHome: false),
                 ],
               ),
             ),

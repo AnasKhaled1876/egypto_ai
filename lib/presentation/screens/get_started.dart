@@ -1,10 +1,12 @@
-import 'package:egypto_ai/presentation/screens/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:egypto_ai/presentation/screens/start/welcome.dart';
 import 'package:egypto_ai/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import '../../config/resources/colors.dart';
+import '../../l10n/app_localizations.dart';
+import '../widgets/bubble_button.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -120,7 +122,7 @@ class GetStartedScreen extends StatelessWidget {
                         TextSpan(
                           text: AppLocalizations.of(context)!.ai,
                           style: TextStyle(
-                            color: const Color(0xFF618B4A),
+                            color: primaryColor,
                             fontSize: textSize * 64,
                             fontFamily: 'SomarSans',
                             fontWeight: FontWeight.w700,
@@ -141,51 +143,9 @@ class GetStartedScreen extends StatelessWidget {
                   ),
                 ),
                 Spacer(flex: 2),
-                Row(
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () => context.pushNamed(HomeScreen.routeName),
-                        child: Container(
-                          alignment: AlignmentDirectional.centerStart,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 17,
-                          ),
-                          decoration: ShapeDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xFF618B4A),
-                                Color(0xFF4E7F62),
-                                Color(0xFF20639B),
-                                Color(0xFF1C2895),
-                              ],
-                              stops: [0.0, 0.4, 0.7, 1.0],
-                              begin: AlignmentDirectional(-1.0, 1.0),
-                              end: AlignmentDirectional(1.0, -1.0),
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2000),
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.get_started,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(Icons.arrow_forward, color: Colors.white),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                BubbleButton(
+                  title: AppLocalizations.of(context)!.get_started,
+                  onTap: () => context.pushNamed(WelcomeScreen.routeName),
                 ),
                 SizedBox(height: 36),
               ],

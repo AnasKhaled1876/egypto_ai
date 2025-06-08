@@ -1,9 +1,11 @@
+import 'package:egypto_ai/config/resources/colors.dart';
 import 'package:egypto_ai/locator.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
@@ -23,7 +25,7 @@ class ChatBubble extends StatelessWidget {
       decoration:
           isUserMessage
               ? ShapeDecoration(
-                color: const Color(0xFF141414),
+                color: secondaryBackgroundColor,
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       isUserMessage
@@ -48,7 +50,7 @@ class ChatBubble extends StatelessWidget {
               shaderCallback:
                   (bounds) => LinearGradient(
                     colors: [
-                      Color(0xFF618B4A),
+                      primaryColor,
                       Color(0xFF4E7F62),
                       Color(0xFF20639B),
                       Color(0xFF1C2895),
@@ -69,7 +71,7 @@ class ChatBubble extends StatelessWidget {
               child: Text(
                 AppLocalizations.of(context)!.egypto,
                 style: TextStyle(
-                  color: const Color(0xFF618B4A),
+                  color:  primaryColor,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),

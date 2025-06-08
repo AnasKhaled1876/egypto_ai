@@ -12,7 +12,28 @@
           "package_name": "com.anas.egypto_ai"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anas.egypto_ai",
+            "certificate_hash": "1437dff574e60fbec3f3b31c137798f350e77071"
+          }
+        },
+        {
+          "client_id": "949169566044-92hj1qtm4ih6tl41eleo2b076sjqlo4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anas.egypto_ai",
+            "certificate_hash": "a2c21a63834ea250792ebc4341da1ab619405160"
+          }
+        },
+        {
+          "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAlyv3EMPncotfFnbcftscUSZSerO8G558"
@@ -20,7 +41,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anas.egyptoAi"
+              }
+            }
+          ]
         }
       }
     }

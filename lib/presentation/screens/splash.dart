@@ -1,7 +1,7 @@
 import 'package:egypto_ai/presentation/screens/get_started.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

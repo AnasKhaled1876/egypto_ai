@@ -1,4 +1,6 @@
+import 'package:egypto_ai/presentation/screens/chat.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class QuickPrompts extends StatelessWidget {
   const QuickPrompts({super.key, required this.title, required this.emoji});
@@ -10,7 +12,7 @@ class QuickPrompts extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        
+        context.pushNamed(ChatScreen.routeName);
       },
       child: Container(
         padding: const EdgeInsets.all(4),
