@@ -43,7 +43,6 @@ class QuickPrompts extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -53,7 +52,6 @@ class QuickPrompts extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w400,
               ),
             ),

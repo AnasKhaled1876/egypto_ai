@@ -45,14 +45,12 @@ class EmailPage extends StatelessWidget {
               hintStyle: TextStyle(
                 color: const Color(0xFF666666),
                 fontSize: 18,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w400,
               ),
             ),
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: 'SomarSans',
               fontWeight: FontWeight.w400,
             ),
           ),

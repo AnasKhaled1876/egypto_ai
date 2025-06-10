@@ -81,7 +81,6 @@ class _ChatTextFieldState extends State<ChatTextField> {
                       hintStyle: TextStyle(
                         color: const Color(0xFF666666),
                         fontSize: 18,
-                        fontFamily: 'SomarSans',
                         fontWeight: FontWeight.w400,
                       ),
                       border: InputBorder.none,
@@ -89,7 +88,6 @@ class _ChatTextFieldState extends State<ChatTextField> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                      fontFamily: 'SomarSans',
                       fontWeight: FontWeight.w400,
                     ),
                   ),

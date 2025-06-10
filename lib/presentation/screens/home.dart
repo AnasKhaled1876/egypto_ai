@@ -53,7 +53,6 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(
                 color:  primaryColor,
                 fontSize: 23,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -63,7 +62,6 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w400,
               ),
             ),

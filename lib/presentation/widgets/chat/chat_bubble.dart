@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
-
 import '../../../l10n/app_localizations.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -88,7 +87,6 @@ class ChatBubble extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: 'SomarSans',
               fontWeight: FontWeight.w400,
             ),
           ),

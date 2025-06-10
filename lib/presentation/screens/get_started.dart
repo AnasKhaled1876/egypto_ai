@@ -93,7 +93,6 @@ class GetStartedScreen extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
-                              fontFamily: 'SomarSans',
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0.09,
                             ),
@@ -115,7 +114,6 @@ class GetStartedScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: textSize * 64,
-                            fontFamily: 'SomarSans',
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -124,7 +122,6 @@ class GetStartedScreen extends StatelessWidget {
                           style: TextStyle(
                             color: primaryColor,
                             fontSize: textSize * 64,
-                            fontFamily: 'SomarSans',
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -134,7 +131,6 @@ class GetStartedScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: textSize * 64,
-                            fontFamily: 'SomarSans',
                             fontWeight: FontWeight.w700,
                           ),
                         ),
