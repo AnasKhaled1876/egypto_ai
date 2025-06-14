@@ -14,6 +14,10 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 
+import 'data/datasources/remote/quick_prompts.dart';
+import 'data/repositories/quick_prompts.dart';
+import 'domain/repositories/quick_prompts.dart';
+
 double textSize = 0;
 double ratio = 0;
 
@@ -42,8 +46,6 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
   );
 
   locator.registerSingleton<GoogleSignIn>(_googleSignIn);
-
-  
 
   // NotificationHelper notificationHelper = NotificationHelper();
 
@@ -94,9 +96,9 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
   // userCurrentAddress = locator<FlutterSecureStorage>().read(key: 'userAddress');
 
   final baseUrl = switch (flavor) {
-    Flavor.development => 'https://egyptoai-backend.onrender.com/api/',
-    Flavor.production => 'https://egyptoai-backend.onrender.com/api/',
-    Flavor.staging => 'https://egyptoai-backend.onrender.com/api/',
+    Flavor.development => 'https://egypto-ai-backend.onrender.com/api/',
+    Flavor.production => 'https://egypto-ai-backend.onrender.com/api/',
+    Flavor.staging => 'https://egypto-ai-backend.onrender.com/api/',
   };
 
   final Dio dio = Dio(
@@ -119,15 +121,27 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
   // Modify the Dio instance to allow dynamic baseUrl updates while maintaining the singleton
   locator.registerSingleton<Dio>(dio);
 
-  locator.registerSingleton<ChatApiService>(ChatApiService(locator<Dio>()));
+  locator.registerSingleton<ChatApiService>(
+    ChatApiService(locator<Dio>(), baseUrl: '${baseUrl}chat'),
+  );
 
   locator.registerSingleton<ChatRepository>(
     ChatRepositoryImpl(locator<ChatApiService>()),
   );
 
-  locator.registerSingleton<AuthApiService>(AuthApiService(locator<Dio>()));
+  locator.registerSingleton<AuthApiService>(
+    AuthApiService(locator<Dio>(), baseUrl: '${baseUrl}auth'),
+  );
 
   locator.registerSingleton<AuthRepository>(
     AuthRepositoryImpl(locator<AuthApiService>()),
+  );
+
+  locator.registerSingleton<QuickPromptsApiService>(
+    QuickPromptsApiService(locator<Dio>(), baseUrl: '${baseUrl}quick-prompts'),
+  );
+
+  locator.registerSingleton<QuickPromptsRepository>(
+    QuickPromptsRepositoryImpl(locator<QuickPromptsApiService>()),
   );
 }

@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 part 'auth.g.dart';
 
-@RestApi(baseUrl: '/auth', parser: Parser.MapSerializable)
+@RestApi(parser: Parser.MapSerializable)
 abstract class AuthApiService {
   factory AuthApiService(Dio dio, {String baseUrl}) = _AuthApiService;
 
@@ -21,6 +21,6 @@ abstract class AuthApiService {
 
   @POST('/check-email')
   Future<HttpResponse<MessageResponse>> checkEmail({
-    @Body() required Map<String, dynamic> body,
+    @Query('email') required String email,
   });
 }

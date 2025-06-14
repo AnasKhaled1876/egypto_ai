@@ -11,8 +11,9 @@ class QuickPrompts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(200),
       onTap: () {
-        context.pushNamed(ChatScreen.routeName);
+        context.pushNamed(ChatScreen.routeName, extra: title);
       },
       child: Container(
         padding: const EdgeInsets.all(4),
@@ -30,7 +31,7 @@ class QuickPrompts extends StatelessWidget {
             Container(
               width: 36,
               height: 36,
-              padding: const EdgeInsets.all(6),
+              alignment: Alignment.center,
               decoration: ShapeDecoration(
                 color: const Color(0xFF191919),
                 shape: RoundedRectangleBorder(
@@ -39,7 +40,6 @@ class QuickPrompts extends StatelessWidget {
               ),
               child: Text(
                 emoji,
-                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

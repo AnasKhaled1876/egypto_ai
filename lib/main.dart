@@ -3,7 +3,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:egypto_ai/config/theme/dark.dart';
 import 'package:egypto_ai/domain/entities/enum/flavor.dart';
 import 'package:egypto_ai/domain/repositories/auth.dart';
@@ -12,9 +11,10 @@ import 'package:egypto_ai/locator.dart';
 import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
 import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
 import 'package:egypto_ai/utils/helpers/router.dart';
-
+import 'domain/repositories/quick_prompts.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
+import 'presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,6 +61,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ChatCubit>(
           create: (context) => ChatCubit(locator<ChatRepository>()),
+        ),
+        BlocProvider<QuickPromptsCubit>(
+          create: (context) => QuickPromptsCubit(locator<QuickPromptsRepository>()),
         ),
       ],
       child: ValueListenableBuilder<Locale>(

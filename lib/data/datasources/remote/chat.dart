@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 part 'chat.g.dart';
 
-@RestApi(baseUrl: '/api/chat', parser: Parser.MapSerializable)
+@RestApi( parser: Parser.MapSerializable)
 abstract class ChatApiService {
   factory ChatApiService(Dio dio, {String baseUrl}) = _ChatApiService;
 

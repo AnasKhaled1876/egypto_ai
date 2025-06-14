@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   flutter_secure_storage: ^9.2.4
+  logger: ^2.5.0
   go_router: ^15.1.3
   flutter_riverpod: ^2.6.1
   cached_network_image: ^3.4.1
@@ -30,7 +31,7 @@ dependencies:
   awesome_dio_interceptor: ^1.3.0
   intl: ^0.20.2
   equatable: ^2.0.7
-  gpt_markdown: ^1.0.19
+  gpt_markdown: ^1.0.20
   google_sign_in: ^6.3.0
   flutter_localizations:
     sdk: flutter

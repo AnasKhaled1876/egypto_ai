@@ -31,6 +31,39 @@ class _ChatTextFieldState extends State<ChatTextField> {
     });
   }
 
+  Widget _buildTextField() {
+    return TextField(
+      controller: _textFieldController,
+      onEditingComplete: () {
+        if (_isTyping) {
+          ChatCubit.get(context).sendMessage(_textFieldController.text);
+        }
+      },
+      decoration: InputDecoration(
+        filled: false,
+        contentPadding: EdgeInsets.zero,
+        hintText: AppLocalizations.of(context)!.talkToEgypto,
+        hintStyle: TextStyle(
+          color: const Color(0xFF666666),
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+        ),
+        border: InputBorder.none,
+      ),
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _textFieldController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChatCubit, ChatState>(
@@ -65,37 +98,26 @@ class _ChatTextFieldState extends State<ChatTextField> {
               ),
               SizedBox(width: 28),
               Expanded(
-                child: Hero(
-                  tag: "chat_text_field${_textFieldController.text}",
-                  child: TextField(
-                    controller: _textFieldController,
-                    onEditingComplete: () {
-                      if (_isTyping) {
-                        chatCubit.sendMessage(_textFieldController.text);
-                      }
-                    },
-                    decoration: InputDecoration(
-                      filled: false,
-                      contentPadding: EdgeInsets.zero,
-                      hintText: AppLocalizations.of(context)!.talkToEgypto,
-                      hintStyle: TextStyle(
-                        color: const Color(0xFF666666),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      border: InputBorder.none,
-                    ),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: widget.fromHome
+                      ? Hero(
+                          tag: 'chat_message_hero',
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: _buildTextField(),
+                          ),
+                        )
+                      : _buildTextField(),
                 ),
               ),
               InkWell(
                 onTap: () {
                   if (_isTyping) {
+                    if (state is! SendMessageLoading &&
+                        state is! MessageStreaming) {
+                      return;
+                    }
                     chatCubit.sendMessage(_textFieldController.text);
                     FocusScope.of(context).unfocus();
                     if (widget.fromHome) {
@@ -119,46 +141,43 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   duration: const Duration(milliseconds: 100),
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 100),
-                    transitionBuilder: (
-                      Widget child,
-                      Animation<double> animation,
-                    ) {
-                      return ScaleTransition(
-                        scale: Tween<double>(
-                          begin: 0.8,
-                          end: 1.0,
-                        ).animate(animation),
-                        child: child,
-                      );
-                    },
-                    child:
-                        state is SendMessageLoading
-                            ? Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: CircularProgressIndicator.adaptive(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.white,
-                                  ),
-                                  strokeWidth: 2,
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                          return ScaleTransition(
+                            scale: Tween<double>(
+                              begin: 0.8,
+                              end: 1.0,
+                            ).animate(animation),
+                            child: child,
+                          );
+                        },
+                    child: state is SendMessageLoading
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: CircularProgressIndicator.adaptive(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white,
                                 ),
-                              ),
-                            )
-                            : _isTyping
-                            ? Center(
-                              child: SvgPicture.asset(
-                                "assets/icons/arrow-up.svg",
-                                width: 20,
-                                height: 20,
-                              ),
-                            )
-                            : Center(
-                              child: SvgPicture.asset(
-                                "assets/icons/microphone.svg",
-                                width: 20,
-                                height: 20,
+                                strokeWidth: 2,
                               ),
                             ),
+                          )
+                        : _isTyping
+                        ? Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/arrow-up.svg",
+                              width: 20,
+                              height: 20,
+                            ),
+                          )
+                        : Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/microphone.svg",
+                              width: 20,
+                              height: 20,
+                            ),
+                          ),
                   ),
                 ),
               ),

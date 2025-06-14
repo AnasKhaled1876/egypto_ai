@@ -2,8 +2,10 @@ import 'package:egypto_ai/presentation/screens/chat.dart';
 import 'package:egypto_ai/presentation/screens/home.dart';
 import 'package:egypto_ai/presentation/screens/get_started.dart';
 import 'package:egypto_ai/presentation/screens/splash.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 import '../../presentation/screens/auth/register.dart';
 import '../../presentation/screens/start/welcome.dart';
 
@@ -33,13 +35,16 @@ final router = GoRouter(
         GoRoute(
           path: HomeScreen.routeName,
           name: HomeScreen.routeName,
-          builder: (context, state) => HomeScreen(),
+          builder: (context, state) {
+            context.read<QuickPromptsCubit>().getQuickPrompts();
+            return HomeScreen();
+          },
         ),
         GoRoute(
           path: ChatScreen.routeName,
           name: ChatScreen.routeName,
           builder: (context, state) {
-            final String senderMessage = state.extra as String;
+            final String? senderMessage = state.extra as String?;
             return ChatScreen(senderMessage: senderMessage);
           },
         ),
