@@ -11,6 +11,16 @@
   "chatbotEgypt": "في مصر",
   "get_started": "ابدأ الآن",
   "hello": "مرحبا !",
+  "password": "كلمة المرور",
+  "pleaseEnterYourPassword": "يرجى إدخال كلمة المرور",
+  "login": "تسجيل الدخول",
+  "or": "أو",
+  "continueWithGoogle": "أكمل باستخدام جوجل",
+  "yourEmail": "يرجى إدخال بريدك الإلكتروني",
+  "@yourEmail": {
+    "description": "Message prompting the user to enter their email",
+    "type": "text"
+  },
   "howCanIHelpYou": "كيف يمكنني مساعدتك اليوم؟",
   "talkToEgypto": "تحدث إلى إيجبتو",
   "study": "دراسة",
@@ -18,9 +28,52 @@
   "sports": "رياضة",
   "dDesign": "تصميم ثلاثي الأبعاد",
   "dinnerMeal": "وجبة العشاء",
+  "yourName": "ما اسمك",
   "home": "الرئيسية",
   "explore": "استكشف",
   "chats": "الدردشات",
   "egypto": "إيجبتو",
-  "copied": "تم النسخ"
+  "copied": "تم النسخ",
+  "and": "و",
+  "continueRegister": "استمر",
+  "privacyPolicy": "سياسة الخصوصية",
+  "firstlyYourEmail": "أولاً، أدخل بريدك الإلكتروني",
+  "pleaseEnterYourEmail": "يرجى إدخال بريدك الإلكتروني",
+  "@pleaseEnterYourEmail": {
+    "description": "Message prompting the user to enter their email",
+    "type": "text"
+  },
+  "@firstlyYourEmail": {
+    "description": "Message prompting the user to enter their email first",
+    "type": "text"
+  },
+  "termsOfUse": "شروط الاستخدام",
+  "@termsOfUse": {
+    "description": "Message for terms of use",
+    "type": "text"
+  },
+  "pleaseEnterYourName": "يرجى إدخال اسمك",
+  "@continueRegister": {
+    "description": "Message for continuing the registration process",
+    "type": "text"
+  },
+  "@yourName": {
+    "description": "Message asking for the user's name",
+    "type": "text"
+  },
+  "@pleaseEnterYourName": {
+    "description": "Message prompting the user to enter their name",
+    "type": "text"
+  },
+  "review": "قبل المتابعة، يرجى مراجعة والموافقة على",
+  "@review": {
+    "description": "Message prompting the user to review and agree to terms",
+    "type": "text"
+  },
+  "profileSetup": "الملف الشخصي",
+  "@profileSetup": {
+    "description": "Message for setting up the user profile",
+    "type": "text"
+  }
+  
 }

@@ -60,14 +60,17 @@ class GetChatResponse {
       description: map['description'] as String,
       imageUrl: map['imageUrl'] as String,
       lastMessage: map['lastMessage'] as String,
-      lastMessageTime: DateTime.fromMillisecondsSinceEpoch(map['lastMessageTime'] as int),
+      lastMessageTime: DateTime.fromMillisecondsSinceEpoch(
+        map['lastMessageTime'] as int,
+      ),
       messages: List<String>.from((map['messages'] as List<String>)),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory GetChatResponse.fromJson(String source) => GetChatResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory GetChatResponse.fromJson(String source) =>
+      GetChatResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -77,25 +80,24 @@ class GetChatResponse {
   @override
   bool operator ==(covariant GetChatResponse other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.description == description &&
-      other.imageUrl == imageUrl &&
-      other.lastMessage == lastMessage &&
-      other.lastMessageTime == lastMessageTime &&
-      listEquals(other.messages, messages);
+
+    return other.id == id &&
+        other.name == name &&
+        other.description == description &&
+        other.imageUrl == imageUrl &&
+        other.lastMessage == lastMessage &&
+        other.lastMessageTime == lastMessageTime &&
+        listEquals(other.messages, messages);
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      description.hashCode ^
-      imageUrl.hashCode ^
-      lastMessage.hashCode ^
-      lastMessageTime.hashCode ^
-      messages.hashCode;
+        name.hashCode ^
+        description.hashCode ^
+        imageUrl.hashCode ^
+        lastMessage.hashCode ^
+        lastMessageTime.hashCode ^
+        messages.hashCode;
   }
 }

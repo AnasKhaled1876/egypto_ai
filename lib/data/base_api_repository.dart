@@ -4,10 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'resources/data_state.dart';
 
- class BaseApiRepository {
+class BaseApiRepository {
   @protected
-  Future<DataState<T>> getStateOf<T>(
-      {required Future<HttpResponse<T>> Function() request}) async {
+  Future<DataState<T>> getStateOf<T>({
+    required Future<HttpResponse<T>> Function() request,
+  }) async {
     try {
       final httpResponse = await request();
       if (httpResponse.response.statusCode == 200 ||
@@ -22,8 +23,9 @@ import 'resources/data_state.dart';
         if (runtimeType == SocketException) {
           httpResponse.response.statusCode = 503;
           throw DioException(
-              error: httpResponse,
-              requestOptions: httpResponse.response.requestOptions);
+            error: httpResponse,
+            requestOptions: httpResponse.response.requestOptions,
+          );
         } else {
           throw DioException(
             error: httpResponse,

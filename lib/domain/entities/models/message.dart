@@ -1,4 +1,3 @@
-
 class Message {
   int? id;
   String? text;
@@ -60,12 +59,13 @@ class Message {
     return Message(
       id: map['id'] != null ? map['id'] as int : null,
       text: map['text'] != null ? map['text'] as String : null,
-      isUserMessage: map['isUserMessage'] != null ? map['isUserMessage'] as bool : null,
+      isUserMessage: map['isUserMessage'] != null
+          ? map['isUserMessage'] as bool
+          : null,
       createdAt: map['createdAt'] != null ? map['createdAt'] as String : null,
       updatedAt: map['updatedAt'] != null ? map['updatedAt'] as String : null,
     );
   }
-
 
   @override
   String toString() {
@@ -75,22 +75,20 @@ class Message {
   @override
   bool operator ==(covariant Message other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.text == text &&
-      other.isUserMessage == isUserMessage &&
-      other.createdAt == createdAt &&
-      other.updatedAt == updatedAt;
+
+    return other.id == id &&
+        other.text == text &&
+        other.isUserMessage == isUserMessage &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      text.hashCode ^
-      isUserMessage.hashCode ^
-      createdAt.hashCode ^
-      updatedAt.hashCode;
+        text.hashCode ^
+        isUserMessage.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode;
   }
-
 }

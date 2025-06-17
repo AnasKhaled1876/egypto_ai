@@ -64,6 +64,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '949169566044',
     projectId: 'egypto-ai',
     storageBucket: 'egypto-ai.firebasestorage.app',
+    androidClientId:
+        '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
+    iosClientId:
+        '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
     iosBundleId: 'com.anas.egyptoAi',
   );
 
@@ -73,6 +77,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '949169566044',
     projectId: 'egypto-ai',
     storageBucket: 'egypto-ai.firebasestorage.app',
+    androidClientId:
+        '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
+    iosClientId:
+        '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
     iosBundleId: 'com.anas.egyptoAi',
   );
 

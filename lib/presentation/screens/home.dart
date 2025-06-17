@@ -1,7 +1,11 @@
+import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../config/resources/colors.dart';
+import '../../l10n/app_localizations.dart';
+import '../cubits/quick_prompts/quick_prompts_cubit.dart';
 import '../widgets/home/chat_text_field.dart';
 import '../widgets/home/quick_prompt.dart';
 
@@ -37,12 +41,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 12),
                 SvgPicture.asset("assets/icons/word-logo.svg", height: 35),
-                Spacer(),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 22,
-                  backgroundImage: AssetImage("assets/images/profile.jpeg"),
-                ),
+                if (context.read<AuthCubit>().user != null) ...[
+                  Spacer(),
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 22,
+                    backgroundImage: NetworkImage(
+                      context.read<AuthCubit>().user?.photoUrl ?? '',
+                    ),
+                  ),
+                ],
               ],
             ),
             SizedBox(height: 48),
@@ -50,9 +58,8 @@ class HomeScreen extends StatelessWidget {
               AppLocalizations.of(context)!.hello,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: const Color(0xFF618B4A),
+                color: primaryColor,
                 fontSize: 23,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -62,51 +69,28 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w400,
               ),
             ),
             SizedBox(height: 20),
-            ChatTextField(),
+            ChatTextField(fromHome: true),
             SizedBox(height: 40),
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 14,
-              runSpacing: 14,
-              children: [
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.study,
-                  emoji: '📖',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.dietPlan,
-                  emoji: '🥦',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.sports,
-                  emoji: '⚾',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.dDesign,
-                  emoji: '🎨',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.dinnerMeal,
-                  emoji: '🍗',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.study,
-                  emoji: '📖',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.dietPlan,
-                  emoji: '🥦',
-                ),
-                QuickPrompts(
-                  title: AppLocalizations.of(context)!.sports,
-                  emoji: '⚾',
-                ),
-              ],
+            BlocBuilder<QuickPromptsCubit, QuickPromptsState>(
+              builder: (context, state) {
+                if (state is QuickPromptsSuccess) {
+                  return Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 14,
+                    runSpacing: 14,
+                    children: context
+                        .watch<QuickPromptsCubit>()
+                        .quickPrompts
+                        .map((e) => QuickPrompts(title: e.text, emoji: e.emoji))
+                        .toList(),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
           ],
         ),

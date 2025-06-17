@@ -1,7 +1,7 @@
 import 'package:egypto_ai/presentation/screens/get_started.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -72,40 +72,39 @@ class _SplashScreenState extends State<SplashScreen>
       extendBodyBehindAppBar: true,
       body: AnimatedBuilder(
         animation: _controller,
-        builder:
-            (BuildContext context, Widget? child) => Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                image: DecorationImage(
-                  image: AssetImage("assets/images/splash_background.png"),
-                  fit: BoxFit.cover,
-                  opacity: _opacityAnimation.value,
-                ),
-              ),
-              child: Center(
-                child: Hero(
-                  tag: 'logo',
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/logo.svg",
-                        width: _logoSizeAnimation.value,
-                        height: _logoSizeAnimation.value,
-                      ),
-                      SizedBox(width: 12),
-                      SvgPicture.asset(
-                        "assets/icons/word-logo.svg",
-                        width: _wordLogoSizeAnimation.value,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              // child: ,
+        builder: (BuildContext context, Widget? child) => Container(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            image: DecorationImage(
+              image: AssetImage("assets/images/splash_background.png"),
+              fit: BoxFit.cover,
+              opacity: _opacityAnimation.value,
             ),
+          ),
+          child: Center(
+            child: Hero(
+              tag: 'logo',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/logo.svg",
+                    width: _logoSizeAnimation.value,
+                    height: _logoSizeAnimation.value,
+                  ),
+                  SizedBox(width: 12),
+                  SvgPicture.asset(
+                    "assets/icons/word-logo.svg",
+                    width: _wordLogoSizeAnimation.value,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          // child: ,
+        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
+import 'package:egypto_ai/presentation/screens/chat.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class QuickPrompts extends StatelessWidget {
   const QuickPrompts({super.key, required this.title, required this.emoji});
@@ -9,8 +11,9 @@ class QuickPrompts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(200),
       onTap: () {
-        
+        context.pushNamed(ChatScreen.routeName, extra: title);
       },
       child: Container(
         padding: const EdgeInsets.all(4),
@@ -28,7 +31,7 @@ class QuickPrompts extends StatelessWidget {
             Container(
               width: 36,
               height: 36,
-              padding: const EdgeInsets.all(6),
+              alignment: Alignment.center,
               decoration: ShapeDecoration(
                 color: const Color(0xFF191919),
                 shape: RoundedRectangleBorder(
@@ -37,11 +40,9 @@ class QuickPrompts extends StatelessWidget {
               ),
               child: Text(
                 emoji,
-                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -51,7 +52,6 @@ class QuickPrompts extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,
-                fontFamily: 'SomarSans',
                 fontWeight: FontWeight.w400,
               ),
             ),
