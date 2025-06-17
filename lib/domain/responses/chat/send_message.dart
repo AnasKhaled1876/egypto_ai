@@ -6,17 +6,9 @@ class SendMessageResponse {
   final bool status;
   final String? data;
 
-  SendMessageResponse({
-    required this.message,
-    required this.status,
-    this.data,
-  });
+  SendMessageResponse({required this.message, required this.status, this.data});
 
-  SendMessageResponse copyWith({
-    String? message,
-    bool? status,
-    String? data,
-  }) {
+  SendMessageResponse copyWith({String? message, bool? status, String? data}) {
     return SendMessageResponse(
       message: message ?? this.message,
       status: status ?? this.status,
@@ -46,16 +38,16 @@ class SendMessageResponse {
       SendMessageResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'SendMessageResponse(message: $message, status: $status, data: $data)';
+  String toString() =>
+      'SendMessageResponse(message: $message, status: $status, data: $data)';
 
   @override
   bool operator ==(covariant SendMessageResponse other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.message == message &&
-      other.status == status &&
-      other.data == data;
+
+    return other.message == message &&
+        other.status == status &&
+        other.data == data;
   }
 
   @override

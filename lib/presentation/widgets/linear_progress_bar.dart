@@ -29,8 +29,9 @@ class LinearProgressBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: FractionallySizedBox(
-        alignment:
-            languageCode == "en" ? Alignment.centerLeft : Alignment.centerRight,
+        alignment: languageCode == "en"
+            ? Alignment.centerLeft
+            : Alignment.centerRight,
         widthFactor: progress,
         child: AnimatedContainer(
           decoration: BoxDecoration(

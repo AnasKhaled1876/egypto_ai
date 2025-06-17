@@ -4,15 +4,9 @@ import 'dart:convert';
 class MessageResponse {
   final bool? status;
   final String? message;
-  MessageResponse({
-    this.status,
-    this.message,
-  });
+  MessageResponse({this.status, this.message});
 
-  MessageResponse copyWith({
-    bool? status,
-    String? message,
-  }) {
+  MessageResponse copyWith({bool? status, String? message}) {
     return MessageResponse(
       status: status ?? this.status,
       message: message ?? this.message,
@@ -20,10 +14,7 @@ class MessageResponse {
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': status,
-      'message': message,
-    };
+    return <String, dynamic>{'status': status, 'message': message};
   }
 
   factory MessageResponse.fromMap(Map<String, dynamic> map) {

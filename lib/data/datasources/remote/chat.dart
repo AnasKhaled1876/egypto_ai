@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 part 'chat.g.dart';
 
-@RestApi( parser: Parser.MapSerializable)
+@RestApi(parser: Parser.MapSerializable)
 abstract class ChatApiService {
   factory ChatApiService(Dio dio, {String baseUrl}) = _ChatApiService;
 
@@ -21,8 +21,4 @@ abstract class ChatApiService {
   Future<HttpResponse<SendMessageResponse>> generateTitle({
     @Body() required Map<String, dynamic> body,
   });
-
-
-
-
 }

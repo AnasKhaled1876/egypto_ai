@@ -8,12 +8,7 @@ class LoginResponse {
   final String? message;
   final EgyptoUser? user;
   final bool? status;
-  LoginResponse({
-    this.token,
-    this.message,
-    this.user,
-    this.status,
-  });
+  LoginResponse({this.token, this.message, this.user, this.status});
 
   LoginResponse copyWith({
     String? token,
@@ -42,14 +37,17 @@ class LoginResponse {
     return LoginResponse(
       token: map['token'] != null ? map['token'] as String : null,
       message: map['message'] != null ? map['message'] as String : null,
-      user: map['user'] != null ? EgyptoUser.fromMap(map['user'] as Map<String,dynamic>) : null,
+      user: map['user'] != null
+          ? EgyptoUser.fromMap(map['user'] as Map<String, dynamic>)
+          : null,
       status: map['status'] != null ? map['status'] as bool : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory LoginResponse.fromJson(String source) => LoginResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory LoginResponse.fromJson(String source) =>
+      LoginResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -59,19 +57,15 @@ class LoginResponse {
   @override
   bool operator ==(covariant LoginResponse other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.token == token &&
-      other.message == message &&
-      other.user == user &&
-      other.status == status;
+
+    return other.token == token &&
+        other.message == message &&
+        other.user == user &&
+        other.status == status;
   }
 
   @override
   int get hashCode {
-    return token.hashCode ^
-      message.hashCode ^
-      user.hashCode ^
-      status.hashCode;
+    return token.hashCode ^ message.hashCode ^ user.hashCode ^ status.hashCode;
   }
 }

@@ -11,6 +11,8 @@
   "chatbotEgypt": "في مصر",
   "get_started": "ابدأ الآن",
   "hello": "مرحبا !",
+  "password": "كلمة المرور",
+  "pleaseEnterYourPassword": "يرجى إدخال كلمة المرور",
   "login": "تسجيل الدخول",
   "or": "أو",
   "continueWithGoogle": "أكمل باستخدام جوجل",

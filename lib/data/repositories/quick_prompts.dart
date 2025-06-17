@@ -5,7 +5,8 @@ import 'package:egypto_ai/domain/responses/quick_prompts.dart';
 
 import '../../domain/repositories/quick_prompts.dart';
 
-class QuickPromptsRepositoryImpl extends BaseApiRepository implements QuickPromptsRepository {
+class QuickPromptsRepositoryImpl extends BaseApiRepository
+    implements QuickPromptsRepository {
   final QuickPromptsApiService _quickPromptsApiService;
   QuickPromptsRepositoryImpl(this._quickPromptsApiService);
 
@@ -15,6 +16,4 @@ class QuickPromptsRepositoryImpl extends BaseApiRepository implements QuickPromp
       request: () => _quickPromptsApiService.getQuickPrompts(),
     );
   }
-
-  
 }

@@ -13,6 +13,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 
 import 'data/datasources/remote/quick_prompts.dart';
 import 'data/repositories/quick_prompts.dart';
@@ -46,6 +47,8 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
   );
 
   locator.registerSingleton<GoogleSignIn>(_googleSignIn);
+
+  locator.registerSingleton<Logger>(Logger());
 
   // NotificationHelper notificationHelper = NotificationHelper();
 

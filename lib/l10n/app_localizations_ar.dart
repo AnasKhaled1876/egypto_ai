@@ -18,6 +18,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get first => 'أول';
 
   @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get pleaseEnterYourPassword => 'يرجى إدخال كلمة المرور';
+
+  @override
   String get ai => 'ذكاء اصطناعي';
 
   @override

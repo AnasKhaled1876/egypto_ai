@@ -1,5 +1,5 @@
+import '../../../domain/responses/auth/check_email_response/check_email_response.dart';
 import 'package:egypto_ai/domain/responses/auth/login.dart';
-import 'package:egypto_ai/domain/responses/message.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -9,18 +9,23 @@ part 'auth.g.dart';
 abstract class AuthApiService {
   factory AuthApiService(Dio dio, {String baseUrl}) = _AuthApiService;
 
-  @GET('/login')
+  @POST('/signup')
   Future<HttpResponse<LoginResponse>> signup({
     @Body() required Map<String, dynamic> body,
   });
 
-  @POST('/signup')
+  @POST('/login')
   Future<HttpResponse<LoginResponse>> login({
     @Body() required Map<String, dynamic> body,
   });
 
   @POST('/check-email')
-  Future<HttpResponse<MessageResponse>> checkEmail({
+  Future<HttpResponse<CheckEmailResponse>> checkEmail({
     @Query('email') required String email,
+  });
+
+  @POST('/google')
+  Future<HttpResponse<LoginResponse>> socialSignIn({
+    @Body() required Map<String, dynamic> body,
   });
 }

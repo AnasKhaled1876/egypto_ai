@@ -15,9 +15,7 @@ class IconContainer extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(200),
       child: Container(
-        width: 44,
-        height: 44,
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           color: secondaryBackgroundColor,

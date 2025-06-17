@@ -55,15 +55,20 @@ class ChatBubble extends StatelessWidget {
     required this.message,
     required this.isUserMessage,
     this.isTyping = false,
+    this.isLoading = false,
   });
 
   final String message;
   final bool isUserMessage;
   final bool isTyping;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: isUserMessage
+          ? BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8)
+          : null,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       color: isUserMessage ? null : Colors.transparent,
       decoration: isUserMessage
@@ -119,7 +124,7 @@ class ChatBubble extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (isTyping) LoadingAnimationWidget(),
+                if (isTyping || isLoading) LoadingAnimationWidget(),
               ],
             ),
             SizedBox(height: 8),

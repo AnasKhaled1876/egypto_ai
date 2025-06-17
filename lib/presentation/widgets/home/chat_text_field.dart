@@ -37,6 +37,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
       onEditingComplete: () {
         if (_isTyping) {
           ChatCubit.get(context).sendMessage(_textFieldController.text);
+          _textFieldController.clear();
         }
       },
       decoration: InputDecoration(
@@ -114,10 +115,11 @@ class _ChatTextFieldState extends State<ChatTextField> {
               InkWell(
                 onTap: () {
                   if (_isTyping) {
-                    if (state is! SendMessageLoading &&
-                        state is! MessageStreaming) {
+                    if (state is SendMessageLoading ||
+                        state is MessageStreaming) {
                       return;
                     }
+                    _textFieldController.clear();
                     chatCubit.sendMessage(_textFieldController.text);
                     FocusScope.of(context).unfocus();
                     if (widget.fromHome) {

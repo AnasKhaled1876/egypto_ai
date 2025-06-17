@@ -18,6 +18,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get first => 'The First';
 
   @override
+  String get password => 'password';
+
+  @override
+  String get pleaseEnterYourPassword => 'Please Enter Your Password';
+
+  @override
   String get ai => 'Ai';
 
   @override

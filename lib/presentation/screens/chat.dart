@@ -54,7 +54,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconContainer(
-                        icon: SvgPicture.asset("assets/icons/drawer.svg"),
+                        icon: SvgPicture.asset(
+                          "assets/icons/drawer.svg",
+                          width: 20,
+                          height: 20,
+                        ),
                       ),
                       state is GetTitleLoadingState
                           ? CircularProgressIndicator.adaptive()
@@ -103,6 +107,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                 ),
                                 child: ChatBubble(
                                   message: message,
+                                  isLoading:
+                                      isStreamingThisMessage ||
+                                      message.isEmpty ||
+                                      state is SendMessageLoading,
                                   isUserMessage: isUserMessage,
                                   isTyping: isStreamingThisMessage,
                                 ),

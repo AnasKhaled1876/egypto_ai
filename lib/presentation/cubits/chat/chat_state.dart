@@ -17,11 +17,8 @@ class SendMessageError extends ChatState {
 class MessageStreaming extends ChatState {
   final String partialMessage;
   final bool isComplete;
-  
-  MessageStreaming({
-    required this.partialMessage, 
-    this.isComplete = false,
-  });
+
+  MessageStreaming({required this.partialMessage, this.isComplete = false});
 }
 
 final class GetTitleLoadingState extends ChatState {}

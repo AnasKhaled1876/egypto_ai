@@ -41,7 +41,7 @@ class EmailPage extends StatelessWidget {
             onFieldSubmitted: onSubmit,
             controller: _textFieldController,
             decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.talkToEgypto,
+              hintText: 'name@email.com',
               hintStyle: TextStyle(
                 color: const Color(0xFF666666),
                 fontSize: 18,

@@ -1,12 +1,14 @@
 import 'package:egypto_ai/config/resources/colors.dart';
 import 'package:egypto_ai/locator.dart';
 import 'package:egypto_ai/presentation/screens/splash.dart';
+import 'package:egypto_ai/presentation/widgets/auth/register/password_page.dart';
 import 'package:egypto_ai/presentation/widgets/bubble_button.dart';
 import 'package:egypto_ai/presentation/widgets/icon_container.dart';
 import 'package:egypto_ai/presentation/widgets/linear_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../cubits/auth/auth_cubit.dart';
 import '../../widgets/auth/register/email_page.dart';
 import '../../widgets/auth/register/name_page.dart';
 
@@ -22,10 +24,12 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final PageController _pageController = PageController(initialPage: 0);
 
   final GlobalKey<FormState> _nameFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _emailFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _passwordFormKey = GlobalKey<FormState>();
 
   int _currentPage = 0;
 
@@ -123,9 +127,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     EmailPage(
                       textFieldController: _emailController,
                       onSubmit: (String value) {
-                        if (_emailFormKey.currentState?.validate() ?? false) {}
+                        if (_emailFormKey.currentState?.validate() ?? false) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          );
+                        }
                       },
                       formKey: _emailFormKey,
+                    ),
+                    PasswordPage(
+                      textFieldController: _passwordController,
+                      onSubmit: (String value) {
+                        if (_passwordFormKey.currentState?.validate() ??
+                            false) {
+                          AuthCubit.get(context).signUp(
+                            name: _nameController.text,
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                          );
+                        }
+                      },
+                      formKey: _passwordFormKey,
                     ),
                   ],
                 ),
@@ -144,7 +167,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                       break;
                     case 1:
-                      if (_emailFormKey.currentState?.validate() ?? false) {}
+                      if (_emailFormKey.currentState?.validate() ?? false) {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      }
+                      break;
+                    case 2:
+                      if (_passwordFormKey.currentState?.validate() ?? false) {
+                        AuthCubit.get(context).signUp(
+                          name: _nameController.text,
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                      }
                       break;
                   }
                 },

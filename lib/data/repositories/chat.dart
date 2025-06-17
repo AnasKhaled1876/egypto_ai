@@ -22,7 +22,9 @@ class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
     required String model,
   }) {
     return getStateOf<SendMessageResponse>(
-      request: () => _chatApiService.sendMessage(body: {"prompt": message, "model": model}),
+      request: () => _chatApiService.sendMessage(
+        body: {"prompt": message, "model": model},
+      ),
     );
   }
 
@@ -32,10 +34,9 @@ class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
     required String model,
   }) {
     return getStateOf<SendMessageResponse>(
-      request:
-          () => _chatApiService.generateTitle(
-            body: {"conversation": conversation, "model": model},
-          ),
+      request: () => _chatApiService.generateTitle(
+        body: {"conversation": conversation, "model": model},
+      ),
     );
   }
 }

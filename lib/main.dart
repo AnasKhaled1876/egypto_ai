@@ -18,7 +18,7 @@ import 'presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await initializeDependencies(flavor: Flavor.development);
@@ -63,23 +63,22 @@ class MyApp extends StatelessWidget {
           create: (context) => ChatCubit(locator<ChatRepository>()),
         ),
         BlocProvider<QuickPromptsCubit>(
-          create: (context) => QuickPromptsCubit(locator<QuickPromptsRepository>()),
+          create: (context) =>
+              QuickPromptsCubit(locator<QuickPromptsRepository>()),
         ),
       ],
       child: ValueListenableBuilder<Locale>(
         valueListenable: localeNotifier,
-        builder:
-            (BuildContext context, Locale value, Widget? child) =>
-                MaterialApp.router(
-                  localizationsDelegates:
-                      AppLocalizations.localizationsDelegates,
-                  locale: value,
-                  supportedLocales: AppLocalizations.supportedLocales,
-                  debugShowCheckedModeBanner: false,
-                  routerConfig: router,
-                  theme: darkTheme,
-                  themeMode: ThemeMode.dark,
-                ),
+        builder: (BuildContext context, Locale value, Widget? child) =>
+            MaterialApp.router(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              locale: value,
+              supportedLocales: AppLocalizations.supportedLocales,
+              debugShowCheckedModeBanner: false,
+              routerConfig: router,
+              theme: darkTheme,
+              themeMode: ThemeMode.dark,
+            ),
       ),
     );
   }

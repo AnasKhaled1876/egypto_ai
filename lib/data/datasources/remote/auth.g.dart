@@ -27,10 +27,10 @@ class _AuthApiService implements AuthApiService {
     final _data = <String, dynamic>{};
     _data.addAll(body);
     final _options = _setStreamType<HttpResponse<LoginResponse>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/login',
+            '/signup',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -61,7 +61,7 @@ class _AuthApiService implements AuthApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/signup',
+            '/login',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -80,14 +80,14 @@ class _AuthApiService implements AuthApiService {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> checkEmail({
+  Future<HttpResponse<CheckEmailResponse>> checkEmail({
     required String email,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'email': email};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<MessageResponse>>(
+    final _options = _setStreamType<HttpResponse<CheckEmailResponse>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -98,9 +98,40 @@ class _AuthApiService implements AuthApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late MessageResponse _value;
+    late CheckEmailResponse _value;
     try {
-      _value = MessageResponse.fromMap(_result.data!);
+      _value = CheckEmailResponse.fromMap(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<LoginResponse>> socialSignIn({
+    required Map<String, dynamic> body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<HttpResponse<LoginResponse>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/google',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LoginResponse _value;
+    try {
+      _value = LoginResponse.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

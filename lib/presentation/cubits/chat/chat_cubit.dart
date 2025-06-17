@@ -24,15 +24,10 @@ class ChatCubit extends Cubit<ChatState> {
   String? botMessage;
   String? chatTitle;
   final Logger _logger = Logger();
-  CancelToken? _cancelToken;
   String _currentStreamingMessage = '';
 
   Future<void> sendMessage(String message) async {
     try {
-      // Cancel any existing request
-      _cancelToken?.cancel('New message sent');
-      _cancelToken = CancelToken();
-
       // Update UI for loading and add user message
       emit(SendMessageLoading());
       chatMessages.add(Message(text: message, isUserMessage: true));
@@ -46,7 +41,6 @@ class ChatCubit extends Cubit<ChatState> {
         '/chat',
         data: {'prompt': message, 'model': 'deepseek'},
         options: Options(responseType: ResponseType.stream),
-        cancelToken: _cancelToken,
       );
 
       // Handle the response stream
@@ -56,8 +50,6 @@ class ChatCubit extends Cubit<ChatState> {
 
         // Process the stream
         await for (var chunk in stream) {
-          if (_cancelToken?.isCancelled ?? true) break;
-
           // Convert chunk to string
           final chunkStr = utf8.decode(chunk);
 
@@ -135,12 +127,6 @@ class ChatCubit extends Cubit<ChatState> {
       final lastIndex = chatMessages.length - 1;
       chatMessages[lastIndex] = chatMessages[lastIndex].copyWith(text: text);
     }
-  }
-
-  @override
-  Future<void> close() {
-    _cancelToken?.cancel('Chat cubit disposed');
-    return super.close();
   }
 
   void getTitle() async {

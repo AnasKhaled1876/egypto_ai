@@ -18,6 +18,10 @@ final class CheckEmailLoadingState extends AuthState {}
 
 final class CheckEmailSuccessState extends AuthState {}
 
+final class EmailExistsState extends AuthState {}
+
+final class EmailNoExistsState extends AuthState {}
+
 final class CheckEmailErrorState extends AuthState {
   final String error;
 
@@ -32,4 +36,14 @@ final class RegisterErrorState extends AuthState {
   final String error;
 
   RegisterErrorState(this.error);
+}
+
+final class SocialSignInLoadingState extends AuthState {}
+
+final class SocialSignInSuccessState extends AuthState {}
+
+final class SocialSignInErrorState extends AuthState {
+  final String error;
+
+  SocialSignInErrorState(this.error);
 }

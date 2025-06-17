@@ -65,10 +65,9 @@ class GetStartedScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      transform:
-                          Matrix4.identity()
-                            ..translate(0.0, 0.0)
-                            ..rotateZ(-0.10),
+                      transform: Matrix4.identity()
+                        ..translate(0.0, 0.0)
+                        ..rotateZ(-0.10),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 32,
                         vertical: 40,

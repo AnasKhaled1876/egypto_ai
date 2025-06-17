@@ -7,9 +7,9 @@ part 'quick_prompts.g.dart';
 
 @RestApi(parser: Parser.MapSerializable)
 abstract class QuickPromptsApiService {
-  factory QuickPromptsApiService(Dio dio, {String baseUrl}) = _QuickPromptsApiService;
+  factory QuickPromptsApiService(Dio dio, {String baseUrl}) =
+      _QuickPromptsApiService;
 
   @GET('')
   Future<HttpResponse<GetQuickPromptsResponse>> getQuickPrompts();
-
 }

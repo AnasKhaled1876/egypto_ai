@@ -1,3 +1,4 @@
+import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,12 +41,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 12),
                 SvgPicture.asset("assets/icons/word-logo.svg", height: 35),
-                Spacer(),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 22,
-                  backgroundImage: AssetImage("assets/images/profile.jpeg"),
-                ),
+                if (context.read<AuthCubit>().user != null) ...[
+                  Spacer(),
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 22,
+                    backgroundImage: NetworkImage(
+                      context.read<AuthCubit>().user?.photoUrl ?? '',
+                    ),
+                  ),
+                ],
               ],
             ),
             SizedBox(height: 48),

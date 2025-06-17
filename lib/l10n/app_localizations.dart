@@ -116,6 +116,18 @@ abstract class AppLocalizations {
   /// **'The First'**
   String get first;
 
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'password'**
+  String get password;
+
+  /// No description provided for @pleaseEnterYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Your Password'**
+  String get pleaseEnterYourPassword;
+
   /// No description provided for @ai.
   ///
   /// In en, this message translates to:
