@@ -122,6 +122,18 @@ abstract class AppLocalizations {
   /// **'password'**
   String get password;
 
+  /// No description provided for @newChat.
+  ///
+  /// In en, this message translates to:
+  /// **'New Chat'**
+  String get newChat;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
   /// No description provided for @pleaseEnterYourPassword.
   ///
   /// In en, this message translates to:

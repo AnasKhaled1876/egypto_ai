@@ -119,8 +119,8 @@ class _ChatTextFieldState extends State<ChatTextField> {
                         state is MessageStreaming) {
                       return;
                     }
-                    _textFieldController.clear();
                     chatCubit.sendMessage(_textFieldController.text);
+                    _textFieldController.clear();
                     FocusScope.of(context).unfocus();
                     if (widget.fromHome) {
                       chatCubit.getTitle();

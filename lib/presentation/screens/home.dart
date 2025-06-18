@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,12 +42,12 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 12),
                 SvgPicture.asset("assets/icons/word-logo.svg", height: 35),
-                if (context.read<AuthCubit>().user != null) ...[
+                if (context.read<AuthCubit>().user?.photoUrl != null) ...[
                   Spacer(),
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 22,
-                    backgroundImage: NetworkImage(
+                    backgroundImage: CachedNetworkImageProvider(
                       context.read<AuthCubit>().user?.photoUrl ?? '',
                     ),
                   ),

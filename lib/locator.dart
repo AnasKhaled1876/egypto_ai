@@ -2,6 +2,7 @@ import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:egypto_ai/data/datasources/remote/auth.dart';
 import 'package:egypto_ai/data/datasources/remote/chat.dart';
+import 'package:egypto_ai/data/datasources/remote/profile.dart';
 import 'package:egypto_ai/data/repositories/auth.dart';
 import 'package:egypto_ai/data/repositories/chat.dart';
 import 'package:egypto_ai/domain/entities/enum/flavor.dart';
@@ -14,9 +15,12 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/datasources/remote/quick_prompts.dart';
+import 'data/repositories/profile_repository_impl.dart';
 import 'data/repositories/quick_prompts.dart';
+import 'domain/repositories/profile_repository.dart';
 import 'domain/repositories/quick_prompts.dart';
 
 double textSize = 0;
@@ -92,6 +96,10 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
 
   locator.registerSingleton<FlutterSecureStorage>(storage);
 
+  final prefs = await SharedPreferences.getInstance();
+
+  locator.registerSingleton<SharedPreferences>(prefs);
+
   // locator.registerSingleton<ImagePicker>(picker);
 
   String? token = await locator<FlutterSecureStorage>().read(key: 'token');
@@ -111,8 +119,6 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         token != null ? 'Authorization' : 'Bearer $token': null,
-        // 'Authorization':
-        //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNzMyNDM2NjIyLCJleHAiOjE3MzI1MjMwMjJ9.6R-mEj5GALsCpXjVVM3DKZJbzF15NDzZWyxD4cLoJqc',
       },
     ),
   );
@@ -146,5 +152,13 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
 
   locator.registerSingleton<QuickPromptsRepository>(
     QuickPromptsRepositoryImpl(locator<QuickPromptsApiService>()),
+  );
+
+  locator.registerSingleton<ProfileApiService>(
+    ProfileApiService(locator<Dio>(), baseUrl: '${baseUrl}profile'),
+  );
+
+  locator.registerSingleton<ProfileRepository>(
+    ProfileRepositoryImpl(locator<ProfileApiService>()),
   );
 }

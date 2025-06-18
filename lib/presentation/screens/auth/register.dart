@@ -1,11 +1,13 @@
 import 'package:egypto_ai/config/resources/colors.dart';
 import 'package:egypto_ai/locator.dart';
+import 'package:egypto_ai/presentation/cubits/profile/profile_cubit.dart';
 import 'package:egypto_ai/presentation/screens/splash.dart';
 import 'package:egypto_ai/presentation/widgets/auth/register/password_page.dart';
 import 'package:egypto_ai/presentation/widgets/bubble_button.dart';
 import 'package:egypto_ai/presentation/widgets/icon_container.dart';
 import 'package:egypto_ai/presentation/widgets/linear_progress_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../cubits/auth/auth_cubit.dart';
@@ -154,36 +156,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Spacer(),
-              BubbleButton(
-                title: AppLocalizations.of(context)!.continueRegister,
-                onTap: () {
-                  switch (_currentPage) {
-                    case 0:
-                      if (_nameFormKey.currentState?.validate() ?? false) {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
-                      break;
-                    case 1:
-                      if (_emailFormKey.currentState?.validate() ?? false) {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
-                      break;
-                    case 2:
-                      if (_passwordFormKey.currentState?.validate() ?? false) {
-                        AuthCubit.get(context).signUp(
-                          name: _nameController.text,
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                        );
-                      }
-                      break;
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  if (state is RegisterSuccessState) {
+                    ProfileCubit.get(context).getProfile();
                   }
+                },
+                builder: (context, state) {
+                  return BubbleButton(
+                    title: AppLocalizations.of(context)!.continueRegister,
+                    onTap: () {
+                      switch (_currentPage) {
+                        case 0:
+                          if (_nameFormKey.currentState?.validate() ?? false) {
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn,
+                            );
+                          }
+                          break;
+                        case 1:
+                          if (_emailFormKey.currentState?.validate() ?? false) {
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn,
+                            );
+                          }
+                          break;
+                        case 2:
+                          if (_passwordFormKey.currentState?.validate() ??
+                              false) {
+                            AuthCubit.get(context).signUp(
+                              name: _nameController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            );
+                          }
+                          break;
+                      }
+                    },
+                  );
                 },
               ),
               SizedBox(height: 36),

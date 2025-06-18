@@ -21,6 +21,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password => 'كلمة المرور';
 
   @override
+  String get newChat => 'محادثة جديدة';
+
+  @override
+  String get search => 'بحث';
+
+  @override
   String get pleaseEnterYourPassword => 'يرجى إدخال كلمة المرور';
 
   @override

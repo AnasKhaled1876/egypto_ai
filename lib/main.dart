@@ -1,3 +1,4 @@
+import 'package:egypto_ai/presentation/cubits/profile/profile_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -11,6 +12,7 @@ import 'package:egypto_ai/locator.dart';
 import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
 import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
 import 'package:egypto_ai/utils/helpers/router.dart';
+import 'domain/repositories/profile_repository.dart';
 import 'domain/repositories/quick_prompts.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
@@ -58,6 +60,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthCubit>(
           create: (context) => AuthCubit(locator<AuthRepository>()),
+        ),
+        BlocProvider<ProfileCubit>(
+          create: (context) => ProfileCubit(locator<ProfileRepository>()),
         ),
         BlocProvider<ChatCubit>(
           create: (context) => ChatCubit(locator<ChatRepository>()),

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:egypto_ai/data/resources/data_state.dart';
 import 'package:egypto_ai/domain/entities/models/user.dart';
 import 'package:egypto_ai/domain/repositories/auth.dart';
@@ -51,6 +52,8 @@ class AuthCubit extends Cubit<AuthState> {
         key: 'token',
         value: result.data?.token,
       );
+      locator<Dio>().options.headers['Authorization'] =
+          'Bearer ${result.data?.token}';
       user = result.data?.user;
       emit(LoginSuccessState());
     } else {
@@ -80,6 +83,8 @@ class AuthCubit extends Cubit<AuthState> {
         key: 'token',
         value: result.data?.token,
       );
+      locator<Dio>().options.headers['Authorization'] =
+          'Bearer ${result.data?.token}';
 
       user = result.data?.user;
       emit(RegisterSuccessState());
@@ -114,6 +119,8 @@ class AuthCubit extends Cubit<AuthState> {
           key: 'token',
           value: result.data?.token,
         );
+        locator<Dio>().options.headers['Authorization'] =
+            'Bearer ${result.data?.token}';
         user = result.data?.user;
         emit(SocialSignInSuccessState());
       } else {

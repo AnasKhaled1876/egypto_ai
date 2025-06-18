@@ -172,62 +172,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                         SizedBox(height: 24),
 
-                        ElevatedButton(
-                          style: defaultElevatedButtonStyle(context: context),
-                          onPressed: () {
-                            AuthCubit.get(
-                              context,
-                            ).checkEmail(email: _emailController.text);
-                          },
-                          child: state is CheckEmailLoadingState
-                              ? LoadingAnimationWidget(size: 10)
-                              : Text(AppLocalizations.of(context)!.login),
+                        AbsorbPointer(
+                          absorbing:
+                              state is CheckEmailLoadingState ||
+                              state is LoginLoadingState,
+                          child: ElevatedButton(
+                            style: defaultElevatedButtonStyle(context: context),
+                            onPressed: () {
+                              AuthCubit.get(
+                                context,
+                              ).checkEmail(email: _emailController.text);
+                            },
+                            child: state is CheckEmailLoadingState
+                                ? LoadingAnimationWidget(size: 10)
+                                : Text(AppLocalizations.of(context)!.login),
+                          ),
                         ),
                         SizedBox(height: 24),
                         OrDivider(),
                         SizedBox(height: 24),
-                        ElevatedButton(
-                          style: defaultElevatedButtonStyle(
-                            context: context,
-                            backgroundColor: Colors.white,
-                          ),
-                          onPressed: () async {
-                            await locator<GoogleSignIn>().signIn().then((
-                              value,
-                            ) {
-                              if (value != null) {
-                                if (context.mounted) {
-                                  context.read<AuthCubit>().signInWithSocial(
-                                    email: value.email,
-                                    providerId: value.id,
-                                    name: value.displayName ?? '',
-                                    photoUrl: value.photoUrl,
-                                  );
+                        AbsorbPointer(
+                          absorbing: state is SocialSignInLoadingState,
+                          child: ElevatedButton(
+                            style: defaultElevatedButtonStyle(
+                              context: context,
+                              backgroundColor: Colors.white,
+                            ),
+                            onPressed: () async {
+                              await locator<GoogleSignIn>().signIn().then((
+                                value,
+                              ) {
+                                if (value != null) {
+                                  if (context.mounted) {
+                                    context.read<AuthCubit>().signInWithSocial(
+                                      email: value.email,
+                                      providerId: value.id,
+                                      name: value.displayName ?? '',
+                                      photoUrl: value.photoUrl,
+                                    );
+                                  }
                                 }
-                              }
-                            });
-                          },
-                          child: state is SocialSignInLoadingState
-                              ? const CircularProgressIndicator.adaptive()
-                              : Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  spacing: 8,
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/icons/google.svg",
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                    Text(
-                                      AppLocalizations.of(
-                                        context,
-                                      )!.continueWithGoogle,
-                                      style: TextStyle(
-                                        color: const Color(0xFF515151),
+                              });
+                            },
+                            child: state is SocialSignInLoadingState
+                                ? const CircularProgressIndicator.adaptive()
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    spacing: 8,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/icons/google.svg",
+                                        width: 24,
+                                        height: 24,
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                      Text(
+                                        AppLocalizations.of(
+                                          context,
+                                        )!.continueWithGoogle,
+                                        style: TextStyle(
+                                          color: const Color(0xFF515151),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                          ),
                         ),
                         SizedBox(height: 56),
                         TermsOfUseRichText(),

@@ -21,6 +21,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'password';
 
   @override
+  String get newChat => 'New Chat';
+
+  @override
+  String get search => 'Search';
+
+  @override
   String get pleaseEnterYourPassword => 'Please Enter Your Password';
 
   @override
