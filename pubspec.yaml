@@ -1,9 +1,9 @@
-name: egypto_ai
+name: egypto
 description: "An Egyptian AI Assistant"
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+2
+version: 1.0.0+3
 
 environment:
   sdk: ^3.8.1
@@ -46,7 +46,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.3
   flutter_native_splash: ^2.4.6
-  build_runner: 2.4.15
+  build_runner: ^2.5.3
   retrofit_generator: ^9.2.0
   flutter_localization: ^0.3.2
 
@@ -60,7 +60,7 @@ flutter_launcher_icons:
 
 flutter_native_splash:
   color: "#0D0D0D"
-  image: assets/images/logo_512.png
+  # image: assets/images/logo_512.png
   ios: true
   android: true
   fullscreen: true

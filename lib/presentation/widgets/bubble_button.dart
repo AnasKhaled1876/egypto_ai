@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../config/resources/colors.dart';
-
 class BubbleButton extends StatelessWidget {
   const BubbleButton({super.key, required this.title, required this.onTap});
 
@@ -22,7 +20,7 @@ class BubbleButton extends StatelessWidget {
               decoration: ShapeDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    primaryColor,
+                    Theme.of(context).colorScheme.primary,
                     Color(0xFF4E7F62),
                     Color(0xFF20639B),
                     Color(0xFF1C2895),

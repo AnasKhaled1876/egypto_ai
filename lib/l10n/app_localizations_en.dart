@@ -15,7 +15,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get programming => 'Programming';
 
   @override
-  String get first => 'The First';
+  String get first => 'welcome to The ';
 
   @override
   String get password => 'password';
@@ -30,10 +30,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pleaseEnterYourPassword => 'Please Enter Your Password';
 
   @override
-  String get ai => 'Ai';
+  String get ai => 'First AI';
 
   @override
-  String get chatbotEgypt => 'in Egypt';
+  String get chatbotEgypt => 'Chatbot in Egypt';
 
   @override
   String get continueRegister => 'Continue';

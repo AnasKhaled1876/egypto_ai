@@ -1,8 +1,7 @@
-import 'package:egypto_ai/config/resources/colors.dart';
-import 'package:egypto_ai/l10n/app_localizations.dart';
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
-import 'package:egypto_ai/presentation/widgets/home/chat_text_field.dart';
+import 'package:egypto/l10n/app_localizations.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/cubits/chat/chat_cubit.dart';
+import 'package:egypto/presentation/widgets/home/chat_text_field.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
         return Scaffold(
           appBar: AppBar(
             toolbarHeight: 0,
-            backgroundColor: primaryBackgroundColor,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
@@ -108,7 +107,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             decoration: ShapeDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  primaryColor,
+                                  Theme.of(context).colorScheme.primary,
                                   Color(0xFF4E7F62),
                                   Color(0xFF20639B),
                                   Color(0xFF1C2895),

@@ -1,5 +1,5 @@
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/responses/auth/login.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/responses/auth/login.dart';
 
 import '../responses/message.dart';
 

@@ -1,12 +1,13 @@
-import 'package:egypto_ai/data/base_api_repository.dart';
-import 'package:egypto_ai/data/datasources/remote/profile.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/repositories/profile_repository.dart';
+import 'package:egypto/data/base_api_repository.dart';
+import 'package:egypto/data/datasources/remote/profile.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/repositories/profile_repository.dart';
 
 import '../../domain/responses/auth/login.dart';
 import '../../domain/responses/message.dart';
 
-class ProfileRepositoryImpl extends BaseApiRepository implements ProfileRepository {
+class ProfileRepositoryImpl extends BaseApiRepository
+    implements ProfileRepository {
   final ProfileApiService _profileApiService;
 
   ProfileRepositoryImpl(this._profileApiService);
@@ -25,7 +26,7 @@ class ProfileRepositoryImpl extends BaseApiRepository implements ProfileReposito
     String? fcmToken,
   }) async {
     final body = <String, dynamic>{};
-    
+
     if (name != null) body['name'] = name;
     if (photoUrl != null) body['photoUrl'] = photoUrl;
     if (fcmToken != null) body['fcmToken'] = fcmToken;

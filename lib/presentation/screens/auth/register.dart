@@ -1,11 +1,10 @@
-import 'package:egypto_ai/config/resources/colors.dart';
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/cubits/profile/profile_cubit.dart';
-import 'package:egypto_ai/presentation/screens/splash.dart';
-import 'package:egypto_ai/presentation/widgets/auth/register/password_page.dart';
-import 'package:egypto_ai/presentation/widgets/bubble_button.dart';
-import 'package:egypto_ai/presentation/widgets/icon_container.dart';
-import 'package:egypto_ai/presentation/widgets/linear_progress_bar.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/cubits/profile/profile_cubit.dart';
+import 'package:egypto/presentation/screens/splash.dart';
+import 'package:egypto/presentation/widgets/auth/register/password_page.dart';
+import 'package:egypto/presentation/widgets/bubble_button.dart';
+import 'package:egypto/presentation/widgets/icon_container.dart';
+import 'package:egypto/presentation/widgets/linear_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -105,7 +104,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: MediaQuery.of(context).size.width - 50,
                 borderRadius: 8,
                 height: 4,
-                backgroundColor: secondaryBackgroundColor,
+                backgroundColor: Theme.of(
+                  context,
+                ).colorScheme.secondaryContainer,
                 progressColor: Colors.white,
               ),
               SizedBox(height: 54),

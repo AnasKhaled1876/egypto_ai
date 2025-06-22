@@ -1,6 +1,4 @@
-import 'package:egypto_ai/config/resources/colors.dart';
 import 'package:flutter/material.dart';
-
 import '../../locator.dart';
 
 class IconContainer extends StatelessWidget {
@@ -18,7 +16,7 @@ class IconContainer extends StatelessWidget {
         padding: EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          color: secondaryBackgroundColor,
+          color: Theme.of(context).colorScheme.secondaryContainer,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(200),
           ),

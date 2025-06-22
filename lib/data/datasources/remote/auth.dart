@@ -1,7 +1,8 @@
 import '../../../domain/responses/auth/check_email_response/check_email_response.dart';
-import 'package:egypto_ai/domain/responses/auth/login.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+
+import '../../../domain/responses/auth/login.dart';
 
 part 'auth.g.dart';
 

@@ -1,13 +1,13 @@
 import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:egypto_ai/data/datasources/remote/auth.dart';
-import 'package:egypto_ai/data/datasources/remote/chat.dart';
-import 'package:egypto_ai/data/datasources/remote/profile.dart';
-import 'package:egypto_ai/data/repositories/auth.dart';
-import 'package:egypto_ai/data/repositories/chat.dart';
-import 'package:egypto_ai/domain/entities/enum/flavor.dart';
-import 'package:egypto_ai/domain/repositories/auth.dart';
-import 'package:egypto_ai/domain/repositories/chat.dart';
+import 'package:egypto/data/datasources/remote/auth.dart';
+import 'package:egypto/data/datasources/remote/chat.dart';
+import 'package:egypto/data/datasources/remote/profile.dart';
+import 'package:egypto/data/repositories/auth.dart';
+import 'package:egypto/data/repositories/chat.dart';
+import 'package:egypto/domain/entities/enum/flavor.dart';
+import 'package:egypto/domain/repositories/auth.dart';
+import 'package:egypto/domain/repositories/chat.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -118,7 +118,7 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        token != null ? 'Authorization' : 'Bearer $token': null,
+        if (token != null) 'Authorization': 'Bearer $token',
       },
     ),
   );

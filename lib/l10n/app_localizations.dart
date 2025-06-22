@@ -113,7 +113,7 @@ abstract class AppLocalizations {
   /// No description provided for @first.
   ///
   /// In en, this message translates to:
-  /// **'The First'**
+  /// **'welcome to The '**
   String get first;
 
   /// No description provided for @password.
@@ -143,13 +143,13 @@ abstract class AppLocalizations {
   /// No description provided for @ai.
   ///
   /// In en, this message translates to:
-  /// **'Ai'**
+  /// **'First AI'**
   String get ai;
 
   /// No description provided for @chatbotEgypt.
   ///
   /// In en, this message translates to:
-  /// **'in Egypt'**
+  /// **'Chatbot in Egypt'**
   String get chatbotEgypt;
 
   /// No description provided for @continueRegister.

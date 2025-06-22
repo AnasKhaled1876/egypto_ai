@@ -1,8 +1,8 @@
-import 'package:egypto_ai/data/base_api_repository.dart';
-import 'package:egypto_ai/data/datasources/remote/auth.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/repositories/auth.dart';
-import 'package:egypto_ai/domain/responses/auth/login.dart';
+import 'package:egypto/data/base_api_repository.dart';
+import 'package:egypto/data/datasources/remote/auth.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/repositories/auth.dart';
+import 'package:egypto/domain/responses/auth/login.dart';
 
 import '../../domain/responses/auth/check_email_response/check_email_response.dart';
 

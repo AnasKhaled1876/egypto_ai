@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
+import 'package:egypto/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../config/resources/colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../cubits/quick_prompts/quick_prompts_cubit.dart';
 import '../widgets/home/chat_text_field.dart';
@@ -59,7 +58,7 @@ class HomeScreen extends StatelessWidget {
               AppLocalizations.of(context)!.hello,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: primaryColor,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 23,
                 fontWeight: FontWeight.w600,
               ),

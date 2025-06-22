@@ -1,7 +1,7 @@
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/cubits/profile/profile_cubit.dart';
-import 'package:egypto_ai/presentation/screens/get_started.dart';
-import 'package:egypto_ai/presentation/screens/home.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/cubits/profile/profile_cubit.dart';
+import 'package:egypto/presentation/screens/home.dart';
+import 'package:egypto/presentation/screens/start/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen>
       // First launch, navigate to welcome screen
       await _prefs.setBool('is_first_launch', false);
       if (mounted) {
-        context.pushNamed(GetStartedScreen.routeName);
+        context.pushNamed(WelcomeScreen.routeName);
       }
     } else {
       // Not first launch, check auth state

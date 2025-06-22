@@ -1,9 +1,9 @@
-import 'package:egypto_ai/data/base_api_repository.dart';
-import 'package:egypto_ai/data/datasources/remote/chat.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/repositories/chat.dart';
-import 'package:egypto_ai/domain/responses/chat/get_chat.dart';
-import 'package:egypto_ai/domain/responses/chat/send_message.dart';
+import 'package:egypto/data/base_api_repository.dart';
+import 'package:egypto/data/datasources/remote/chat.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/repositories/chat.dart';
+import 'package:egypto/domain/responses/chat/get_chat.dart';
+import 'package:egypto/domain/responses/chat/send_message.dart';
 
 class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
   final ChatApiService _chatApiService;

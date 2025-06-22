@@ -1,7 +1,7 @@
-import 'package:egypto_ai/domain/repositories/profile_repository.dart';
-import 'package:egypto_ai/domain/responses/auth/login.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/responses/message.dart';
+import 'package:egypto/domain/repositories/profile_repository.dart';
+import 'package:egypto/domain/responses/auth/login.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/responses/message.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 

@@ -1,7 +1,6 @@
-import 'package:egypto_ai/config/resources/colors.dart';
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/widgets/loading_animation.dart';
-import 'package:egypto_ai/utils/helpers/string_formatters.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/widgets/loading_animation.dart';
+import 'package:egypto/utils/helpers/string_formatters.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -73,7 +72,7 @@ class ChatBubble extends StatelessWidget {
       color: isUserMessage ? null : Colors.transparent,
       decoration: isUserMessage
           ? ShapeDecoration(
-              color: secondaryBackgroundColor,
+              color: Theme.of(context).colorScheme.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: isUserMessage
                     ? BorderRadius.only(
@@ -118,7 +117,7 @@ class ChatBubble extends StatelessWidget {
                   child: SelectableText(
                     AppLocalizations.of(context)!.egypto,
                     style: TextStyle(
-                      color: primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -131,6 +130,7 @@ class ChatBubble extends StatelessWidget {
           ],
           GptMarkdown(
             isUserMessage ? message : formatBotMessage(message),
+
             textDirection: localeNotifier.value.languageCode == 'ar'
                 ? TextDirection.rtl
                 : TextDirection.ltr,
@@ -188,6 +188,7 @@ class ChatBubble extends StatelessWidget {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
+              height: 1.6,
               fontWeight: FontWeight.w400,
             ),
           ),

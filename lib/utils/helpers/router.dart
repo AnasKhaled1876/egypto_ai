@@ -1,12 +1,12 @@
-import 'package:egypto_ai/presentation/screens/chat.dart';
-import 'package:egypto_ai/presentation/screens/home.dart';
-import 'package:egypto_ai/presentation/screens/get_started.dart';
-import 'package:egypto_ai/presentation/screens/splash.dart';
+import 'package:egypto/presentation/screens/chat.dart';
+import 'package:egypto/presentation/screens/home.dart';
+import 'package:egypto/presentation/screens/splash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 import '../../presentation/screens/auth/register.dart';
+import '../../presentation/screens/start/start.dart';
 import '../../presentation/screens/start/welcome.dart';
 
 // GoRouter configuration
@@ -18,14 +18,14 @@ final router = GoRouter(
       builder: (context, state) => SplashScreen(),
       routes: [
         GoRoute(
-          path: GetStartedScreen.routeName,
-          name: GetStartedScreen.routeName,
-          builder: (context, state) => GetStartedScreen(),
-        ),
-        GoRoute(
           path: WelcomeScreen.routeName,
           name: WelcomeScreen.routeName,
           builder: (context, state) => WelcomeScreen(),
+        ),
+        GoRoute(
+          path: StartScreen.routeName,
+          name: StartScreen.routeName,
+          builder: (context, state) => StartScreen(),
         ),
         GoRoute(
           path: RegisterScreen.routeName,

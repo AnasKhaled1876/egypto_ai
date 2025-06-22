@@ -1,8 +1,6 @@
 
-import 'package:flutter/material.dart';
-
-import '../../config/resources/colors.dart';
 import '../../l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
 
 class TermsOfUseRichText extends StatelessWidget {
   const TermsOfUseRichText({
@@ -25,11 +23,11 @@ class TermsOfUseRichText extends StatelessWidget {
           TextSpan(
             text: AppLocalizations.of(context)!.termsOfUse,
             style: TextStyle(
-              color: primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 14.22,
               fontWeight: FontWeight.w400,
               decoration: TextDecoration.underline,
-              decorationColor: primaryColor,
+              decorationColor: Theme.of(context).colorScheme.primary,
             ),
           ),
           TextSpan(
@@ -43,11 +41,11 @@ class TermsOfUseRichText extends StatelessWidget {
           TextSpan(
             text: AppLocalizations.of(context)!.privacyPolicy,
             style: TextStyle(
-              color: primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 14.22,
               fontWeight: FontWeight.w400,
               decoration: TextDecoration.underline,
-              decorationColor: primaryColor,
+              decorationColor: Theme.of(context).colorScheme.primary,
             ),
           ),
         ],

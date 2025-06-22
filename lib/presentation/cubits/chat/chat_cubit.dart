@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/entities/models/message.dart';
-import 'package:egypto_ai/domain/repositories/chat.dart';
-import 'package:egypto_ai/domain/responses/chat/send_message.dart';
-import 'package:egypto_ai/locator.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/entities/models/message.dart';
+import 'package:egypto/domain/repositories/chat.dart';
+import 'package:egypto/domain/responses/chat/send_message.dart';
+import 'package:egypto/locator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';

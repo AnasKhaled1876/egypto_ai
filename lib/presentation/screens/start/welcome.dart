@@ -1,17 +1,15 @@
-import 'package:egypto_ai/config/widgets/elevated_button.dart';
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/screens/auth/register.dart';
-import 'package:egypto_ai/presentation/widgets/start/or_divider.dart';
+import 'package:egypto/config/widgets/elevated_button.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/screens/auth/register.dart';
+import 'package:egypto/presentation/screens/start/start.dart';
+import 'package:egypto/utils/helpers/strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../cubits/auth/auth_cubit.dart';
-import '../../widgets/loading_animation.dart';
-import '../../widgets/terms_of_use.dart';
 import '../home.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -24,8 +22,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -50,200 +46,160 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 28,
-                right: 28,
-                top: 24,
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              child: Form(
-                key: _formKey,
-                child: BlocConsumer<AuthCubit, AuthState>(
-                  listener: (context, state) {
-                    if (state is SocialSignInSuccessState) {
-                      context.pushNamed(HomeScreen.routeName);
-                    }
-                    if (state is EmailNoExistsState) {
-                      context.pushNamed(RegisterScreen.routeName);
-                    }
-                    if (state is LoginErrorState) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(state.error),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  },
-                  builder: (context, state) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 52),
-                        Hero(
-                          tag: 'logo',
-                          child: SvgPicture.asset(
-                            "assets/icons/logo.svg",
-                            width: 48,
-                            height: 48,
-                          ),
-                        ),
-                        SizedBox(width: 12),
-                        Hero(
-                          tag: 'word-logo',
-                          child: SvgPicture.asset(
-                            "assets/icons/word-logo.svg",
-                            height: 65,
-                          ),
-                        ),
-                        SizedBox(height: 100),
-                        Text(
-                          AppLocalizations.of(context)!.firstlyYourEmail,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            hintText: 'name@email.com',
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return AppLocalizations.of(
-                                context,
-                              )!.pleaseEnterYourEmail;
-                            }
-                            final emailRegex = RegExp(
-                              r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-                            );
-                            if (!emailRegex.hasMatch(value)) {
-                              return AppLocalizations.of(
-                                context,
-                              )!.pleaseEnterYourEmail;
-                            }
-                            return null;
-                          },
-                          onFieldSubmitted: (value) {
-                            AuthCubit.get(context).checkEmail(email: value);
-                          },
-                        ),
-                        if (state is EmailExistsState) SizedBox(height: 14),
-                        AnimatedSize(
-                          duration: const Duration(milliseconds: 200),
-                          child: SizedBox(
-                            height: state is EmailExistsState ? null : 0,
-                            child: TextFormField(
-                              textAlign: TextAlign.center,
-                              controller: _passwordController,
-                              decoration: InputDecoration(
-                                hintText: AppLocalizations.of(
-                                  context,
-                                )!.password,
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return AppLocalizations.of(
-                                    context,
-                                  )!.pleaseEnterYourEmail;
-                                }
-                                final emailRegex = RegExp(
-                                  r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-                                );
-                                if (!emailRegex.hasMatch(value)) {
-                                  return AppLocalizations.of(
-                                    context,
-                                  )!.pleaseEnterYourEmail;
-                                }
-                                return null;
-                              },
-                              onFieldSubmitted: (value) {
-                                AuthCubit.get(context).checkEmail(email: value);
-                              },
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 24),
-
-                        AbsorbPointer(
-                          absorbing:
-                              state is CheckEmailLoadingState ||
-                              state is LoginLoadingState,
-                          child: ElevatedButton(
-                            style: defaultElevatedButtonStyle(context: context),
-                            onPressed: () {
-                              AuthCubit.get(
-                                context,
-                              ).checkEmail(email: _emailController.text);
-                            },
-                            child: state is CheckEmailLoadingState
-                                ? LoadingAnimationWidget(size: 10)
-                                : Text(AppLocalizations.of(context)!.login),
-                          ),
-                        ),
-                        SizedBox(height: 24),
-                        OrDivider(),
-                        SizedBox(height: 24),
-                        AbsorbPointer(
-                          absorbing: state is SocialSignInLoadingState,
-                          child: ElevatedButton(
-                            style: defaultElevatedButtonStyle(
-                              context: context,
-                              backgroundColor: Colors.white,
-                            ),
-                            onPressed: () async {
-                              await locator<GoogleSignIn>().signIn().then((
-                                value,
-                              ) {
-                                if (value != null) {
-                                  if (context.mounted) {
-                                    context.read<AuthCubit>().signInWithSocial(
-                                      email: value.email,
-                                      providerId: value.id,
-                                      name: value.displayName ?? '',
-                                      photoUrl: value.photoUrl,
-                                    );
-                                  }
-                                }
-                              });
-                            },
-                            child: state is SocialSignInLoadingState
-                                ? const CircularProgressIndicator.adaptive()
-                                : Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    spacing: 8,
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/icons/google.svg",
-                                        width: 24,
-                                        height: 24,
-                                      ),
-                                      Text(
-                                        AppLocalizations.of(
-                                          context,
-                                        )!.continueWithGoogle,
-                                        style: TextStyle(
-                                          color: const Color(0xFF515151),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                          ),
-                        ),
-                        SizedBox(height: 56),
-                        TermsOfUseRichText(),
-                        SizedBox(height: 36),
-                      ],
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 28,
+              right: 28,
+              top: 24,
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Form(
+              key: _formKey,
+              child: BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  if (state is SocialSignInSuccessState) {
+                    context.pushNamed(HomeScreen.routeName);
+                  }
+                  if (state is EmailNoExistsState) {
+                    context.pushNamed(RegisterScreen.routeName);
+                  }
+                  if (state is LoginErrorState) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.error),
+                        backgroundColor: Colors.red,
+                      ),
                     );
-                  },
-                ),
+                  }
+                },
+                builder: (context, state) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 17),
+                      Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 5,
+                            horizontal: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF1C1E26),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/globe.svg",
+                                height: 24,
+                                width: 24,
+                              ),
+                              SizedBox(width: 12),
+                              Text(
+                                localeNotifier.value.languageCode.toTitleCase(),
+                                style: Theme.of(context).textTheme.labelMedium,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 66),
+                      Hero(
+                        tag: 'logo',
+                        child: SvgPicture.asset(
+                          "assets/icons/logo.svg",
+                          height: 60,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Hero(
+                        tag: 'word-logo',
+                        child: Image.asset(
+                          "assets/images/egypto-word-logo.png",
+                          height: 68,
+                          width: 231,
+                        ),
+                      ),
+                      Spacer(),
+                      SizedBox(
+                        width: 320,
+                        child: Text.rich(
+                          textAlign: TextAlign.center,
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '${AppLocalizations.of(context)!.first} ',
+                                style: Theme.of(context).textTheme.displaySmall
+                                    ?.copyWith(fontWeight: FontWeight.w800),
+                              ),
+                              TextSpan(
+                                text: AppLocalizations.of(context)!.ai,
+                                style: Theme.of(context).textTheme.displaySmall
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      foreground: Paint()
+                                        ..shader =
+                                            RadialGradient(
+                                              colors: [
+                                                Color(0xFF00A3A4),
+                                                Color(0xFF00BCA1),
+                                                Color(0xFF20639B),
+                                                Color(0xFF1C2895),
+                                              ],
+                                              stops: [0, 0.32, 0.74, 1],
+                                              center: Alignment.topLeft,
+                                              radius: 10,
+                                            ).createShader(
+                                              Rect.fromLTWH(0, 0, 180, 120),
+                                            ),
+                                    ),
+                              ),
+                              TextSpan(
+                                text:
+                                    ' ${AppLocalizations.of(context)!.chatbotEgypt}',
+                                style: Theme.of(context).textTheme.displaySmall
+                                    ?.copyWith(fontWeight: FontWeight.w800),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 66),
+                      ElevatedButton(
+                        style: gradientElevatedButtonStyle(context: context),
+                        onPressed: () =>
+                            context.pushNamed(StartScreen.routeName),
+                        child: Text(
+                          AppLocalizations.of(context)!.get_started,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ),
+                      SizedBox(height: 24),
+                      ElevatedButton(
+                        style: defaultElevatedButtonStyle(
+                          context: context,
+                          backgroundColor: Theme.of(context).cardColor,
+                        ),
+                        onPressed: () =>
+                            context.pushNamed(StartScreen.routeName),
+                        child: Text(
+                          AppLocalizations.of(context)!.login,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ),
+                      SizedBox(height: 32),
+                    ],
+                  );
+                },
               ),
             ),
           ),

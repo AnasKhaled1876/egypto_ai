@@ -1,22 +1,22 @@
-import 'package:egypto_ai/presentation/cubits/profile/profile_cubit.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:egypto/presentation/cubits/profile/profile_cubit.dart';
+import 'presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:egypto/domain/entities/enum/flavor.dart';
+import 'package:egypto/domain/repositories/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:egypto_ai/config/theme/dark.dart';
-import 'package:egypto_ai/domain/entities/enum/flavor.dart';
-import 'package:egypto_ai/domain/repositories/auth.dart';
-import 'package:egypto_ai/domain/repositories/chat.dart';
-import 'package:egypto_ai/locator.dart';
-import 'package:egypto_ai/presentation/cubits/auth/auth_cubit.dart';
-import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
-import 'package:egypto_ai/utils/helpers/router.dart';
+import 'package:egypto/config/theme/dark.dart';
+import 'package:egypto/domain/repositories/chat.dart';
+import 'package:egypto/locator.dart';
+import 'package:egypto/presentation/cubits/auth/auth_cubit.dart';
+import 'package:egypto/presentation/cubits/chat/chat_cubit.dart';
+import 'package:egypto/utils/helpers/router.dart';
 import 'domain/repositories/profile_repository.dart';
 import 'domain/repositories/quick_prompts.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
-import 'presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:egypto_ai/domain/entities/models/quick_prompt.dart';
+import 'package:egypto/domain/entities/models/quick_prompt.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../data/resources/data_state.dart';

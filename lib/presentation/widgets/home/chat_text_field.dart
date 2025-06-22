@@ -1,11 +1,9 @@
-import 'package:egypto_ai/presentation/cubits/chat/chat_cubit.dart';
-import 'package:egypto_ai/presentation/screens/chat.dart';
+import 'package:egypto/presentation/cubits/chat/chat_cubit.dart';
+import 'package:egypto/presentation/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../config/resources/colors.dart';
 import '../../../l10n/app_localizations.dart';
 
 class ChatTextField extends StatefulWidget {
@@ -78,7 +76,10 @@ class _ChatTextFieldState extends State<ChatTextField> {
           decoration: ShapeDecoration(
             color: const Color(0xFF0F0F0F),
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1.50, color: primaryColor),
+              side: BorderSide(
+                width: 1.50,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               borderRadius: BorderRadius.circular(200),
             ),
           ),
@@ -135,7 +136,9 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   width: 40,
                   height: 40,
                   decoration: ShapeDecoration(
-                    color: _isTyping ? primaryColor : Colors.white,
+                    color: _isTyping
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(166.67),
                     ),

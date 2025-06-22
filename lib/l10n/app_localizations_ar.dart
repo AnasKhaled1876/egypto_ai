@@ -15,7 +15,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get programming => 'برمجة';
 
   @override
-  String get first => 'أول';
+  String get first => 'مرحبا بك في ';
 
   @override
   String get password => 'كلمة المرور';
@@ -30,7 +30,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pleaseEnterYourPassword => 'يرجى إدخال كلمة المرور';
 
   @override
-  String get ai => 'ذكاء اصطناعي';
+  String get ai => 'أول ذكاء اصطناعي';
 
   @override
   String get chatbotEgypt => 'في مصر';

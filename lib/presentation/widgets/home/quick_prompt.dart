@@ -1,4 +1,4 @@
-import 'package:egypto_ai/presentation/screens/chat.dart';
+import 'package:egypto/presentation/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +16,12 @@ class QuickPrompts extends StatelessWidget {
         context.pushNamed(ChatScreen.routeName, extra: title);
       },
       child: Container(
-        padding: const EdgeInsets.all(4),
+        padding: const EdgeInsetsDirectional.only(
+          start: 4,
+          bottom: 4,
+          end: 7,
+          top: 4,
+        ),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(

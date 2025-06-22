@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:egypto_ai/data/resources/data_state.dart';
-import 'package:egypto_ai/domain/entities/models/user.dart';
-import 'package:egypto_ai/domain/repositories/auth.dart';
-import 'package:egypto_ai/domain/responses/auth/login.dart';
-import 'package:egypto_ai/locator.dart';
+import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/domain/entities/models/user.dart';
+import 'package:egypto/domain/repositories/auth.dart';
+import 'package:egypto/domain/responses/auth/login.dart';
+import 'package:egypto/locator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../domain/responses/auth/check_email_response/check_email_response.dart';
