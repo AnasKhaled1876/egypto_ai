@@ -24,9 +24,9 @@ class OTPScreen extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () => context.pop(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
-            child: const BackButtonIcon(),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28),
+            child: BackButtonIcon(),
           ),
         ),
         centerTitle: true,
@@ -38,7 +38,7 @@ class OTPScreen extends StatelessWidget {
               tag: 'logo',
               child: SvgPicture.asset("assets/icons/logo.svg", height: 22),
             ),
-            Hero(
+            const Hero(
               tag: 'word-logo',
               child: Material(
                 type: MaterialType.transparency,
@@ -76,13 +76,13 @@ class OTPScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Text(
                       AppLocalizations.of(context)!.enterTheCode,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     Text.rich(
                       textAlign: TextAlign.center,
@@ -111,12 +111,12 @@ class OTPScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 65),
+                    const SizedBox(height: 65),
                     Material(
                       color: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(200),
-                        side: BorderSide(color: Color(0xFF292929)),
+                        side: const BorderSide(color: Color(0xFF292929)),
                       ),
                       child: Directionality(
                         textDirection: TextDirection.ltr,
@@ -140,7 +140,7 @@ class OTPScreen extends StatelessWidget {
                             textStyle: Theme.of(
                               context,
                             ).textTheme.headlineLarge,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                               borderRadius: BorderRadius.zero,
                             ),

@@ -37,7 +37,7 @@ class _StartScreenState extends State<StartScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         toolbarHeight: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.light,
@@ -45,7 +45,7 @@ class _StartScreenState extends State<StartScreen> {
       ),
       body: Container(
         height: MediaQuery.sizeOf(context).height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/splash_background.png'),
             fit: BoxFit.cover,
@@ -90,9 +90,9 @@ class _StartScreenState extends State<StartScreen> {
                             InkWell(
                               splashColor: Colors.transparent,
                               onTap: () => context.pop(),
-                              child: BackButtonIcon(),
+                              child: const BackButtonIcon(),
                             ),
-                            SizedBox(height: 52),
+                            const SizedBox(height: 52),
                             Row(
                               spacing: 8,
                               children: [
@@ -103,7 +103,7 @@ class _StartScreenState extends State<StartScreen> {
                                     height: 22,
                                   ),
                                 ),
-                                Hero(
+                                const Hero(
                                   tag: 'word-logo',
                                   child: Material(
                                     type: MaterialType.transparency,
@@ -112,10 +112,10 @@ class _StartScreenState extends State<StartScreen> {
                                 ),
                               ],
                             ),
-                            ChangeLanguageAppBarButton(),
+                            const ChangeLanguageAppBarButton(),
                           ],
                         ),
-                        SizedBox(height: 40),
+                        const SizedBox(height: 40),
                         SizedBox(
                           width: 320,
                           child: Text.rich(
@@ -139,7 +139,7 @@ class _StartScreenState extends State<StartScreen> {
                                         fontWeight: FontWeight.w800,
                                         foreground: Paint()
                                           ..shader =
-                                              RadialGradient(
+                                              const RadialGradient(
                                                 colors: [
                                                   Color(0xFF00A3A4),
                                                   Color(0xFF00BCA1),
@@ -150,7 +150,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 center: Alignment.center,
                                                 radius: 10,
                                               ).createShader(
-                                                Rect.fromLTWH(0, 0, 180, 120),
+                                                const Rect.fromLTWH(0, 0, 180, 120),
                                               ),
                                       ),
                                 ),
@@ -166,21 +166,21 @@ class _StartScreenState extends State<StartScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 44),
+                        const SizedBox(height: 44),
                         Text(
                           AppLocalizations.of(context)!.firstlyYourEmail,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         TextFormField(
                           textAlign: TextAlign.left,
                           textDirection: TextDirection.ltr,
                           controller: _emailController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'example@mail.com',
                             suffixIcon: Icon(Icons.email_outlined, size: 20),
                           ),
@@ -238,7 +238,7 @@ class _StartScreenState extends State<StartScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
 
                         AbsorbPointer(
                           absorbing:
@@ -257,7 +257,7 @@ class _StartScreenState extends State<StartScreen> {
                               }
                             },
                             child: state is CheckEmailLoadingState
-                                ? LoadingAnimationWidget(size: 10)
+                                ? const LoadingAnimationWidget(size: 10)
                                 : Text(
                                     AppLocalizations.of(context)!.login,
                                     style: Theme.of(context)
@@ -267,9 +267,9 @@ class _StartScreenState extends State<StartScreen> {
                                   ),
                           ),
                         ),
-                        SizedBox(height: 24),
-                        OrDivider(),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
+                        const OrDivider(),
+                        const SizedBox(height: 24),
                         AbsorbPointer(
                           absorbing: state is SocialSignInLoadingState,
                           child: ElevatedButton(
@@ -313,7 +313,7 @@ class _StartScreenState extends State<StartScreen> {
                                   ),
                           ),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         AbsorbPointer(
                           absorbing: state is SocialSignInLoadingState,
                           child: ElevatedButton(
@@ -357,9 +357,9 @@ class _StartScreenState extends State<StartScreen> {
                                   ),
                           ),
                         ),
-                        SizedBox(height: 56),
-                        TermsOfUseRichText(),
-                        SizedBox(height: 36),
+                        const SizedBox(height: 56),
+                        const TermsOfUseRichText(),
+                        const SizedBox(height: 36),
                       ],
                     );
                   },

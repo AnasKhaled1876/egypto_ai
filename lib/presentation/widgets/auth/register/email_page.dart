@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 
 class EmailPage extends StatelessWidget {
   const EmailPage({
-    super.key,
-    required TextEditingController textFieldController,
-    required this.onSubmit,
-    required this.formKey,
+    required TextEditingController textFieldController, required this.onSubmit, required this.formKey, super.key,
   }) : _textFieldController = textFieldController;
 
   final TextEditingController _textFieldController;
@@ -23,7 +20,7 @@ class EmailPage extends StatelessWidget {
           Text(
             AppLocalizations.of(context)!.yourEmail,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 24,
               fontFamily: 'Outfit',
@@ -40,15 +37,15 @@ class EmailPage extends StatelessWidget {
             },
             onFieldSubmitted: onSubmit,
             controller: _textFieldController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'name@email.com',
               hintStyle: TextStyle(
-                color: const Color(0xFF666666),
+                color: Color(0xFF666666),
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.w400,

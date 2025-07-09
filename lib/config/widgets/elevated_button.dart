@@ -35,16 +35,16 @@ ButtonStyle gradientElevatedButtonStyle({
     backgroundBuilder: (context, states, child) => Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 12),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: AlignmentDirectional.centerStart,
           end: AlignmentDirectional.centerEnd,
           colors: [
-            const Color(0xFF00A3A4),
-            const Color(0xFF00BCA1),
-            const Color(0xFF20639B),
-            const Color(0xFF1C2895),
+            Color(0xFF00A3A4),
+            Color(0xFF00BCA1),
+            Color(0xFF20639B),
+            Color(0xFF1C2895),
           ],
-          stops: const [0, 0.32, 0.74, 1],
+          stops: [0, 0.32, 0.74, 1],
         ),
       ),
       child: child,

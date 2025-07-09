@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../l10n/app_localizations.dart';
 
 class ChatTextField extends StatefulWidget {
-  const ChatTextField({super.key, required this.fromHome});
+  const ChatTextField({required this.fromHome, super.key});
   final bool fromHome;
 
   @override
@@ -42,14 +42,14 @@ class _ChatTextFieldState extends State<ChatTextField> {
         filled: false,
         contentPadding: EdgeInsets.zero,
         hintText: AppLocalizations.of(context)!.talkToEgypto,
-        hintStyle: TextStyle(
-          color: const Color(0xFF666666),
+        hintStyle: const TextStyle(
+          color: Color(0xFF666666),
           fontSize: 18,
           fontWeight: FontWeight.w400,
         ),
         border: InputBorder.none,
       ),
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
         fontSize: 18,
         fontWeight: FontWeight.w400,
@@ -68,7 +68,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
     return BlocConsumer<ChatCubit, ChatState>(
       listener: (context, state) {},
       builder: (context, state) {
-        ChatCubit chatCubit = ChatCubit.get(context);
+        var chatCubit = ChatCubit.get(context);
         return Container(
           width: double.infinity,
           padding: const EdgeInsets.all(8),
@@ -94,11 +94,11 @@ class _ChatTextFieldState extends State<ChatTextField> {
                     borderRadius: BorderRadius.circular(166.67),
                   ),
                 ),
-                child: Center(
+                child: const Center(
                   child: Icon(Icons.add, color: Colors.white, size: 20),
                 ),
               ),
-              SizedBox(width: 28),
+              const SizedBox(width: 28),
               Expanded(
                 child: Material(
                   color: Colors.transparent,
@@ -157,9 +157,9 @@ class _ChatTextFieldState extends State<ChatTextField> {
                           );
                         },
                     child: state is SendMessageLoading
-                        ? Center(
+                        ? const Center(
                             child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: CircularProgressIndicator.adaptive(
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   Colors.white,
@@ -186,7 +186,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
             ],
           ),
         );

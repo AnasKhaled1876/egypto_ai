@@ -59,7 +59,7 @@ class _GradientArcPainter extends CustomPainter {
       radius: radius,
     );
 
-    final gradient = SweepGradient(
+    final gradient = const SweepGradient(
       startAngle: 0,
       endAngle: 2 * pi,
       colors: [

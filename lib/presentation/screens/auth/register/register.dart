@@ -70,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             },
             icon: Transform.flip(
               flipX: localeNotifier.value.languageCode == "ar",
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios_new,
                 color: Colors.white,
                 size: 20,
@@ -81,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         title: Text(
           AppLocalizations.of(context)!.profileSetup,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.w500,
@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               LinearProgressBar(
                 progress: switch (_currentPage) {
                   0 => 0.25,
@@ -109,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ).colorScheme.secondaryContainer,
                 progressColor: Colors.white,
               ),
-              SizedBox(height: 54),
+              const SizedBox(height: 54),
               Expanded(
                 child: PageView(
                   controller: _pageController,
@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state is RegisterSuccessState) {
@@ -199,7 +199,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   );
                 },
               ),
-              SizedBox(height: 36),
+              const SizedBox(height: 36),
             ],
           ),
         ),

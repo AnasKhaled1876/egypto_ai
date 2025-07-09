@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 
 class PasswordPage extends StatefulWidget {
   const PasswordPage({
-    super.key,
-    required TextEditingController textFieldController,
-    required this.onSubmit,
-    required this.formKey,
+    required TextEditingController textFieldController, required this.onSubmit, required this.formKey, super.key,
   }) : _textFieldController = textFieldController;
 
   final TextEditingController _textFieldController;
@@ -30,7 +27,7 @@ class _PasswordPageState extends State<PasswordPage> {
           Text(
             AppLocalizations.of(context)!.password,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w700,
@@ -60,13 +57,13 @@ class _PasswordPageState extends State<PasswordPage> {
                 },
               ),
               hintText: '********',
-              hintStyle: TextStyle(
-                color: const Color(0xFF666666),
+              hintStyle: const TextStyle(
+                color: Color(0xFF666666),
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.w400,

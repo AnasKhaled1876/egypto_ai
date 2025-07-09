@@ -81,41 +81,12 @@ flutter:
   fonts:
     - family: Outfit
       fonts:
-        - asset: assets/fonts/Outfit/static/Outfit-Black.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-Bold.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-ExtraBold.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-ExtraLight.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-Light.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-Medium.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-Regular.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-SemiBold.ttf
-        - asset: assets/fonts/Outfit/static/Outfit-Thin.ttf
+        - asset: assets/fonts/Outfit/Outfit-VariableFont_wght.ttf
 
     - family: Syne
       fonts:
         - asset: assets/fonts/Syne/Syne-Bold.ttf
         
-
-    - family: SomarSans
-      fonts:
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Somar Sans/TTF/Standard/SomarSans-Black.ttf
-          weight: 900
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

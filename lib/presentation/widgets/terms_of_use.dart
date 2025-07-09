@@ -14,7 +14,7 @@ class TermsOfUseRichText extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppLocalizations.of(context)!.review} ',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 14.22,
               fontWeight: FontWeight.w400,
@@ -32,7 +32,7 @@ class TermsOfUseRichText extends StatelessWidget {
           ),
           TextSpan(
             text: ' ${AppLocalizations.of(context)!.and} ',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 14.22,
               fontWeight: FontWeight.w400,

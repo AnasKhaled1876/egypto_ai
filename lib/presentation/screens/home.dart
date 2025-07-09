@@ -16,14 +16,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: const Color(0xFF0F0F0F),
+          systemNavigationBarColor: Color(0xFF0F0F0F),
           systemNavigationBarIconBrightness: Brightness.light,
         ),
       ),
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                     child: Image.asset("assets/images/logo.png", height: 32),
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Hero(
                   tag: 'word-logo',
                   child: SvgPicture.asset(
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 if (context.read<AuthCubit>().user?.photoUrl != null) ...[
-                  Spacer(),
+                  const Spacer(),
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 22,
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ],
             ),
-            SizedBox(height: 48),
+            const SizedBox(height: 48),
             Text(
               AppLocalizations.of(context)!.hello,
               textAlign: TextAlign.center,
@@ -74,15 +75,15 @@ class HomeScreen extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.howCanIHelpYou,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            SizedBox(height: 20),
-            ChatTextField(fromHome: true),
-            SizedBox(height: 40),
+            const SizedBox(height: 20),
+            const ChatTextField(fromHome: true),
+            const SizedBox(height: 40),
             BlocBuilder<QuickPromptsCubit, QuickPromptsState>(
               builder: (context, state) {
                 if (state is QuickPromptsSuccess) {
@@ -104,7 +105,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Material(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(

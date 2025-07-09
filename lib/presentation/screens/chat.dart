@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, required this.senderMessage});
+  const ChatScreen({required this.senderMessage, super.key});
   static const routeName = 'chat';
   final String? senderMessage;
 
@@ -40,17 +40,17 @@ class _ChatScreenState extends State<ChatScreen> {
         }
       },
       builder: (context, state) {
-        ChatCubit chatCubit = ChatCubit.get(context);
+        var chatCubit = ChatCubit.get(context);
 
         // Determine if we're currently streaming
-        final bool isStreaming =
+        final isStreaming =
             state is MessageStreaming && !(state).isComplete;
 
         return Scaffold(
           appBar: AppBar(
             toolbarHeight: 0,
             backgroundColor: Theme.of(context).colorScheme.surface,
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
               statusBarBrightness: Brightness.light,
@@ -72,23 +72,23 @@ class _ChatScreenState extends State<ChatScreen> {
                       children: [
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF1D1D1D)),
+                              border: Border.all(color: const Color(0xFF1D1D1D)),
                               borderRadius: BorderRadius.circular(200),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               spacing: 8,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.search,
                                   color: Colors.white,
                                   size: 18,
                                 ),
                                 Text(
                                   AppLocalizations.of(context)!.search,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -100,7 +100,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 12,
                               horizontal: 6,
                             ),
@@ -108,13 +108,13 @@ class _ChatScreenState extends State<ChatScreen> {
                               gradient: LinearGradient(
                                 colors: [
                                   Theme.of(context).colorScheme.primary,
-                                  Color(0xFF4E7F62),
-                                  Color(0xFF20639B),
-                                  Color(0xFF1C2895),
+                                  const Color(0xFF4E7F62),
+                                  const Color(0xFF20639B),
+                                  const Color(0xFF1C2895),
                                 ],
-                                stops: [0.0, 0.32, 0.74, 1.0],
-                                begin: AlignmentDirectional(-0.7, 3.5),
-                                end: AlignmentDirectional(0.7, -3.5),
+                                stops: const [0.0, 0.32, 0.74, 1.0],
+                                begin: const AlignmentDirectional(-0.7, 3.5),
+                                end: const AlignmentDirectional(0.7, -3.5),
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(2000),
@@ -124,10 +124,10 @@ class _ChatScreenState extends State<ChatScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               spacing: 8,
                               children: [
-                                Icon(Icons.add, color: Colors.white, size: 18),
+                                const Icon(Icons.add, color: Colors.white, size: 18),
                                 Text(
                                   AppLocalizations.of(context)!.newChat,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
@@ -146,7 +146,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: SafeArea(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF0F0F0F),
+                  color: const Color(0xFF0F0F0F),
                   borderRadius: BorderRadius.circular(ratio * 24),
                 ),
                 padding: const EdgeInsets.all(16),
@@ -165,21 +165,21 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                         ),
                         state is GetTitleLoadingState
-                            ? CircularProgressIndicator.adaptive()
+                            ? const CircularProgressIndicator.adaptive()
                             : Expanded(
                                 child: Text(
                                   chatCubit.chatTitle ?? '',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
-                        IconContainer(icon: Icon(Icons.more_vert, size: 20)),
+                        const IconContainer(icon: Icon(Icons.more_vert, size: 20)),
                       ],
                     ),
                     Expanded(
@@ -201,7 +201,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                     chatCubit.chatMessages[index].text ?? '';
 
                                 // Check if this is the last message and it's currently streaming
-                                final bool isStreamingThisMessage =
+                                final isStreamingThisMessage =
                                     !isUserMessage &&
                                     index ==
                                         chatCubit.chatMessages.length - 1 &&
@@ -249,7 +249,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         ],
                       ),
                     ),
-                    ChatTextField(fromHome: false),
+                    const ChatTextField(fromHome: false),
                   ],
                 ),
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../locator.dart';
 
 class IconContainer extends StatelessWidget {
-  const IconContainer({super.key, required this.icon, this.onTap});
+  const IconContainer({required this.icon, super.key, this.onTap});
 
   final Widget icon;
   final void Function()? onTap;
@@ -13,7 +13,7 @@ class IconContainer extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(200),
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           color: Theme.of(context).colorScheme.secondaryContainer,

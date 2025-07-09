@@ -16,41 +16,41 @@ final router = GoRouter(
     GoRoute(
       path: SplashScreen.routeName,
       name: SplashScreen.routeName,
-      builder: (context, state) => SplashScreen(),
+      builder: (context, state) => const SplashScreen(),
       routes: [
         GoRoute(
           path: WelcomeScreen.routeName,
           name: WelcomeScreen.routeName,
-          builder: (context, state) => WelcomeScreen(),
+          builder: (context, state) => const WelcomeScreen(),
         ),
         GoRoute(
           path: StartScreen.routeName,
           name: StartScreen.routeName,
-          builder: (context, state) => StartScreen(),
+          builder: (context, state) => const StartScreen(),
         ),
         GoRoute(
           path: OTPScreen.routeName,
           name: OTPScreen.routeName,
-          builder: (context, state) => OTPScreen(),
+          builder: (context, state) => const OTPScreen(),
         ),
         GoRoute(
           path: RegisterScreen.routeName,
           name: RegisterScreen.routeName,
-          builder: (context, state) => RegisterScreen(),
+          builder: (context, state) => const RegisterScreen(),
         ),
         GoRoute(
           path: HomeScreen.routeName,
           name: HomeScreen.routeName,
           builder: (context, state) {
             context.read<QuickPromptsCubit>().getQuickPrompts();
-            return HomeScreen();
+            return const HomeScreen();
           },
         ),
         GoRoute(
           path: ChatScreen.routeName,
           name: ChatScreen.routeName,
           builder: (context, state) {
-            final String? senderMessage = state.extra as String?;
+            final senderMessage = state.extra as String?;
             return ChatScreen(senderMessage: senderMessage);
           },
         ),

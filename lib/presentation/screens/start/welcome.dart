@@ -32,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         toolbarHeight: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.light,
@@ -97,26 +97,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 17),
-                        Align(
+                        const SizedBox(height: 17),
+                        const Align(
                           alignment: AlignmentDirectional.centerEnd,
                           child: ChangeLanguageAppBarButton(),
                         ),
-                        SizedBox(height: 66),
+                        const SizedBox(height: 66),
                         Hero(
                           tag: 'logo',
                           child: SvgPicture.asset(
                             "assets/icons/logo.svg",
                             height: 60,
-                            colorFilter: ColorFilter.mode(
+                            colorFilter: const ColorFilter.mode(
                               Colors.white,
                               BlendMode.srcIn,
                             ),
                           ),
                         ),
-                        SizedBox(height: 12),
-                        Hero(tag: 'word-logo', child: WordLogo()),
-                        Spacer(),
+                        const SizedBox(height: 12),
+                        const Hero(tag: 'word-logo', child: WordLogo()),
+                        const Spacer(),
                         SizedBox(
                           width: 320,
                           child: Text.rich(
@@ -140,7 +140,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                         fontWeight: FontWeight.w800,
                                         foreground: Paint()
                                           ..shader =
-                                              RadialGradient(
+                                              const RadialGradient(
                                                 colors: [
                                                   Color(0xFF00A3A4),
                                                   Color(0xFF00BCA1),
@@ -151,7 +151,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                 center: Alignment.topLeft,
                                                 radius: 10,
                                               ).createShader(
-                                                Rect.fromLTWH(0, 0, 180, 120),
+                                                const Rect.fromLTWH(0, 0, 180, 120),
                                               ),
                                       ),
                                 ),
@@ -167,7 +167,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 66),
+                        const SizedBox(height: 66),
                         ElevatedButton(
                           style: gradientElevatedButtonStyle(context: context),
                           onPressed: () =>
@@ -177,7 +177,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         ElevatedButton(
                           style: defaultElevatedButtonStyle(
                             context: context,
@@ -190,7 +190,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
-                        SizedBox(height: 32),
+                        const SizedBox(height: 32),
                       ],
                     );
                   },

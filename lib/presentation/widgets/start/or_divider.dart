@@ -15,12 +15,12 @@ class OrDivider extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            decoration: ShapeDecoration(
+            decoration: const ShapeDecoration(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignCenter,
-                  color: const Color(0xFF1E1E1E),
+                  color: Color(0xFF1E1E1E),
                 ),
               ),
             ),
@@ -29,7 +29,7 @@ class OrDivider extends StatelessWidget {
         Text(
           AppLocalizations.of(context)!.or,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF555555),
             fontSize: 14.22,
             fontWeight: FontWeight.w400,
@@ -37,12 +37,12 @@ class OrDivider extends StatelessWidget {
         ),
         Expanded(
           child: Container(
-            decoration: ShapeDecoration(
+            decoration: const ShapeDecoration(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignCenter,
-                  color: const Color(0xFF1E1E1E),
+                  color: Color(0xFF1E1E1E),
                 ),
               ),
             ),

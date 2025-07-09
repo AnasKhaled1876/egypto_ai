@@ -48,9 +48,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     double baseWidth = 393;
 
-    double fem = MediaQuery.sizeOf(context).width / baseWidth;
+    var fem = MediaQuery.sizeOf(context).width / baseWidth;
 
-    double ffem = fem * 0.97;
+    var ffem = fem * 0.97;
 
     textSize = ffem;
 
@@ -81,7 +81,11 @@ class MyApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               debugShowCheckedModeBanner: false,
               routerConfig: router,
-              theme: darkTheme,
+              theme: buildDarkTheme(
+                fontFamily: localeNotifier.value.languageCode == 'ar'
+                    ? 'SomarSans'
+                    : 'SomarSans',
+              ),
               themeMode: ThemeMode.dark,
             ),
       ),

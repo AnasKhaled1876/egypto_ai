@@ -14,9 +14,9 @@ class ChangeLanguageAppBarButton extends StatelessWidget {
           ? localeNotifier.value = const Locale('en')
           : localeNotifier.value = const Locale('ar'),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         decoration: BoxDecoration(
-          color: Color(0xFF1C1E26),
+          color: const Color(0xFF1C1E26),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -25,7 +25,7 @@ class ChangeLanguageAppBarButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset("assets/icons/globe.svg", height: 24, width: 24),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Text(
               localeNotifier.value.languageCode.toTitleCase(),
               style: Theme.of(context).textTheme.labelMedium,

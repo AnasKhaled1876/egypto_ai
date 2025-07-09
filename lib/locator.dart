@@ -30,7 +30,7 @@ GetIt locator = GetIt.instance;
 
 String languageCode = 'ar';
 
-final ValueNotifier<Locale> localeNotifier = ValueNotifier(Locale('ar'));
+final ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('ar'));
 
 // Add a utility method to dynamically update the baseUrl of the Dio instance
 void updateDioBaseUrl(String newBaseUrl) {
@@ -39,18 +39,18 @@ void updateDioBaseUrl(String newBaseUrl) {
 }
 
 Future initializeDependencies({Flavor flavor = Flavor.development}) async {
-  const List<String> scopes = <String>[
+  const scopes = <String>[
     'email',
     'https://www.googleapis.com/auth/contacts.readonly',
   ];
 
-  GoogleSignIn _googleSignIn = GoogleSignIn(
+  var googleSignIn = GoogleSignIn(
     // Optional clientId
     // clientId: 'your-client_id.apps.googleusercontent.com',
     scopes: scopes,
   );
 
-  locator.registerSingleton<GoogleSignIn>(_googleSignIn);
+  locator.registerSingleton<GoogleSignIn>(googleSignIn);
 
   locator.registerSingleton<Logger>(Logger());
 
@@ -86,7 +86,7 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
 
   // locator.registerSingleton<FirebaseRemoteConfig>(remoteConfig);
 
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  var analytics = FirebaseAnalytics.instance;
 
   Intl.defaultLocale = "ar";
 
@@ -102,7 +102,7 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
 
   // locator.registerSingleton<ImagePicker>(picker);
 
-  String? token = await locator<FlutterSecureStorage>().read(key: 'token');
+  var token = await locator<FlutterSecureStorage>().read(key: 'token');
 
   // userCurrentAddress = locator<FlutterSecureStorage>().read(key: 'userAddress');
 
@@ -112,7 +112,7 @@ Future initializeDependencies({Flavor flavor = Flavor.development}) async {
     Flavor.staging => 'https://egypto-ai-backend.onrender.com/api/',
   };
 
-  final Dio dio = Dio(
+  final dio = Dio(
     BaseOptions(
       baseUrl: baseUrl,
       headers: {

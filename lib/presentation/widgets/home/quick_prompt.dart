@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class QuickPrompts extends StatelessWidget {
-  const QuickPrompts({super.key, required this.title, required this.emoji});
+  const QuickPrompts({required this.title, required this.emoji, super.key});
 
   final String title;
   final String emoji;
@@ -25,7 +25,7 @@ class QuickPrompts extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: const Color(0xFF1E1E1E)),
+            side: const BorderSide(width: 1, color: Color(0xFF1E1E1E)),
             borderRadius: BorderRadius.circular(200),
           ),
         ),
@@ -45,7 +45,7 @@ class QuickPrompts extends StatelessWidget {
               ),
               child: Text(
                 emoji,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -54,7 +54,7 @@ class QuickPrompts extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

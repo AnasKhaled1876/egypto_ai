@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height,
-        decoration: BoxDecoration(color: Color(0xFF0A0A0A)),
+        decoration: const BoxDecoration(color: Color(0xFF0A0A0A)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +28,7 @@ class SplashScreen extends StatelessWidget {
                   child: Image.asset("assets/images/logo.png", height: 60),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Hero(
                 tag: 'word-logo',
                 child: Text(
@@ -42,8 +42,8 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 36),
-              SizedBox(width: 70, child: SplashLoadingIndicator()),
+              const SizedBox(height: 36),
+              const SizedBox(width: 70, child: SplashLoadingIndicator()),
             ],
           ),
         ),
@@ -84,7 +84,7 @@ class _SplashLoadingIndicatorState extends State<SplashLoadingIndicator>
         value: _controller.value,
         borderRadius: BorderRadius.circular(200),
         color: Colors.white,
-        backgroundColor: Color(0xFF1F1E1E),
+        backgroundColor: const Color(0xFF1F1E1E),
       ),
     );
   }

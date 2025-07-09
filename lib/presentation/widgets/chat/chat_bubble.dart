@@ -50,9 +50,7 @@ class TypingIndicator extends StatelessWidget {
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
-    super.key,
-    required this.message,
-    required this.isUserMessage,
+    required this.message, required this.isUserMessage, super.key,
     this.isTyping = false,
     this.isLoading = false,
   });
@@ -75,12 +73,12 @@ class ChatBubble extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: isUserMessage
-                    ? BorderRadius.only(
+                    ? const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
                         bottomRight: Radius.circular(20),
                       )
-                    : BorderRadius.only(
+                    : const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
                         bottomLeft: Radius.circular(20),
@@ -97,19 +95,19 @@ class ChatBubble extends StatelessWidget {
                 ShaderMask(
                   shaderCallback: (bounds) =>
                       LinearGradient(
-                        colors: [
+                        colors: const [
                           Color(0xFF618B4A),
                           Color(0xFF4E7F62),
                           Color(0xFF20639B),
                           Color(0xFF1C2895),
                         ],
-                        stops: [0.0, 0.32, 0.74, 1],
+                        stops: const [0.0, 0.32, 0.74, 1],
                         begin: localeNotifier.value.languageCode == 'ar'
                             ? Alignment.topRight
                             : Alignment.topLeft,
                         end: localeNotifier.value.languageCode == 'ar'
-                            ? Alignment(-1.5, 0.3)
-                            : Alignment(1.5, 0.3),
+                            ? const Alignment(-1.5, 0.3)
+                            : const Alignment(1.5, 0.3),
                       ).createShader(
                         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                       ),
@@ -123,10 +121,10 @@ class ChatBubble extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (isTyping || isLoading) LoadingAnimationWidget(),
+                if (isTyping || isLoading) const LoadingAnimationWidget(),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
           ],
           GptMarkdown(
             isUserMessage ? message : formatBotMessage(message),
@@ -193,7 +191,7 @@ class ChatBubble extends StatelessWidget {
             ),
           ),
           if (!isUserMessage && !isTyping && message.isNotEmpty) ...[
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               children: [
                 InkWell(
@@ -214,9 +212,9 @@ class ChatBubble extends StatelessWidget {
                     ),
                     decoration: ShapeDecoration(
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(
+                        side: const BorderSide(
                           width: 1,
-                          color: const Color(0xFF1E1E1E),
+                          color: Color(0xFF1E1E1E),
                         ),
                         borderRadius: BorderRadius.circular(200),
                       ),

@@ -132,7 +132,7 @@ class ChatCubit extends Cubit<ChatState> {
   void getTitle() async {
     emit(GetTitleLoadingState());
 
-    final DataState<SendMessageResponse> response = await chatRepository
+    final response = await chatRepository
         .generateTitle(
           conversation: chatMessages.map((e) => e.text).join(' , '),
           model: 'gemini',
