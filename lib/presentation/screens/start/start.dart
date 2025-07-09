@@ -1,6 +1,8 @@
 import 'package:egypto/config/widgets/elevated_button.dart';
 import 'package:egypto/locator.dart';
-import 'package:egypto/presentation/screens/auth/register.dart';
+import 'package:egypto/presentation/screens/auth/register/otp.dart';
+import 'package:egypto/presentation/widgets/change_language_app_bar.dart';
+import 'package:egypto/presentation/widgets/misc/word_logo.dart';
 import 'package:egypto/presentation/widgets/start/or_divider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +68,7 @@ class _StartScreenState extends State<StartScreen> {
                       context.pushNamed(HomeScreen.routeName);
                     }
                     if (state is EmailNoExistsState) {
-                      context.pushNamed(RegisterScreen.routeName);
+                      context.pushNamed(OTPScreen.routeName);
                     }
                     if (state is LoginErrorState) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -83,33 +85,88 @@ class _StartScreenState extends State<StartScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            IconButton(
-                              icon: BackButtonIcon(),
-                              onPressed: () => context.pop(),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              onTap: () => context.pop(),
+                              child: BackButtonIcon(),
                             ),
                             SizedBox(height: 52),
-                            Hero(
-                              tag: 'logo',
-                              child: SvgPicture.asset(
-                                "assets/icons/logo.svg",
-                                width: 48,
-                                height: 48,
-                              ),
+                            Row(
+                              spacing: 8,
+                              children: [
+                                Hero(
+                                  tag: 'logo',
+                                  child: SvgPicture.asset(
+                                    "assets/icons/logo.svg",
+                                    height: 22,
+                                  ),
+                                ),
+                                Hero(
+                                  tag: 'word-logo',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: WordLogo(fontSize: 20),
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 12),
-                            Hero(
-                              tag: 'word-logo',
-                              child: Image.asset(
-                                "assets/images/egypto-word-logo.png",
-                                height: 65,
-                                width: 100,
-                              ),
-                            ),
+                            ChangeLanguageAppBarButton(),
                           ],
                         ),
-
-                        SizedBox(height: 100),
+                        SizedBox(height: 40),
+                        SizedBox(
+                          width: 320,
+                          child: Text.rich(
+                            textAlign: TextAlign.center,
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      '${AppLocalizations.of(context)!.first} ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(fontWeight: FontWeight.w800),
+                                ),
+                                TextSpan(
+                                  text: AppLocalizations.of(context)!.ai,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        foreground: Paint()
+                                          ..shader =
+                                              RadialGradient(
+                                                colors: [
+                                                  Color(0xFF00A3A4),
+                                                  Color(0xFF00BCA1),
+                                                  Color(0xFF20639B),
+                                                  Color(0xFF1C2895),
+                                                ],
+                                                stops: [0, 0.32, 0.74, 1],
+                                                center: Alignment.center,
+                                                radius: 10,
+                                              ).createShader(
+                                                Rect.fromLTWH(0, 0, 180, 120),
+                                              ),
+                                      ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      ' ${AppLocalizations.of(context)!.chatbotEgypt}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(fontWeight: FontWeight.w800),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 44),
                         Text(
                           AppLocalizations.of(context)!.firstlyYourEmail,
                           style: TextStyle(
@@ -120,10 +177,12 @@ class _StartScreenState extends State<StartScreen> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
+                          textDirection: TextDirection.ltr,
                           controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: 'name@email.com',
+                            hintText: 'example@mail.com',
+                            suffixIcon: Icon(Icons.email_outlined, size: 20),
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -142,10 +201,12 @@ class _StartScreenState extends State<StartScreen> {
                             return null;
                           },
                           onFieldSubmitted: (value) {
-                            AuthCubit.get(context).checkEmail(email: value);
+                            if (_formKey.currentState!.validate()) {
+                              AuthCubit.get(context).checkEmail(email: value);
+                            }
                           },
                         ),
-                        if (state is EmailExistsState) SizedBox(height: 14),
+
                         AnimatedSize(
                           duration: const Duration(milliseconds: 200),
                           child: SizedBox(
@@ -154,29 +215,26 @@ class _StartScreenState extends State<StartScreen> {
                               textAlign: TextAlign.center,
                               controller: _passwordController,
                               decoration: InputDecoration(
+                                border: state is EmailExistsState
+                                    ? null
+                                    : InputBorder.none,
+                                enabledBorder: state is EmailExistsState
+                                    ? null
+                                    : InputBorder.none,
                                 hintText: AppLocalizations.of(
                                   context,
                                 )!.password,
                               ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return AppLocalizations.of(
-                                    context,
-                                  )!.pleaseEnterYourEmail;
-                                }
-                                final emailRegex = RegExp(
-                                  r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-                                );
-                                if (!emailRegex.hasMatch(value)) {
-                                  return AppLocalizations.of(
-                                    context,
-                                  )!.pleaseEnterYourEmail;
-                                }
-                                return null;
-                              },
-                              onFieldSubmitted: (value) {
-                                AuthCubit.get(context).checkEmail(email: value);
-                              },
+                              validator: state is EmailExistsState
+                                  ? (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return AppLocalizations.of(
+                                          context,
+                                        )!.pleaseEnterYourPassword;
+                                      }
+                                      return null;
+                                    }
+                                  : null,
                             ),
                           ),
                         ),
@@ -187,15 +245,26 @@ class _StartScreenState extends State<StartScreen> {
                               state is CheckEmailLoadingState ||
                               state is LoginLoadingState,
                           child: ElevatedButton(
-                            style: defaultElevatedButtonStyle(context: context),
+                            style: defaultElevatedButtonStyle(
+                              context: context,
+                              backgroundColor: Colors.white,
+                            ),
                             onPressed: () {
-                              AuthCubit.get(
-                                context,
-                              ).checkEmail(email: _emailController.text);
+                              if (_formKey.currentState!.validate()) {
+                                AuthCubit.get(
+                                  context,
+                                ).checkEmail(email: _emailController.text);
+                              }
                             },
                             child: state is CheckEmailLoadingState
                                 ? LoadingAnimationWidget(size: 10)
-                                : Text(AppLocalizations.of(context)!.login),
+                                : Text(
+                                    AppLocalizations.of(context)!.login,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium
+                                        ?.copyWith(color: Colors.black),
+                                  ),
                           ),
                         ),
                         SizedBox(height: 24),
@@ -204,10 +273,7 @@ class _StartScreenState extends State<StartScreen> {
                         AbsorbPointer(
                           absorbing: state is SocialSignInLoadingState,
                           child: ElevatedButton(
-                            style: defaultElevatedButtonStyle(
-                              context: context,
-                              backgroundColor: Colors.white,
-                            ),
+                            style: defaultElevatedButtonStyle(context: context),
                             onPressed: () async {
                               await locator<GoogleSignIn>().signIn().then((
                                 value,
@@ -239,9 +305,53 @@ class _StartScreenState extends State<StartScreen> {
                                         AppLocalizations.of(
                                           context,
                                         )!.continueWithGoogle,
-                                        style: TextStyle(
-                                          color: const Color(0xFF515151),
-                                        ),
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.labelMedium,
+                                      ),
+                                    ],
+                                  ),
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        AbsorbPointer(
+                          absorbing: state is SocialSignInLoadingState,
+                          child: ElevatedButton(
+                            style: defaultElevatedButtonStyle(context: context),
+                            onPressed: () async {
+                              await locator<GoogleSignIn>().signIn().then((
+                                value,
+                              ) {
+                                if (value != null) {
+                                  if (context.mounted) {
+                                    context.read<AuthCubit>().signInWithSocial(
+                                      email: value.email,
+                                      providerId: value.id,
+                                      name: value.displayName ?? '',
+                                      photoUrl: value.photoUrl,
+                                    );
+                                  }
+                                }
+                              });
+                            },
+                            child: state is SocialSignInLoadingState
+                                ? const CircularProgressIndicator.adaptive()
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    spacing: 8,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/icons/apple.svg",
+                                        width: 24,
+                                        height: 24,
+                                      ),
+                                      Text(
+                                        AppLocalizations.of(
+                                          context,
+                                        )!.continueWithGoogle,
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.labelMedium,
                                       ),
                                     ],
                                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 import '../resources/colors.dart';
 
 const primaryBackgroundColor = Color(0xFF0F0F0F);
@@ -15,29 +16,42 @@ final ThemeData darkTheme = ThemeData(
     selectedItemColor: Colors.white,
     unselectedItemColor: const Color(0xFF666666),
   ),
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: primaryColor,
-    accentColor: secondaryColor,
-    cardColor: neutralColor,
-    backgroundColor: primaryBackgroundColor,
-    errorColor: dangerColor,
+  colorScheme: ColorScheme(
+    primary: primaryColor,
+    secondary: secondaryColor,
+    tertiary: neutralColor,
+    // error: dangerColor,
     brightness: Brightness.dark,
+    onPrimary: Colors.white,
+    onSecondary: Colors.white,
+    error: dangerColor,
+    onError: Colors.white,
+    surface: neutralColor,
+    onSurface: Colors.white,
   ),
   primaryColor: primaryColor,
   useMaterial3: true,
   iconTheme: const IconThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: const Color(0xFF141414),
+    filled: false,
+
     hintStyle: const TextStyle(
       color: Color(0xFF666666),
       fontSize: 16,
       fontFamily: 'SomarSans',
       fontWeight: FontWeight.w400,
     ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(200),
+      borderSide: BorderSide(color: Color(0xFF292929)),
+    ),
+    // errorBorder: OutlineInputBorder(
+    //   borderRadius: BorderRadius.circular(200),
+    //   borderSide: BorderSide(color: Color(0xFF292929)),
+    // ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(200),
-      borderSide: BorderSide.none,
+      borderSide: BorderSide(color: Color(0xFF292929)),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -148,5 +162,19 @@ final ThemeData darkTheme = ThemeData(
       fontFamily: 'SomarSans',
       fontWeight: FontWeight.w600,
     ),
+  ),
+);
+
+final defaultPinTheme = PinTheme(
+  width: 56,
+  height: 56,
+  textStyle: TextStyle(
+    fontSize: 20,
+    color: Color.fromRGBO(30, 60, 87, 1),
+    fontWeight: FontWeight.w600,
+  ),
+  decoration: BoxDecoration(
+    border: Border.all(color: Color(0xFF292929)),
+    borderRadius: BorderRadius.circular(20),
   ),
 );

@@ -34,13 +34,21 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SvgPicture.asset(
-                  "assets/icons/logo.svg",
-                  width: 24,
-                  height: 24,
+                Hero(
+                  tag: 'logo',
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset("assets/images/logo.png", height: 32),
+                  ),
                 ),
                 SizedBox(width: 12),
-                SvgPicture.asset("assets/icons/word-logo.svg", height: 35),
+                Hero(
+                  tag: 'word-logo',
+                  child: SvgPicture.asset(
+                    "assets/icons/word-logo.svg",
+                    height: 35,
+                  ),
+                ),
                 if (context.read<AuthCubit>().user?.photoUrl != null) ...[
                   Spacer(),
                   CircleAvatar(

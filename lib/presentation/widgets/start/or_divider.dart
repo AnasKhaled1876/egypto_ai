@@ -20,7 +20,7 @@ class OrDivider extends StatelessWidget {
                 side: BorderSide(
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignCenter,
-                  color: const Color(0xFF222222),
+                  color: const Color(0xFF1E1E1E),
                 ),
               ),
             ),
@@ -30,7 +30,7 @@ class OrDivider extends StatelessWidget {
           AppLocalizations.of(context)!.or,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white,
+            color: Color(0xFF555555),
             fontSize: 14.22,
             fontWeight: FontWeight.w400,
           ),
@@ -42,7 +42,7 @@ class OrDivider extends StatelessWidget {
                 side: BorderSide(
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignCenter,
-                  color: const Color(0xFF222222),
+                  color: const Color(0xFF1E1E1E),
                 ),
               ),
             ),

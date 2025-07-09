@@ -15,6 +15,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get programming => 'Programming';
 
   @override
+  String get egypto => 'egypto';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get enterTheCode => 'Enter OTP Verification';
+
+  @override
+  String get weSentCode => 'We sent a 5-digit code via your email';
+
+  @override
   String get first => 'welcome to The ';
 
   @override
@@ -25,6 +37,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search';
+
+  @override
+  String get change => 'Change ?';
 
   @override
   String get pleaseEnterYourPassword => 'Please Enter Your Password';
@@ -40,6 +55,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get continueWithApple => 'Continue with Apple';
 
   @override
   String get review => 'Before proceeding, please review and agree to our';
@@ -112,9 +130,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chats => 'Chats';
-
-  @override
-  String get egypto => 'egypto';
 
   @override
   String get copied => 'Copied';

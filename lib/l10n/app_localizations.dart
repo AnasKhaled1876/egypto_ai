@@ -110,6 +110,30 @@ abstract class AppLocalizations {
   /// **'Programming'**
   String get programming;
 
+  /// No description provided for @egypto.
+  ///
+  /// In en, this message translates to:
+  /// **'egypto'**
+  String get egypto;
+
+  /// No description provided for @help.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @enterTheCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter OTP Verification'**
+  String get enterTheCode;
+
+  /// No description provided for @weSentCode.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a 5-digit code via your email'**
+  String get weSentCode;
+
   /// No description provided for @first.
   ///
   /// In en, this message translates to:
@@ -133,6 +157,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search'**
   String get search;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change ?'**
+  String get change;
 
   /// No description provided for @pleaseEnterYourPassword.
   ///
@@ -163,6 +193,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue with Google'**
   String get continueWithGoogle;
+
+  /// No description provided for @continueWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Apple'**
+  String get continueWithApple;
 
   /// No description provided for @review.
   ///
@@ -307,12 +343,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Chats'**
   String get chats;
-
-  /// No description provided for @egypto.
-  ///
-  /// In en, this message translates to:
-  /// **'egypto'**
-  String get egypto;
 
   /// No description provided for @copied.
   ///

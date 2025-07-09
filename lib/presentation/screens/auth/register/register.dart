@@ -8,10 +8,10 @@ import 'package:egypto/presentation/widgets/linear_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../../l10n/app_localizations.dart';
-import '../../cubits/auth/auth_cubit.dart';
-import '../../widgets/auth/register/email_page.dart';
-import '../../widgets/auth/register/name_page.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../cubits/auth/auth_cubit.dart';
+import '../../../widgets/auth/register/email_page.dart';
+import '../../../widgets/auth/register/name_page.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

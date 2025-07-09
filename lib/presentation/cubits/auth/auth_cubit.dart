@@ -19,6 +19,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   final AuthRepository _authRepository;
 
+  String? otpMail;
+
   EgyptoUser? user;
 
   Future<void> checkEmail({required String email}) async {
@@ -28,6 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
       if (result.data?.data?.exists ?? false) {
         emit(EmailExistsState());
       } else {
+        otpMail = email;
         emit(EmailNoExistsState());
       }
     } else {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const MaterialColor primaryColor = MaterialColor(0xFF618B4A, <int, Color>{
+const MaterialColor primaryColor = MaterialColor(0xFF00A3A4, <int, Color>{
   50: Color(0xFFEFF7EF),
   100: Color(0xFFDDE0DD),
   200: Color(0xFFCCE0C3),
@@ -15,7 +15,7 @@ const MaterialColor primaryColor = MaterialColor(0xFF618B4A, <int, Color>{
   1000: Color(0xFF0F1F10),
 });
 
-const MaterialColor secondaryColor = MaterialColor(0xFF20639B, <int, Color>{
+const MaterialColor secondaryColor = MaterialColor(0xFF1C2895, <int, Color>{
   50: Color(0xFFE9EFF5),
   100: Color(0xFFBACFE0),
   200: Color(0xFF98B7D1),
@@ -75,7 +75,7 @@ const MaterialColor warningColor = MaterialColor(0xFFE9EFF5, <int, Color>{
   1000: Color(0xFF030D14),
 });
 
-const MaterialColor dangerColor = MaterialColor(0xFFE9EFF5, <int, Color>{
+const MaterialColor dangerColor = MaterialColor(0xFFFF4032, <int, Color>{
   50: Color(0xFFE9EFF5),
   100: Color(0xFFBACFE0),
   200: Color(0xFF98B7D1),

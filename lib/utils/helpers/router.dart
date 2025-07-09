@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
-import '../../presentation/screens/auth/register.dart';
+import '../../presentation/screens/auth/register/otp.dart';
+import '../../presentation/screens/auth/register/register.dart';
 import '../../presentation/screens/start/start.dart';
 import '../../presentation/screens/start/welcome.dart';
 
@@ -26,6 +27,11 @@ final router = GoRouter(
           path: StartScreen.routeName,
           name: StartScreen.routeName,
           builder: (context, state) => StartScreen(),
+        ),
+        GoRoute(
+          path: OTPScreen.routeName,
+          name: OTPScreen.routeName,
+          builder: (context, state) => OTPScreen(),
         ),
         GoRoute(
           path: RegisterScreen.routeName,

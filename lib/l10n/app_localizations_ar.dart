@@ -15,6 +15,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get programming => 'برمجة';
 
   @override
+  String get egypto => 'ايجيبتو';
+
+  @override
+  String get help => 'مساعدة';
+
+  @override
+  String get enterTheCode => 'أدخل رمز التحقق';
+
+  @override
+  String get weSentCode => 'لقد أرسلنا رمز التحقق مكون من ٥ ارقام على الايميل';
+
+  @override
   String get first => 'مرحبا بك في ';
 
   @override
@@ -25,6 +37,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get search => 'بحث';
+
+  @override
+  String get change => 'تغيير ؟';
 
   @override
   String get pleaseEnterYourPassword => 'يرجى إدخال كلمة المرور';
@@ -40,6 +55,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueWithGoogle => 'أكمل باستخدام جوجل';
+
+  @override
+  String get continueWithApple => 'أكمل باستخدام ابل';
 
   @override
   String get review => 'قبل المتابعة، يرجى مراجعة والموافقة على';
@@ -112,9 +130,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chats => 'الدردشات';
-
-  @override
-  String get egypto => 'إيجبتو';
 
   @override
   String get copied => 'تم النسخ';

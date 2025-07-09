@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../resources/colors.dart';
 
 ButtonStyle defaultElevatedButtonStyle({
   required BuildContext context,
@@ -10,8 +9,8 @@ ButtonStyle defaultElevatedButtonStyle({
 }) {
   return ElevatedButton.styleFrom(
     minimumSize: Size(MediaQuery.sizeOf(context).width, 48),
-    backgroundColor: backgroundColor ?? primaryColor,
-    foregroundColor: foregroundColor ?? Colors.white,
+    backgroundColor: backgroundColor ?? Theme.of(context).cardColor,
+    foregroundColor: foregroundColor ?? Theme.of(context).cardColor,
     padding:
         padding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
     textStyle:
