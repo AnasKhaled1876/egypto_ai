@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../resources/colors.dart';
+import 'colors.dart';
 
 const primaryBackgroundColor = Color(0xFF0F0F0F);
 const darkSurfaceColor = Color(0xFF141414);

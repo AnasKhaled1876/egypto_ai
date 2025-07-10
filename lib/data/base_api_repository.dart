@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:retrofit/retrofit.dart';
-import 'resources/data_state.dart';
+import '../core/data_state.dart';
 
 class BaseApiRepository {
   @protected

@@ -1,4 +1,4 @@
-import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/responses/auth/login.dart';
 import '../responses/auth/check_email_response/check_email_response.dart';
 

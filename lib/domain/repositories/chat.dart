@@ -1,4 +1,4 @@
-import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/responses/chat/get_chat.dart';
 import 'package:egypto/domain/responses/chat/send_message.dart';
 

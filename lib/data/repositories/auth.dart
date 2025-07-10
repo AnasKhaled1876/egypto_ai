@@ -1,6 +1,6 @@
 import 'package:egypto/data/base_api_repository.dart';
 import 'package:egypto/data/datasources/remote/auth.dart';
-import 'package:egypto/data/resources/data_state.dart';
+import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/repositories/auth.dart';
 import 'package:egypto/domain/responses/auth/login.dart';
 
