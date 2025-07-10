@@ -1,3 +1,4 @@
+import 'package:egypto/presentation/widgets/chat/live_amplitude_bar.dart';
 import 'package:egypto/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -43,7 +44,8 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 36),
-              const SizedBox(width: 70, child: SplashLoadingIndicator()),
+              const LiveAmplitudeBar(),
+              // const SizedBox(width: 70, child: SplashLoadingIndicator()),
             ],
           ),
         ),

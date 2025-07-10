@@ -1,4 +1,5 @@
 import 'package:egypto/presentation/cubits/profile/profile_cubit.dart';
+import 'core/services/recorder_service.dart';
 import 'presentation/cubits/quick_prompts/quick_prompts_cubit.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:egypto/domain/entities/enum/flavor.dart';
@@ -6,7 +7,7 @@ import 'package:egypto/domain/repositories/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:egypto/config/theme/dark.dart';
+import 'package:egypto/config/theme/theme.dart';
 import 'package:egypto/domain/repositories/chat.dart';
 import 'package:egypto/locator.dart';
 import 'package:egypto/presentation/cubits/auth/auth_cubit.dart';
@@ -17,6 +18,7 @@ import 'domain/repositories/quick_prompts.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +39,12 @@ void main() async {
     };
   }
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => VoiceRecordingController(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -81,11 +88,8 @@ class MyApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               debugShowCheckedModeBanner: false,
               routerConfig: router,
-              theme: buildDarkTheme(
-                fontFamily: localeNotifier.value.languageCode == 'ar'
-                    ? 'SomarSans'
-                    : 'SomarSans',
-              ),
+              darkTheme: buildDarkTheme(fontFamily: 'Outfit'),
+              theme: buildLightTheme(fontFamily: 'Outfit'),
               themeMode: ThemeMode.dark,
             ),
       ),

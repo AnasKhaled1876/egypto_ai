@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../cubits/auth/auth_cubit.dart';
-import '../../widgets/change_language_app_bar.dart';
+import '../../../core/shared/change_language_app_bar.dart';
 import '../../widgets/misc/word_logo.dart';
 import '../home.dart';
 

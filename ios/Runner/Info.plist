@@ -28,6 +28,8 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Some message to describe why you need this permission</string>
 		<!-- Google Sign In Section -->
 		<!-- <key>GIDClientID</key>
 		<string>949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com</string>

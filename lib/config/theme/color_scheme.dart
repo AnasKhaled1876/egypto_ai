@@ -17,3 +17,16 @@ final ColorScheme darkColorScheme = const ColorScheme(
   surface: neutralColor,
   onSurface: Colors.white,
 );
+
+final ColorScheme lightColorScheme = const ColorScheme(
+  primary: primaryColor,
+  secondary: secondaryColor,
+  tertiary: neutralColor,
+  brightness: Brightness.light,
+  onPrimary: Colors.white,
+  onSecondary: Colors.white,
+  error: dangerColor,
+  onError: Colors.white,
+  surface: neutralColor,
+  onSurface: Colors.white,
+);

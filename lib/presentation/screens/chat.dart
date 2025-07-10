@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/chat/chat_bubble.dart';
-import '../widgets/icon_container.dart';
+import '../../core/shared/icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

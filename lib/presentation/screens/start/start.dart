@@ -1,7 +1,7 @@
 import 'package:egypto/config/widgets/elevated_button.dart';
 import 'package:egypto/locator.dart';
 import 'package:egypto/presentation/screens/auth/register/otp.dart';
-import 'package:egypto/presentation/widgets/change_language_app_bar.dart';
+import 'package:egypto/core/shared/change_language_app_bar.dart';
 import 'package:egypto/presentation/widgets/misc/word_logo.dart';
 import 'package:egypto/presentation/widgets/start/or_divider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../cubits/auth/auth_cubit.dart';
-import '../../widgets/loading_animation.dart';
-import '../../widgets/terms_of_use.dart';
+import '../../../core/shared/loading_animation.dart';
+import '../../../core/shared/terms_of_use.dart';
 import '../home.dart';
 
 class StartScreen extends StatefulWidget {

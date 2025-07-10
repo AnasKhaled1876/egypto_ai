@@ -1,5 +1,5 @@
 import 'package:egypto/locator.dart';
-import 'package:egypto/presentation/widgets/loading_animation.dart';
+import 'package:egypto/core/shared/loading_animation.dart';
 import 'package:egypto/utils/helpers/string_formatters.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
