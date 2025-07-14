@@ -1,5 +1,5 @@
 import 'package:egypto/data/base_api_repository.dart';
-import 'package:egypto/data/datasources/remote/quick_prompts.dart';
+import 'package:egypto/features/home/data/datasource/quick_prompts.dart';
 import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/responses/quick_prompts.dart';
 

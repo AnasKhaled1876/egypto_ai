@@ -1,10 +1,10 @@
 import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:egypto/data/datasources/remote/auth.dart';
-import 'package:egypto/data/datasources/remote/chat.dart';
-import 'package:egypto/data/datasources/remote/profile.dart';
-import 'package:egypto/data/repositories/auth.dart';
-import 'package:egypto/data/repositories/chat.dart';
+import 'package:egypto/features/auth/data/datasource/auth.dart';
+import 'package:egypto/features/chat/data/datasource/chat.dart';
+import 'package:egypto/features/home/data/datasource/profile.dart';
+import 'package:egypto/features/auth/data/repository_impl/auth.dart';
+import 'package:egypto/features/chat/data/repository_impl/chat.dart';
 import 'package:egypto/domain/entities/enum/flavor.dart';
 import 'package:egypto/domain/repositories/auth.dart';
 import 'package:egypto/domain/repositories/chat.dart';
@@ -17,7 +17,7 @@ import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/datasources/remote/quick_prompts.dart';
+import '../../features/home/data/datasource/quick_prompts.dart';
 import '../../data/repositories/profile_repository_impl.dart';
 import '../../data/repositories/quick_prompts.dart';
 import '../../domain/repositories/profile_repository.dart';

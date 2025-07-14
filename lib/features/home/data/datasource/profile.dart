@@ -1,5 +1,5 @@
-import '../../../domain/responses/auth/login.dart';
-import '../../../domain/responses/message.dart';
+import '../../../../domain/responses/auth/login.dart';
+import '../../../../domain/responses/message.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

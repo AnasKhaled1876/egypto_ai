@@ -1,10 +1,10 @@
 import 'package:egypto/data/base_api_repository.dart';
-import 'package:egypto/data/datasources/remote/auth.dart';
+import 'package:egypto/features/auth/data/datasource/auth.dart';
 import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/repositories/auth.dart';
 import 'package:egypto/domain/responses/auth/login.dart';
 
-import '../../domain/responses/auth/check_email_response/check_email_response.dart';
+import '../../../../domain/responses/auth/check_email_response/check_email_response.dart';
 
 class AuthRepositoryImpl extends BaseApiRepository implements AuthRepository {
   final AuthApiService _authApiService;

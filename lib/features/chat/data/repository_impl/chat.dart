@@ -1,5 +1,5 @@
 import 'package:egypto/data/base_api_repository.dart';
-import 'package:egypto/data/datasources/remote/chat.dart';
+import 'package:egypto/features/chat/data/datasource/chat.dart';
 import 'package:egypto/core/data_state.dart';
 import 'package:egypto/domain/repositories/chat.dart';
 import 'package:egypto/domain/responses/chat/get_chat.dart';
