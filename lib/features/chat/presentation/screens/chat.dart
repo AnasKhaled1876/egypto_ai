@@ -43,8 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
         var chatCubit = ChatCubit.get(context);
 
         // Determine if we're currently streaming
-        final isStreaming =
-            state is MessageStreaming && !(state).isComplete;
+        final isStreaming = state is MessageStreaming && !(state).isComplete;
 
         return Scaffold(
           appBar: AppBar(
@@ -74,7 +73,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             decoration: BoxDecoration(
-                              border: Border.all(color: const Color(0xFF1D1D1D)),
+                              border: Border.all(
+                                color: const Color(0xFF1D1D1D),
+                              ),
                               borderRadius: BorderRadius.circular(200),
                             ),
                             child: Row(
@@ -124,7 +125,11 @@ class _ChatScreenState extends State<ChatScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               spacing: 8,
                               children: [
-                                const Icon(Icons.add, color: Colors.white, size: 18),
+                                const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
                                 Text(
                                   AppLocalizations.of(context)!.newChat,
                                   style: const TextStyle(
@@ -179,7 +184,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                   ),
                                 ),
                               ),
-                        const IconContainer(icon: Icon(Icons.more_vert, size: 20)),
+                        const IconContainer(
+                          icon: Icon(Icons.more_vert, size: 20),
+                        ),
                       ],
                     ),
                     Expanded(
