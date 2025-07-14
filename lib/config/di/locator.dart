@@ -1,125 +1,55 @@
-import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:egypto/features/auth/data/datasource/auth.dart';
-import 'package:egypto/features/chat/data/datasource/chat.dart';
-import 'package:egypto/features/home/data/datasource/profile.dart';
-import 'package:egypto/features/auth/data/repository_impl/auth.dart';
-import 'package:egypto/features/chat/data/repository_impl/chat.dart';
-import 'package:egypto/domain/entities/enum/flavor.dart';
-import 'package:egypto/domain/repositories/auth.dart';
-import 'package:egypto/domain/repositories/chat.dart';
 import 'package:egypto/shared/services/fcm_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/home/data/datasource/quick_prompts.dart';
-import '../../data/repositories/profile_repository_impl.dart';
-import '../../data/repositories/quick_prompts.dart';
-import '../../domain/repositories/profile_repository.dart';
-import '../../domain/repositories/quick_prompts.dart';
+// Core Dependencies
+import '../../core/flavors.dart';
+import 'core/core_dependencies.dart';
+import 'core/http_client.dart';
 
+// Feature Dependencies
+import 'features/auth_dependencies.dart';
+import 'features/chat_dependencies.dart';
+import 'features/profile_dependencies.dart';
+import 'features/quick_prompts_dependencies.dart';
+
+/// Global variables
 double textSize = 0;
 double ratio = 0;
-
-GetIt locator = GetIt.instance;
-
 String languageCode = 'ar';
 
+/// Localization
 final ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('ar'));
 
-// Add a utility method to dynamically update the baseUrl of the Dio instance
+/// Updates the base URL for the Dio HTTP client.
+/// 
+/// [newBaseUrl] The new base URL to be set for API requests.
 void updateDioBaseUrl(String newBaseUrl) {
-  final dio = locator<Dio>();
-  dio.options.baseUrl = newBaseUrl;
+  HttpClientConfig.updateDioBaseUrl(newBaseUrl);
 }
 
-Future initializeDependencies({Flavor flavor = Flavor.development}) async {
-  const scopes = <String>[
-    'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
-  ];
+/// Initializes all application dependencies
+/// 
+/// [flavor] The app flavor to determine the base URL and other configurations.
+Future<void> initializeDependencies({Flavor flavor = Flavor.development}) async {
+  // Set default locale
+  Intl.defaultLocale = 'ar';
 
-  var googleSignIn = GoogleSignIn(
-    // Optional clientId
-    // clientId: 'your-client_id.apps.googleusercontent.com',
-    scopes: scopes,
-  );
+  // Register core dependencies
+  await CoreDependencies.register();
+  
+  // Configure and register HTTP client
+  final dio = await HttpClientConfig.configureDio(flavor);
+  GetIt.I.registerLazySingleton<Dio>(() => dio);
 
-  locator.registerSingleton<GoogleSignIn>(googleSignIn);
+  // Register FCM service
+  GetIt.I.registerLazySingleton<FcmService>(() => FcmService());
 
-  locator.registerSingleton<Logger>(Logger());
-
-  locator.registerSingleton<FcmService>(FcmService());
-
-
-  Intl.defaultLocale = "ar";
-
-
-  const storage = FlutterSecureStorage();
-
-  locator.registerSingleton<FlutterSecureStorage>(storage);
-
-  final prefs = await SharedPreferences.getInstance();
-
-  locator.registerSingleton<SharedPreferences>(prefs);
-
-  var token = await locator<FlutterSecureStorage>().read(key: 'token');
-
-  final baseUrl = switch (flavor) {
-    Flavor.development => 'https://egypto-ai-backend.onrender.com/api/',
-    Flavor.production => 'https://egypto-ai-backend.onrender.com/api/',
-    Flavor.staging => 'https://egypto-ai-backend.onrender.com/api/',
-  };
-
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: baseUrl,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        if (token != null) 'Authorization': 'Bearer $token',
-      },
-    ),
-  );
-
-  dio.interceptors.add(AwesomeDioInterceptor());
-
-  locator.registerSingleton<Dio>(dio);
-
-  locator.registerSingleton<ChatApiService>(
-    ChatApiService(locator<Dio>(), baseUrl: '${baseUrl}chat'),
-  );
-
-  locator.registerSingleton<ChatRepository>(
-    ChatRepositoryImpl(locator<ChatApiService>()),
-  );
-
-  locator.registerSingleton<AuthApiService>(
-    AuthApiService(locator<Dio>(), baseUrl: '${baseUrl}auth'),
-  );
-
-  locator.registerSingleton<AuthRepository>(
-    AuthRepositoryImpl(locator<AuthApiService>()),
-  );
-
-  locator.registerSingleton<QuickPromptsApiService>(
-    QuickPromptsApiService(locator<Dio>(), baseUrl: '${baseUrl}quick-prompts'),
-  );
-
-  locator.registerSingleton<QuickPromptsRepository>(
-    QuickPromptsRepositoryImpl(locator<QuickPromptsApiService>()),
-  );
-
-  locator.registerSingleton<ProfileApiService>(
-    ProfileApiService(locator<Dio>(), baseUrl: '${baseUrl}profile'),
-  );
-
-  locator.registerSingleton<ProfileRepository>(
-    ProfileRepositoryImpl(locator<ProfileApiService>()),
-  );
+  // Register feature-specific dependencies
+  await AuthDependencies.register();
+  ChatDependencies.register();
+  ProfileDependencies.register();
+  QuickPromptsDependencies.register();
 }

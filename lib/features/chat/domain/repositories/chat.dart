@@ -1,6 +1,6 @@
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/domain/responses/chat/get_chat.dart';
-import 'package:egypto/domain/responses/chat/send_message.dart';
+import 'package:egypto/features/chat/data/models/get_chat.dart';
+import 'package:egypto/features/chat/data/models/send_message.dart';
 
 abstract class ChatRepository {
   Future<DataState<GetChatResponse>> getChat();

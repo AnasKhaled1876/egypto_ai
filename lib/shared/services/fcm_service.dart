@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-
-import '../../config/di/locator.dart';
 
 /// A service for handling Firebase Cloud Messaging (FCM) operations.
 class FcmService {
@@ -35,7 +33,7 @@ class FcmService {
         final newSettings = await messaging.getNotificationSettings();
         if (newSettings.authorizationStatus != AuthorizationStatus.authorized &&
             newSettings.authorizationStatus != AuthorizationStatus.provisional) {
-          locator<Logger>().w('User declined or has not accepted permission');
+          GetIt.I<Logger>().w('User declined or has not accepted permission');
           return null;
         }
       }
@@ -44,13 +42,13 @@ class FcmService {
       final token = await messaging.getToken();
       return token;
     } on FirebaseException catch (e) {
-      locator<Logger>().e('Firebase error while getting FCM token: ${e.message}');
+      GetIt.I<Logger>().e('Firebase error while getting FCM token: ${e.message}');
       return null;
     } on PlatformException catch (e) {
-      locator<Logger>().e('Platform error while getting FCM token: ${e.message}');
+      GetIt.I<Logger>().e('Platform error while getting FCM token: ${e.message}');
       return null;
     } on Exception catch (e) {
-      locator<Logger>().e('Unexpected error while getting FCM token: $e');
+      GetIt.I<Logger>().e('Unexpected error while getting FCM token: $e');
       return null;
     }
   }

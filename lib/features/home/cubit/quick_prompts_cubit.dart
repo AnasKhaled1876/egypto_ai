@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:egypto/data/models/quick_prompt.dart';
+import 'package:egypto/features/home/data/models/quick_prompt.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../core/data_state.dart';
-import '../../../domain/repositories/quick_prompts.dart';
+import '../domain/repositories/quick_prompts.dart';
 
 part 'quick_prompts_state.dart';
 

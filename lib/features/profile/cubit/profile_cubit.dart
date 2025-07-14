@@ -1,7 +1,7 @@
-import 'package:egypto/domain/repositories/profile_repository.dart';
-import 'package:egypto/domain/responses/auth/login.dart';
+import 'package:egypto/features/profile/domain/repositories/profile_repository.dart';
+import 'package:egypto/features/auth/data/models/login_response.dart';
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/domain/responses/message.dart';
+import 'package:egypto/shared/models/default_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -43,7 +43,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         fcmToken: fcmToken,
       );
 
-      if (result is DataSuccess<MessageResponse>) {
+      if (result is DataSuccess<DefaultResponse>) {
         result;
         emit(ProfileUpdateSuccess());
       } else {

@@ -1,8 +1,8 @@
-import '../../../../domain/responses/auth/check_email_response/check_email_response.dart';
+import '../models/check_email/check_email_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../domain/responses/auth/login.dart';
+import '../models/login_response.dart';
 
 part 'auth.g.dart';
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:egypto/data/models/quick_prompt.dart';
+import 'package:egypto/features/home/data/models/quick_prompt.dart';
 
 class GetQuickPromptsResponse {
   final List<QuickPrompt> data;

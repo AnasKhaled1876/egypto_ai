@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/data/models/message.dart';
-import 'package:egypto/domain/repositories/chat.dart';
-import 'package:egypto/domain/responses/chat/send_message.dart';
-import 'package:egypto/config/di/locator.dart';
+import 'package:egypto/shared/entities/message.dart';
+import 'package:egypto/features/chat/domain/repositories/chat.dart';
+import 'package:egypto/features/chat/data/models/send_message.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
 part 'chat_state.dart';
@@ -37,7 +36,7 @@ class ChatCubit extends Cubit<ChatState> {
       _currentStreamingMessage = '';
 
       // Make the request with streaming enabled
-      final response = await locator.get<Dio>().post(
+      final response = await GetIt.I.get<Dio>().post(
         '/chat',
         data: {'prompt': message, 'model': 'deepseek'},
         options: Options(responseType: ResponseType.stream),
@@ -60,7 +59,7 @@ class ChatCubit extends Cubit<ChatState> {
             // Handle the line - support both SSE format and raw text
             if (line.startsWith('data: ')) {
               final data = line.substring(6);
-              if (data == '[DONE]') {
+              if (data == '[END]') {
                 // Emit final streaming state with completion flag
                 emit(
                   MessageStreaming(
@@ -132,11 +131,10 @@ class ChatCubit extends Cubit<ChatState> {
   void getTitle() async {
     emit(GetTitleLoadingState());
 
-    final response = await chatRepository
-        .generateTitle(
-          conversation: chatMessages.map((e) => e.text).join(' , '),
-          model: 'gemini',
-        );
+    final response = await chatRepository.generateTitle(
+      conversation: chatMessages.map((e) => e.text).join(' , '),
+      model: 'gemini',
+    );
 
     if (response is DataSuccess<SendMessageResponse>) {
       chatTitle = response.data?.data;

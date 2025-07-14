@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../../domain/responses/quick_prompts.dart';
+import '../models/get_quick_prompts_response.dart';
 
 part 'quick_prompts.g.dart';
 

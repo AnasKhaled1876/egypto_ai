@@ -1,5 +1,5 @@
-import 'package:egypto/domain/responses/chat/get_chat.dart';
-import 'package:egypto/domain/responses/chat/send_message.dart';
+import 'package:egypto/features/chat/data/models/get_chat.dart';
+import 'package:egypto/features/chat/data/models/send_message.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

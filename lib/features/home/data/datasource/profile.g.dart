@@ -9,6 +9,7 @@ part of 'profile.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ProfileApiService implements ProfileApiService {
+  // ignore: unused_element_parameter
   _ProfileApiService(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
@@ -46,7 +47,7 @@ class _ProfileApiService implements ProfileApiService {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> updateProfile(
+  Future<HttpResponse<DefaultResponse>> updateProfile(
     Map<String, dynamic> body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -54,7 +55,7 @@ class _ProfileApiService implements ProfileApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _options = _setStreamType<HttpResponse<MessageResponse>>(
+    final _options = _setStreamType<HttpResponse<DefaultResponse>>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -65,9 +66,9 @@ class _ProfileApiService implements ProfileApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late MessageResponse _value;
+    late DefaultResponse _value;
     try {
-      _value = MessageResponse.fromMap(_result.data!);
+      _value = DefaultResponse.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

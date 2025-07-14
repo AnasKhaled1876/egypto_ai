@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/data/models/user.dart';
-import 'package:egypto/domain/repositories/auth.dart';
-import 'package:egypto/domain/responses/auth/login.dart';
-import 'package:egypto/config/di/locator.dart';
+import 'package:egypto/shared/models/user.dart';
+import 'package:egypto/features/auth/domain/repositories/auth.dart';
+import 'package:egypto/features/auth/data/models/login_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../../../domain/responses/auth/check_email_response/check_email_response.dart';
+import 'package:get_it/get_it.dart';
+import '../data/models/check_email/check_email_response.dart';
 import '../../../shared/services/fcm_service.dart';
 
 part 'auth_state.dart';
@@ -42,7 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(LoginLoadingState());
 
     // Get FCM token with error handling
-    final token = await locator<FcmService>().getFcmToken();
+    final token = await GetIt.I<FcmService>().getFcmToken();
 
     final result = await _authRepository.login(
       email: email,
@@ -51,11 +51,11 @@ class AuthCubit extends Cubit<AuthState> {
       deviceInfo: Platform.isAndroid ? 'Android' : 'IOS',
     );
     if (result is DataSuccess<LoginResponse>) {
-      await locator<FlutterSecureStorage>().write(
+      await GetIt.I<FlutterSecureStorage>().write(
         key: 'token',
         value: result.data?.token,
       );
-      locator<Dio>().options.headers['Authorization'] =
+      GetIt.I<Dio>().options.headers['Authorization'] =
           'Bearer ${result.data?.token}';
       user = result.data?.user;
       emit(LoginSuccessState());
@@ -72,7 +72,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(RegisterLoadingState());
 
     // Get FCM token with error handling
-    final fcmToken = await locator<FcmService>().getFcmToken();
+    final fcmToken = await GetIt.I<FcmService>().getFcmToken();
 
     final result = await _authRepository.signUp(
       name: name,
@@ -82,11 +82,11 @@ class AuthCubit extends Cubit<AuthState> {
       deviceInfo: Platform.isAndroid ? 'Android' : 'IOS',
     );
     if (result is DataSuccess) {
-      await locator<FlutterSecureStorage>().write(
+      await GetIt.I<FlutterSecureStorage>().write(
         key: 'token',
         value: result.data?.token,
       );
-      locator<Dio>().options.headers['Authorization'] =
+      GetIt.I<Dio>().options.headers['Authorization'] =
           'Bearer ${result.data?.token}';
 
       user = result.data?.user;
@@ -106,7 +106,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       // Get FCM token with error handling
-      final fcmToken = await locator<FcmService>().getFcmToken();
+      final fcmToken = await GetIt.I<FcmService>().getFcmToken();
 
       final result = await _authRepository.socialSignIn(
         email: email,
@@ -118,11 +118,11 @@ class AuthCubit extends Cubit<AuthState> {
       );
 
       if (result is DataSuccess) {
-        await locator<FlutterSecureStorage>().write(
+        await GetIt.I<FlutterSecureStorage>().write(
           key: 'token',
           value: result.data?.token,
         );
-        locator<Dio>().options.headers['Authorization'] =
+        GetIt.I<Dio>().options.headers['Authorization'] =
             'Bearer ${result.data?.token}';
         user = result.data?.user;
         emit(SocialSignInSuccessState());

@@ -1,51 +1,18 @@
 import 'package:egypto/features/profile/cubit/profile_cubit.dart';
-import 'shared/services/recorder_service.dart';
+import 'package:get_it/get_it.dart';
 import 'features/home/cubit/quick_prompts_cubit.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:egypto/domain/entities/enum/flavor.dart';
-import 'package:egypto/domain/repositories/auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
+import 'package:egypto/features/auth/domain/repositories/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:egypto/config/theme/theme.dart';
-import 'package:egypto/domain/repositories/chat.dart';
+import 'package:egypto/features/chat/domain/repositories/chat.dart';
 import 'package:egypto/config/di/locator.dart';
 import 'package:egypto/features/auth/cubit/auth_cubit.dart';
 import 'package:egypto/features/chat/cubit/chat_cubit.dart';
 import 'package:egypto/config/router.dart';
-import 'domain/repositories/profile_repository.dart';
-import 'domain/repositories/quick_prompts.dart';
-import 'firebase_options.dart';
+import 'features/profile/domain/repositories/profile_repository.dart';
+import 'features/home/domain/repositories/quick_prompts.dart';
 import 'l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  await initializeDependencies(flavor: Flavor.development);
-
-  if (!kDebugMode) {
-    FlutterError.onError = (errorDetails) {
-      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    };
-
-    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
-  }
-
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => VoiceRecordingController(),
-      child: const MyApp(),
-    ),
-  );
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -66,17 +33,17 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(locator<AuthRepository>()),
+          create: (context) => AuthCubit(GetIt.I<AuthRepository>()),
         ),
         BlocProvider<ProfileCubit>(
-          create: (context) => ProfileCubit(locator<ProfileRepository>()),
+          create: (context) => ProfileCubit(GetIt.I<ProfileRepository>()),
         ),
         BlocProvider<ChatCubit>(
-          create: (context) => ChatCubit(locator<ChatRepository>()),
+          create: (context) => ChatCubit(GetIt.I<ChatRepository>()),
         ),
         BlocProvider<QuickPromptsCubit>(
           create: (context) =>
-              QuickPromptsCubit(locator<QuickPromptsRepository>()),
+              QuickPromptsCubit(GetIt.I<QuickPromptsRepository>()),
         ),
       ],
       child: ValueListenableBuilder<Locale>(

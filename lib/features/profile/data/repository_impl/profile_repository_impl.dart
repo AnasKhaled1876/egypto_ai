@@ -1,10 +1,10 @@
-import 'package:egypto/data/base_api_repository.dart';
+import 'package:egypto/core/base_api_repository.dart';
 import 'package:egypto/features/home/data/datasource/profile.dart';
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/domain/repositories/profile_repository.dart';
+import 'package:egypto/features/profile/domain/repositories/profile_repository.dart';
 
-import '../../domain/responses/auth/login.dart';
-import '../../domain/responses/message.dart';
+import '../../../auth/data/models/login_response.dart';
+import '../../../../shared/models/default_response.dart';
 
 class ProfileRepositoryImpl extends BaseApiRepository
     implements ProfileRepository {
@@ -20,7 +20,7 @@ class ProfileRepositoryImpl extends BaseApiRepository
   }
 
   @override
-  Future<DataState<MessageResponse>> updateProfile({
+  Future<DataState<DefaultResponse>> updateProfile({
     String? name,
     String? photoUrl,
     String? fcmToken,
@@ -31,7 +31,7 @@ class ProfileRepositoryImpl extends BaseApiRepository
     if (photoUrl != null) body['photoUrl'] = photoUrl;
     if (fcmToken != null) body['fcmToken'] = fcmToken;
 
-    return getStateOf<MessageResponse>(
+    return getStateOf<DefaultResponse>(
       request: () => _profileApiService.updateProfile(body),
     );
   }

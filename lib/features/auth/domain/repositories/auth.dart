@@ -1,6 +1,6 @@
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/domain/responses/auth/login.dart';
-import '../responses/auth/check_email_response/check_email_response.dart';
+import 'package:egypto/features/auth/data/models/login_response.dart';
+import '../../data/models/check_email/check_email_response.dart';
 
 abstract class AuthRepository {
   Future<DataState<LoginResponse>> login({

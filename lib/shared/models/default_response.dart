@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class MessageResponse {
+class DefaultResponse {
   final bool? status;
   final String? message;
-  MessageResponse({this.status, this.message});
+  DefaultResponse({this.status, this.message});
 
-  MessageResponse copyWith({bool? status, String? message}) {
-    return MessageResponse(
+  DefaultResponse copyWith({bool? status, String? message}) {
+    return DefaultResponse(
       status: status ?? this.status,
       message: message ?? this.message,
     );
@@ -17,8 +17,8 @@ class MessageResponse {
     return <String, dynamic>{'status': status, 'message': message};
   }
 
-  factory MessageResponse.fromMap(Map<String, dynamic> map) {
-    return MessageResponse(
+  factory DefaultResponse.fromMap(Map<String, dynamic> map) {
+    return DefaultResponse(
       status: map['status'] != null ? map['status'] as bool : null,
       message: map['message'] != null ? map['message'] as String : null,
     );
@@ -26,14 +26,14 @@ class MessageResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory MessageResponse.fromJson(String source) =>
-      MessageResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DefaultResponse.fromJson(String source) =>
+      DefaultResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'MessageResponse(status: $status, message: $message)';
 
   @override
-  bool operator ==(covariant MessageResponse other) {
+  bool operator ==(covariant DefaultResponse other) {
     if (identical(this, other)) return true;
 
     return other.status == status && other.message == message;

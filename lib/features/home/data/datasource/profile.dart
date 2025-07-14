@@ -1,5 +1,5 @@
-import '../../../../domain/responses/auth/login.dart';
-import '../../../../domain/responses/message.dart';
+import '../../../auth/data/models/login_response.dart';
+import '../../../../shared/models/default_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -13,7 +13,7 @@ abstract class ProfileApiService {
   Future<HttpResponse<LoginResponse>> getProfile();
 
   @PUT('')
-  Future<HttpResponse<MessageResponse>> updateProfile(
+  Future<HttpResponse<DefaultResponse>> updateProfile(
     @Body() Map<String, dynamic> body,
   );
 }

@@ -1,5 +1,4 @@
 import 'package:egypto/config/widgets/elevated_button.dart';
-import 'package:egypto/config/di/locator.dart';
 import 'package:egypto/features/auth/presentation/screens/otp.dart';
 import 'package:egypto/shared/widgets/bottom_sheets/change_language_app_bar.dart';
 import 'package:egypto/shared/widgets/word_logo.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -150,7 +150,12 @@ class _StartScreenState extends State<StartScreen> {
                                                 center: Alignment.center,
                                                 radius: 10,
                                               ).createShader(
-                                                const Rect.fromLTWH(0, 0, 180, 120),
+                                                const Rect.fromLTWH(
+                                                  0,
+                                                  0,
+                                                  180,
+                                                  120,
+                                                ),
                                               ),
                                       ),
                                 ),
@@ -275,7 +280,7 @@ class _StartScreenState extends State<StartScreen> {
                           child: ElevatedButton(
                             style: defaultElevatedButtonStyle(context: context),
                             onPressed: () async {
-                              await locator<GoogleSignIn>().signIn().then((
+                              await GetIt.I<GoogleSignIn>().signIn().then((
                                 value,
                               ) {
                                 if (value != null) {
@@ -319,7 +324,7 @@ class _StartScreenState extends State<StartScreen> {
                           child: ElevatedButton(
                             style: defaultElevatedButtonStyle(context: context),
                             onPressed: () async {
-                              await locator<GoogleSignIn>().signIn().then((
+                              await GetIt.I<GoogleSignIn>().signIn().then((
                                 value,
                               ) {
                                 if (value != null) {

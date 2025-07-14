@@ -1,7 +1,7 @@
-import 'package:egypto/data/base_api_repository.dart';
+import 'package:egypto/core/base_api_repository.dart';
 import 'package:egypto/features/home/data/datasource/quick_prompts.dart';
 import 'package:egypto/core/data_state.dart';
-import 'package:egypto/domain/responses/quick_prompts.dart';
+import 'package:egypto/features/home/data/models/get_quick_prompts_response.dart';
 
 import '../../domain/repositories/quick_prompts.dart';
 
