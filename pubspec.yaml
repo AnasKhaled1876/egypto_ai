@@ -23,6 +23,7 @@ dependencies:
   firebase_core: ^3.13.1
   record: ^6.0.0
   firebase_crashlytics: ^4.3.6
+  firebase_remote_config: ^5.4.7
   permission_handler: ^12.0.1
   path_provider: ^2.1.5
   firebase_analytics: ^11.4.6
@@ -41,6 +42,7 @@ dependencies:
   equatable: ^2.0.7
   firebase_messaging: ^15.2.7
   gpt_markdown: ^1.0.20
+  flutter_local_notifications: ^19.3.0
   google_sign_in: ^6.3.0
   flutter_localizations:
     sdk: flutter
@@ -60,9 +62,10 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
+  remove_alpha_ios: true
   image_path: "assets/images/logo.png" # Default icon for older Android versions
   adaptive_icon_foreground: "assets/images/logo.png" # Foreground layer for adaptive icon
-  # adaptive_icon_background: "#0D0D0D" # Background color (or use an image path)
+  adaptive_icon_background: "assets/images/logo.png" # Background color (or use an image path)
 
 flutter_native_splash:
   color: "#0D0D0D"
@@ -86,7 +89,24 @@ flutter:
   fonts:
     - family: Outfit
       fonts:
-        - asset: assets/fonts/Outfit/Outfit-VariableFont_wght.ttf
+        - asset: assets/fonts/Outfit/static/Outfit-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Outfit/static/Outfit-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Outfit/static/Outfit-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Outfit/static/Outfit-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Outfit/static/Outfit-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Outfit/static/Outfit-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Outfit/static/Outfit-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Outfit/static/Outfit-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Outfit/static/Outfit-Black.ttf
+          weight: 900
 
     - family: Syne
       fonts:
