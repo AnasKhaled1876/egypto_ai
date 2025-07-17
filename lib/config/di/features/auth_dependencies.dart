@@ -8,7 +8,7 @@ import '../../../features/auth/data/datasource/auth.dart';
 
 
 class AuthDependencies {
-  static Future<void> register() async {
+  static void register() async {
     const scopes = <String>[
       'email',
       'https://www.googleapis.com/auth/contacts.readonly',

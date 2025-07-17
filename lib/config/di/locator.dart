@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:egypto/shared/services/fcm_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:intl/intl.dart';
-
 // Core Dependencies
 import '../../core/flavors.dart';
 import 'core/core_dependencies.dart';
@@ -21,25 +19,24 @@ double ratio = 0;
 String languageCode = 'ar';
 
 /// Localization
-final ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('ar'));
+final ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('en'));
 
 /// Updates the base URL for the Dio HTTP client.
-/// 
+///
 /// [newBaseUrl] The new base URL to be set for API requests.
 void updateDioBaseUrl(String newBaseUrl) {
   HttpClientConfig.updateDioBaseUrl(newBaseUrl);
 }
 
 /// Initializes all application dependencies
-/// 
+///
 /// [flavor] The app flavor to determine the base URL and other configurations.
-Future<void> initializeDependencies({Flavor flavor = Flavor.development}) async {
-  // Set default locale
-  Intl.defaultLocale = 'ar';
-
+Future<void> initializeDependencies({
+  Flavor flavor = Flavor.development,
+}) async {
   // Register core dependencies
   await CoreDependencies.register();
-  
+
   // Configure and register HTTP client
   final dio = await HttpClientConfig.configureDio(flavor);
   GetIt.I.registerLazySingleton<Dio>(() => dio);
@@ -48,7 +45,7 @@ Future<void> initializeDependencies({Flavor flavor = Flavor.development}) async 
   GetIt.I.registerLazySingleton<FcmService>(() => FcmService());
 
   // Register feature-specific dependencies
-  await AuthDependencies.register();
+  AuthDependencies.register();
   ChatDependencies.register();
   ProfileDependencies.register();
   QuickPromptsDependencies.register();
