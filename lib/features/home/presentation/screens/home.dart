@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egypto/config/resources/app_assets.dart';
 import 'package:egypto/features/auth/cubit/auth_cubit.dart';
+import 'package:egypto/shared/widgets/word_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/services/fcm_service.dart';
 import '../../cubit/quick_prompts_cubit.dart';
 import '../widgets/chat_text_field.dart';
 import '../widgets/quick_prompt.dart';
@@ -16,6 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    showNotification();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -36,21 +39,7 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Hero(
-                  tag: 'logo',
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(AppAssets.logo, height: 32),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Hero(
-                  tag: 'word-logo',
-                  child: SvgPicture.asset(
-                    "assets/icons/word-logo.svg",
-                    height: 35,
-                  ),
-                ),
+                const WordLogo(),
                 if (context.read<AuthCubit>().user?.photoUrl != null) ...[
                   const Spacer(),
                   CircleAvatar(

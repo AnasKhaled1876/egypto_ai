@@ -36,6 +36,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newChat => 'New Chat';
 
   @override
+  String get loginOrCreateAccount => 'Login or Create a new account';
+
+  @override
   String get search => 'Search';
 
   @override

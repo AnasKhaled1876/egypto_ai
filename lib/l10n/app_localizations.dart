@@ -152,6 +152,12 @@ abstract class AppLocalizations {
   /// **'New Chat'**
   String get newChat;
 
+  /// No description provided for @loginOrCreateAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Login or Create a new account'**
+  String get loginOrCreateAccount;
+
   /// No description provided for @search.
   ///
   /// In en, this message translates to:

@@ -36,6 +36,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get newChat => 'محادثة جديدة';
 
   @override
+  String get loginOrCreateAccount => 'تسجيل الدخول أو إنشاء حساب جديد';
+
+  @override
   String get search => 'بحث';
 
   @override

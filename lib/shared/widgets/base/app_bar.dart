@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AppBarWidget extends StatelessWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
-    required this.title, super.key,
+    this.title,
+    super.key,
     this.actions,
     this.showBackButton = true,
+    this.centerTitle,
   });
 
-  final String title;
+  final Widget? title;
   final List<Widget>? actions;
   final bool showBackButton;
+  final bool? centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: showBackButton ? const BackButton() : null,
-      title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
+      centerTitle: centerTitle,
+      title: title,
       actions: actions,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -26,6 +30,9 @@ class AppBarWidget extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class TransparentAppBar extends StatelessWidget {

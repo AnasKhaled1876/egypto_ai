@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:egypto/features/start/presentation/screens/start.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../home/presentation/screens/home.dart';
+import 'package:flutter/material.dart';
 
 class SplashLoadingIndicator extends StatefulWidget {
   const SplashLoadingIndicator({super.key});
@@ -22,7 +21,7 @@ class _SplashLoadingIndicatorState extends State<SplashLoadingIndicator>
     )..forward();
     _controller.addListener(() {
       if (_controller.isCompleted) {
-        context.pushNamed(HomeScreen.routeName);
+        context.pushNamed(StartScreen.routeName);
       }
     });
   }

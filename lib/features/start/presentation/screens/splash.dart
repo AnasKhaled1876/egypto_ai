@@ -1,46 +1,76 @@
-import 'package:egypto/l10n/app_localizations.dart';
+import 'package:egypto/config/resources/app_assets.dart';
+import 'package:egypto/features/start/presentation/screens/welcome.dart';
 import 'package:flutter/material.dart';
-import '../../../../config/di/locator.dart';
-import '../../../../config/resources/app_assets.dart';
-import '../widgets/splash_loading_animation.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashScreen extends StatelessWidget {
+import '../../../../config/di/locator.dart';
+import '../../../../l10n/app_localizations.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   static const routeName = '/';
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> width;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    );
+    width = Tween<double>(
+      begin: 0,
+      end: 120,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.forward().then(
+      (value) => context.pushNamed(WelcomeScreen.routeName),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       body: Center(
-        child: Column(
+        child: Row(
+          spacing: 12,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Hero(
-              tag: 'logo',
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(AppAssets.logo, height: 60),
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(AppAssets.logo, height: 36),
             ),
-            const SizedBox(height: 12),
-            Hero(
-              tag: 'word-logo',
-              child: Text(
-                AppLocalizations.of(context)!.egypto,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontFamily: localeNotifier.value.languageCode == 'ar'
-                      ? 'SomarSans'
-                      : 'Syne',
-                  letterSpacing: 0,
-                  color: Colors.white,
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) => SizedBox(
+                width: width.value,
+                height: 36,
+                child: Stack(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.egypto,
+                      style: Theme.of(context).textTheme.headlineLarge
+                          ?.copyWith(
+                            fontFamily:
+                                localeNotifier.value.languageCode == 'ar'
+                                ? 'Outfit'
+                                : 'Syne',
+                          ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            const SizedBox(height: 36),
-            // const LiveAmplitudeBar(),
-            const SizedBox(width: 70, child: SplashLoadingIndicator()),
           ],
         ),
       ),
