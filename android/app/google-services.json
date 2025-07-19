@@ -56,6 +56,78 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949169566044:android:44ea5062c1be0798199199",
+        "android_client_info": {
+          "package_name": "com.anas.egypto_ai.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlyv3EMPncotfFnbcftscUSZSerO8G558"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anas.egyptoAi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949169566044:android:bea57fe38285da65199199",
+        "android_client_info": {
+          "package_name": "com.anas.egypto_ai.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlyv3EMPncotfFnbcftscUSZSerO8G558"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949169566044-1utn2t14742h8oia4pr4vd8r0kj4umq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anas.egyptoAi"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

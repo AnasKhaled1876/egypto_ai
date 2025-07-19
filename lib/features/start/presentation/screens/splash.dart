@@ -1,5 +1,5 @@
 import 'package:egypto/config/resources/app_assets.dart';
-import 'package:egypto/features/start/presentation/screens/welcome.dart';
+import 'package:egypto/features/start/presentation/screens/welcome/welcome_a.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

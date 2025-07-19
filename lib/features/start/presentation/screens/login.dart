@@ -6,7 +6,6 @@ import 'package:egypto/shared/widgets/word_logo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -184,10 +183,10 @@ class _StartScreenState extends State<StartScreen> {
                         child: ElevatedButton(
                           style: defaultElevatedButtonStyle(context: context),
                           onPressed: () async {
-                            await GetIt.I<GoogleSignIn>().signIn().then((
+                            await GoogleSignIn.instance.authenticate().then((
                               value,
                             ) {
-                              if (value != null) {
+                              if (value.authentication.idToken != null) {
                                 if (context.mounted) {
                                   context.read<AuthCubit>().signInWithSocial(
                                     email: value.email,
@@ -228,10 +227,10 @@ class _StartScreenState extends State<StartScreen> {
                         child: ElevatedButton(
                           style: defaultElevatedButtonStyle(context: context),
                           onPressed: () async {
-                            await GetIt.I<GoogleSignIn>().signIn().then((
+                            await GoogleSignIn.instance.authenticate().then((
                               value,
                             ) {
-                              if (value != null) {
+                              if (value.authentication.idToken != null) {
                                 if (context.mounted) {
                                   context.read<AuthCubit>().signInWithSocial(
                                     email: value.email,

@@ -1,4 +1,4 @@
-import 'package:egypto/features/start/presentation/screens/start.dart';
+import 'package:egypto/features/start/presentation/screens/login.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 

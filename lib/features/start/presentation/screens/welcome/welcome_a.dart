@@ -1,17 +1,17 @@
 import 'dart:ui';
 
 import 'package:egypto/config/widgets/elevated_button.dart';
-import 'package:egypto/features/start/presentation/screens/start.dart';
+import 'package:egypto/features/start/presentation/screens/login.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../l10n/app_localizations.dart';
-import '../../../auth/cubit/auth_cubit.dart';
-import '../../../../shared/widgets/bottom_sheets/change_language_app_bar.dart';
-import '../../../../shared/widgets/word_logo.dart';
-import '../../../home/presentation/screens/home.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../../../auth/cubit/auth_cubit.dart';
+import '../../../../../shared/widgets/bottom_sheets/change_language_app_bar.dart';
+import '../../../../../shared/widgets/word_logo.dart';
+import '../../../../home/presentation/screens/home.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

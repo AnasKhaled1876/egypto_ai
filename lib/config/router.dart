@@ -7,8 +7,8 @@ import 'package:go_router/go_router.dart';
 import '../features/home/cubit/quick_prompts_cubit.dart';
 import '../features/auth/presentation/screens/otp.dart';
 import '../features/auth/presentation/screens/register.dart';
-import '../features/start/presentation/screens/start.dart';
-import '../features/start/presentation/screens/welcome.dart';
+import '../features/start/presentation/screens/login.dart';
+import '../features/start/presentation/screens/welcome/welcome_a.dart';
 
 // GoRouter configuration
 final router = GoRouter(
