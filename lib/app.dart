@@ -1,6 +1,8 @@
 import 'package:egypto/features/auth/cubit/auth_cubit.dart';
+import 'package:egypto/features/countries/cubit/country_cubit.dart';
 import 'package:egypto/features/profile/cubit/profile_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'features/countries/domain/repositories/country_repository.dart';
 import 'features/home/cubit/quick_prompts_cubit.dart';
 import 'package:egypto/features/auth/domain/repositories/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ProfileCubit>(
           create: (context) => ProfileCubit(GetIt.I<ProfileRepository>()),
+        ),
+        BlocProvider<CountryCubit>(
+          create: (context) => CountryCubit(GetIt.I<CountryRepository>()),
         ),
         BlocProvider<ChatCubit>(
           create: (context) => ChatCubit(GetIt.I<ChatRepository>()),

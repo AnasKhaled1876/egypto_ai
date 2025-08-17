@@ -10,6 +10,7 @@ import 'core/http_client.dart';
 // Feature Dependencies
 import 'features/auth_dependencies.dart';
 import 'features/chat_dependencies.dart';
+import 'features/countries_dependencies.dart';
 import 'features/profile_dependencies.dart';
 import 'features/quick_prompts_dependencies.dart';
 
@@ -49,4 +50,5 @@ Future<void> initializeDependencies({
   ChatDependencies.register();
   ProfileDependencies.register();
   QuickPromptsDependencies.register();
+  CountryDependencies.register();
 }
