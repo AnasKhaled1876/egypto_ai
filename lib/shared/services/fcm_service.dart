@@ -1,0 +1,116 @@
+import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+/// A service for handling Firebase Cloud Messaging (FCM) operations.
+class FcmService {
+  /// Gets the FCM token with proper error handling and permission checks.
+  /// Returns null if the token cannot be retrieved.
+  Future<String?> getFcmToken() async {
+    try {
+      const initializationSettingsAndroid = AndroidInitializationSettings(
+        'ic_stat_vector',
+      );
+      final initializationSettingsDarwin = const DarwinInitializationSettings();
+      final initializationSettingsLinux = const LinuxInitializationSettings(
+        defaultActionName: 'Open notification',
+      );
+      final initializationSettingsWindows = const WindowsInitializationSettings(
+        appName: 'Flutter Local Notifications Example',
+        appUserModelId: 'Com.Dexterous.FlutterLocalNotificationsExample',
+        // Search online for GUID generators to make your own
+        guid: 'd49b0314-ee7a-4626-bf79-97cdb8a991bb',
+      );
+      final initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid,
+        iOS: initializationSettingsDarwin,
+        macOS: initializationSettingsDarwin,
+        linux: initializationSettingsLinux,
+        windows: initializationSettingsWindows,
+      );
+      await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >()
+          ?.requestNotificationsPermission();
+
+      await showNotification();
+
+      final messaging = FirebaseMessaging.instance;
+
+      // Check notification permissions for iOS/macOS
+      if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+        final settings = await messaging.getNotificationSettings();
+
+        if (settings.authorizationStatus == AuthorizationStatus.notDetermined) {
+          await messaging.requestPermission(
+            alert: true,
+            announcement: false,
+            badge: true,
+            carPlay: false,
+            criticalAlert: false,
+            provisional: false,
+            sound: true,
+          );
+        }
+
+        final newSettings = await messaging.getNotificationSettings();
+        if (newSettings.authorizationStatus != AuthorizationStatus.authorized &&
+            newSettings.authorizationStatus !=
+                AuthorizationStatus.provisional) {
+          GetIt.I<Logger>().w('User declined or has not accepted permission');
+          return null;
+        }
+      }
+
+      // Get the token
+      final token = await messaging.getToken();
+      return token;
+    } on FirebaseException catch (e) {
+      GetIt.I<Logger>().e(
+        'Firebase error while getting FCM token: ${e.message}',
+      );
+      return null;
+    } on PlatformException catch (e) {
+      GetIt.I<Logger>().e(
+        'Platform error while getting FCM token: ${e.message}',
+      );
+      return null;
+    } on Exception catch (e) {
+      GetIt.I<Logger>().e('Unexpected error while getting FCM token: $e');
+      return null;
+    }
+  }
+}
+
+Future<void> showNotification() async {
+  const androidNotificationDetails = AndroidNotificationDetails(
+    'channel_id', // Channel ID
+    'Channel Name', // Channel name
+    channelDescription: 'Channel Description',
+    importance: Importance.max,
+    priority: Priority.high,
+    showWhen: true,
+    icon: '@mipmap/ic_launcher', // Use your launcher icon or a custom notification icon
+  );
+  
+  final notificationDetails = const NotificationDetails(
+    android: androidNotificationDetails,
+  );
+  
+  await flutterLocalNotificationsPlugin.show(
+    0, // Notification ID
+    'Notification Title', // Title
+    'Notification Body', // Body
+    notificationDetails,
+  );
+}

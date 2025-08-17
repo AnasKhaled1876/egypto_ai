@@ -15,25 +15,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get programming => 'Programming';
 
   @override
-  String get first => 'The First';
+  String get egypto => 'egypto';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get enterTheCode => 'Enter OTP Verification';
+
+  @override
+  String get weSentCode => 'We sent a 5-digit code via your email';
+
+  @override
+  String get first => 'Welcome back to The ';
 
   @override
   String get password => 'password';
 
   @override
+  String get newChat => 'New Chat';
+
+  @override
+  String get loginOrCreateAccount => 'Login or Create a new account';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get change => 'Change ?';
+
+  @override
   String get pleaseEnterYourPassword => 'Please Enter Your Password';
 
   @override
-  String get ai => 'Ai';
+  String get ai => 'First AI';
 
   @override
-  String get chatbotEgypt => 'in Egypt';
+  String get chatbotEgypt => 'Chatbot in Egypt';
 
   @override
   String get continueRegister => 'Continue';
 
   @override
   String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get continueWithApple => 'Continue with Apple';
 
   @override
   String get review => 'Before proceeding, please review and agree to our';
@@ -72,10 +99,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSetup => 'Profile Setup';
 
   @override
-  String get get_started => 'Get Started Now';
+  String get get_started => 'Get Started';
+
+  @override
+  String get enterYourEmailAddress => 'Enter Your Email Address';
 
   @override
   String get hello => 'Hello !';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get voteForMore => 'Vote for more';
 
   @override
   String get howCanIHelpYou => 'How can I help you today ?';
@@ -106,9 +142,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chats => 'Chats';
-
-  @override
-  String get egypto => 'egypto';
 
   @override
   String get copied => 'Copied';

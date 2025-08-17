@@ -64,10 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '949169566044',
     projectId: 'egypto-ai',
     storageBucket: 'egypto-ai.firebasestorage.app',
-    androidClientId:
-        '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
-    iosClientId:
-        '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
+    androidClientId: '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
+    iosClientId: '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
     iosBundleId: 'com.anas.egyptoAi',
   );
 
@@ -77,20 +75,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '949169566044',
     projectId: 'egypto-ai',
     storageBucket: 'egypto-ai.firebasestorage.app',
-    androidClientId:
-        '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
-    iosClientId:
-        '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
+    androidClientId: '949169566044-0uhssrst9nku7n4ge6elil49v5fe5smu.apps.googleusercontent.com',
+    iosClientId: '949169566044-aip7aqgjkgbnia7n3denlaac6o3th06g.apps.googleusercontent.com',
     iosBundleId: 'com.anas.egyptoAi',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyB-xVo1rg2uiEruqCUAtoaL7DC9vMFoah8',
-    appId: '1:949169566044:web:20af2c17cb11fa7e199199',
+    appId: '1:949169566044:web:dfbc70a96563c9a6199199',
     messagingSenderId: '949169566044',
     projectId: 'egypto-ai',
     authDomain: 'egypto-ai.firebaseapp.com',
     storageBucket: 'egypto-ai.firebasestorage.app',
-    measurementId: 'G-4DSD78HPTJ',
+    measurementId: 'G-DCBJ42Y8H6',
   );
+
 }

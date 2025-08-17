@@ -110,10 +110,34 @@ abstract class AppLocalizations {
   /// **'Programming'**
   String get programming;
 
+  /// No description provided for @egypto.
+  ///
+  /// In en, this message translates to:
+  /// **'egypto'**
+  String get egypto;
+
+  /// No description provided for @help.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @enterTheCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter OTP Verification'**
+  String get enterTheCode;
+
+  /// No description provided for @weSentCode.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a 5-digit code via your email'**
+  String get weSentCode;
+
   /// No description provided for @first.
   ///
   /// In en, this message translates to:
-  /// **'The First'**
+  /// **'Welcome back to The '**
   String get first;
 
   /// No description provided for @password.
@@ -121,6 +145,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'password'**
   String get password;
+
+  /// No description provided for @newChat.
+  ///
+  /// In en, this message translates to:
+  /// **'New Chat'**
+  String get newChat;
+
+  /// No description provided for @loginOrCreateAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Login or Create a new account'**
+  String get loginOrCreateAccount;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change ?'**
+  String get change;
 
   /// No description provided for @pleaseEnterYourPassword.
   ///
@@ -131,13 +179,13 @@ abstract class AppLocalizations {
   /// No description provided for @ai.
   ///
   /// In en, this message translates to:
-  /// **'Ai'**
+  /// **'First AI'**
   String get ai;
 
   /// No description provided for @chatbotEgypt.
   ///
   /// In en, this message translates to:
-  /// **'in Egypt'**
+  /// **'Chatbot in Egypt'**
   String get chatbotEgypt;
 
   /// No description provided for @continueRegister.
@@ -151,6 +199,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue with Google'**
   String get continueWithGoogle;
+
+  /// No description provided for @continueWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Apple'**
+  String get continueWithApple;
 
   /// No description provided for @review.
   ///
@@ -227,14 +281,32 @@ abstract class AppLocalizations {
   /// No description provided for @get_started.
   ///
   /// In en, this message translates to:
-  /// **'Get Started Now'**
+  /// **'Get Started'**
   String get get_started;
+
+  /// No description provided for @enterYourEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your Email Address'**
+  String get enterYourEmailAddress;
 
   /// No description provided for @hello.
   ///
   /// In en, this message translates to:
   /// **'Hello !'**
   String get hello;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguage;
+
+  /// No description provided for @voteForMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for more'**
+  String get voteForMore;
 
   /// No description provided for @howCanIHelpYou.
   ///
@@ -295,12 +367,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Chats'**
   String get chats;
-
-  /// No description provided for @egypto.
-  ///
-  /// In en, this message translates to:
-  /// **'egypto'**
-  String get egypto;
 
   /// No description provided for @copied.
   ///

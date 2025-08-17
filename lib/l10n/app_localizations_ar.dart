@@ -15,16 +15,40 @@ class AppLocalizationsAr extends AppLocalizations {
   String get programming => 'برمجة';
 
   @override
-  String get first => 'أول';
+  String get egypto => 'ايجيبتو';
+
+  @override
+  String get help => 'مساعدة';
+
+  @override
+  String get enterTheCode => 'أدخل رمز التحقق';
+
+  @override
+  String get weSentCode => 'لقد أرسلنا رمز التحقق مكون من ٥ ارقام على الايميل';
+
+  @override
+  String get first => 'مرحبا بك في ';
 
   @override
   String get password => 'كلمة المرور';
 
   @override
+  String get newChat => 'محادثة جديدة';
+
+  @override
+  String get loginOrCreateAccount => 'تسجيل الدخول أو إنشاء حساب جديد';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get change => 'تغيير ؟';
+
+  @override
   String get pleaseEnterYourPassword => 'يرجى إدخال كلمة المرور';
 
   @override
-  String get ai => 'ذكاء اصطناعي';
+  String get ai => 'أول ذكاء اصطناعي';
 
   @override
   String get chatbotEgypt => 'في مصر';
@@ -34,6 +58,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueWithGoogle => 'أكمل باستخدام جوجل';
+
+  @override
+  String get continueWithApple => 'أكمل باستخدام ابل';
 
   @override
   String get review => 'قبل المتابعة، يرجى مراجعة والموافقة على';
@@ -75,7 +102,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get get_started => 'ابدأ الآن';
 
   @override
+  String get enterYourEmailAddress => 'أدخل بريدك الإلكتروني';
+
+  @override
   String get hello => 'مرحبا !';
+
+  @override
+  String get selectLanguage => 'اختر اللغة';
+
+  @override
+  String get voteForMore => 'صوت للمزيد';
 
   @override
   String get howCanIHelpYou => 'كيف يمكنني مساعدتك اليوم؟';
@@ -106,9 +142,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chats => 'الدردشات';
-
-  @override
-  String get egypto => 'إيجبتو';
 
   @override
   String get copied => 'تم النسخ';

@@ -1,0 +1,42 @@
+import 'package:egypto/core/base_api_repository.dart';
+import 'package:egypto/features/chat/data/datasource/chat.dart';
+import 'package:egypto/core/data_state.dart';
+import 'package:egypto/features/chat/domain/repositories/chat.dart';
+import 'package:egypto/features/chat/data/models/get_chat.dart';
+import 'package:egypto/features/chat/data/models/send_message.dart';
+
+class ChatRepositoryImpl extends BaseApiRepository implements ChatRepository {
+  final ChatApiService _chatApiService;
+  ChatRepositoryImpl(this._chatApiService);
+
+  @override
+  Future<DataState<GetChatResponse>> getChat() {
+    return getStateOf<GetChatResponse>(
+      request: () => _chatApiService.getChat(),
+    );
+  }
+
+  @override
+  Future<DataState<SendMessageResponse>> sendMessage({
+    required String message,
+    required String model,
+  }) {
+    return getStateOf<SendMessageResponse>(
+      request: () => _chatApiService.sendMessage(
+        body: {"prompt": message, "model": model},
+      ),
+    );
+  }
+
+  @override
+  Future<DataState<SendMessageResponse>> generateTitle({
+    required String conversation,
+    required String model,
+  }) {
+    return getStateOf<SendMessageResponse>(
+      request: () => _chatApiService.generateTitle(
+        body: {"conversation": conversation, "model": model},
+      ),
+    );
+  }
+}
