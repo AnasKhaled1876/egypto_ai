@@ -1,5 +1,5 @@
 import 'package:egypto/config/resources/app_assets.dart';
-import 'package:egypto/features/start/presentation/screens/welcome/welcome_a.dart';
+import 'package:egypto/features/start/presentation/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,19 +55,13 @@ class _SplashScreenState extends State<SplashScreen>
               builder: (context, child) => SizedBox(
                 width: width.value,
                 height: 36,
-                child: Stack(
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.egypto,
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(
-                            fontFamily:
-                                localeNotifier.value.languageCode == 'ar'
-                                ? 'Outfit'
-                                : 'Syne',
-                          ),
-                    ),
-                  ],
+                child: Text(
+                  AppLocalizations.of(context)!.egypto,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontFamily: localeNotifier.value.languageCode == 'ar'
+                        ? 'Outfit'
+                        : 'Syne',
+                  ),
                 ),
               ),
             ),

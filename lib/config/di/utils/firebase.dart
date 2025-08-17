@@ -80,7 +80,7 @@ class FirebaseServices {
 
   /// Initializes Firebase Remote Config with default values.
   Future<void> _initializeRemoteConfig() async {
-    final remoteConfig = FirebaseRemoteConfig.instance;
+    remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(
       RemoteConfigSettings(
         fetchTimeout: const Duration(minutes: 1),

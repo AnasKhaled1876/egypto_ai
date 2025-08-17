@@ -1,4 +1,4 @@
-import 'package:egypto/features/start/presentation/screens/login.dart';
+import 'package:egypto/features/start/presentation/screens/login_or_create.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class _SplashLoadingIndicatorState extends State<SplashLoadingIndicator>
     )..forward();
     _controller.addListener(() {
       if (_controller.isCompleted) {
-        context.pushNamed(StartScreen.routeName);
+        context.pushNamed(LoginOrCreateAccountScreen.routeName);
       }
     });
   }

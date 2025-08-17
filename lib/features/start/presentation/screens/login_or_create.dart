@@ -8,25 +8,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../../../../config/theme/colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../auth/cubit/auth_cubit.dart';
 import '../../../../shared/widgets/indicators/loading_animation.dart';
 import '../../../../shared/widgets/texts/terms_of_use.dart';
 import '../../../home/presentation/screens/home.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class LoginOrCreateAccountScreen extends StatefulWidget {
+  const LoginOrCreateAccountScreen({super.key});
 
-  static const String routeName = 'start';
+  static const String routeName = 'login_or_create_account';
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  State<LoginOrCreateAccountScreen> createState() =>
+      _LoginOrCreateAccountScreenState();
 }
 
-class _StartScreenState extends State<StartScreen> {
+class _LoginOrCreateAccountScreenState
+    extends State<LoginOrCreateAccountScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,12 +84,8 @@ class _StartScreenState extends State<StartScreen> {
                       ),
                       const SizedBox(height: 44),
                       Text(
-                        AppLocalizations.of(context)!.pleaseEnterYourEmail,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w100,
-                        ),
+                        AppLocalizations.of(context)!.enterYourEmailAddress,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
@@ -93,8 +93,8 @@ class _StartScreenState extends State<StartScreen> {
                         textDirection: TextDirection.ltr,
                         controller: _emailController,
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.email_outlined, size: 20),
                           hintText: 'example@mail.com',
-                          suffixIcon: Icon(Icons.email_outlined, size: 20),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -169,7 +169,9 @@ class _StartScreenState extends State<StartScreen> {
                           child: state is CheckEmailLoadingState
                               ? const LoadingAnimationWidget(size: 10)
                               : Text(
-                                  AppLocalizations.of(context)!.login,
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.continueRegister,
                                   style: Theme.of(context).textTheme.labelMedium
                                       ?.copyWith(color: Colors.black),
                                 ),
@@ -181,7 +183,10 @@ class _StartScreenState extends State<StartScreen> {
                       AbsorbPointer(
                         absorbing: state is SocialSignInLoadingState,
                         child: ElevatedButton(
-                          style: defaultElevatedButtonStyle(context: context),
+                          style: defaultElevatedButtonStyle(
+                            context: context,
+                            backgroundColor: neutralColor,
+                          ),
                           onPressed: () async {
                             await GoogleSignIn.instance.authenticate().then((
                               value,
@@ -225,7 +230,10 @@ class _StartScreenState extends State<StartScreen> {
                       AbsorbPointer(
                         absorbing: state is SocialSignInLoadingState,
                         child: ElevatedButton(
-                          style: defaultElevatedButtonStyle(context: context),
+                          style: defaultElevatedButtonStyle(
+                            context: context,
+                            backgroundColor: neutralColor,
+                          ),
                           onPressed: () async {
                             await GoogleSignIn.instance.authenticate().then((
                               value,
@@ -256,7 +264,7 @@ class _StartScreenState extends State<StartScreen> {
                                     Text(
                                       AppLocalizations.of(
                                         context,
-                                      )!.continueWithGoogle,
+                                      )!.continueWithApple,
                                       style: Theme.of(
                                         context,
                                       ).textTheme.labelMedium,

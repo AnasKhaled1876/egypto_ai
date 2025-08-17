@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
-const primaryBackgroundColor = Color(0xFF0F0F0F);
-const darkSurfaceColor = Color(0xFF0A0A0A);
-const neutralColor = Color(0xFF1A1A1A);
-
 final ColorScheme darkColorScheme = const ColorScheme(
   primary: primaryColor,
   secondary: secondaryColor,
@@ -14,8 +10,12 @@ final ColorScheme darkColorScheme = const ColorScheme(
   onSecondary: Colors.white,
   error: dangerColor,
   onError: Colors.white,
-  surface: darkSurfaceColor,
+  surfaceBright: darkSurfaceLowColor,
+  surface: darkSurfaceMediumColor,
+  surfaceDim: darkSurfaceHighColor,
   onSurface: Colors.white,
+  outline: darkHighLineColor,
+  // onSurfaceVariant: neutralColor,
 );
 
 final ColorScheme lightColorScheme = const ColorScheme(
@@ -27,6 +27,6 @@ final ColorScheme lightColorScheme = const ColorScheme(
   onSecondary: Colors.white,
   error: dangerColor,
   onError: Colors.white,
-  surface: neutralColor,
+  surface: darkSurfaceLowColor,
   onSurface: Colors.white,
 );

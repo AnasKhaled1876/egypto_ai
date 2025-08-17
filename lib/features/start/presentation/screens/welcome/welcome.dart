@@ -1,21 +1,20 @@
-import 'dart:ui';
-
+import 'package:egypto/config/theme/colors.dart';
+import 'package:egypto/config/widgets/app_bar.dart';
 import 'package:egypto/config/widgets/elevated_button.dart';
-import 'package:egypto/features/start/presentation/screens/login.dart';
+import 'package:egypto/features/start/presentation/screens/login_or_create.dart';
+import 'package:egypto/shared/widgets/texts/terms_of_use.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../l10n/app_localizations.dart';
+import '../../../../../shared/widgets/buttons/change_theme.dart';
 import '../../../../auth/cubit/auth_cubit.dart';
-import '../../../../../shared/widgets/bottom_sheets/change_language_app_bar.dart';
+import '../../../../../shared/widgets/buttons/change_language_app_bar.dart';
 import '../../../../../shared/widgets/word_logo.dart';
 import '../../../../home/presentation/screens/home.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
-
   static const String routeName = 'welcome';
 
   @override
@@ -27,45 +26,36 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF101010),
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        toolbarHeight: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.light,
-        ),
-      ),
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
+      appBar: const TransparentAppBarWidget(),
+      body: SafeArea(
+        top: false,
         child: Stack(
           children: [
-            Positioned(
-              top: -300,
-              left: 0,
-              right: 0,
-              child: BackdropFilter(
-                filter: ImageFilter.dilate(radiusX: 200, radiusY: 200),
-                child: SvgPicture.asset(
-                  "assets/icons/top_ellipse.svg",
-                  height: 576,
+            Positioned.fill(child: Container(color: const Color(0xFF0F0F0F))),
+            // Positioned.fill(
+            //   top: 0,
+            //   child: Image.asset(
+            //     "assets/images/pyramid.png",
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    stops: const [0.39, 0.61],
+                    begin: const Alignment(0, -0.5),
+                    end: const Alignment(0, 1),
+                    colors: [
+                      const Color(0xFF0F0F0F).withValues(alpha: 0.1),
+                      const Color(0xFF0F0F0F),
+                    ],
+                  ),
                 ),
               ),
             ),
-            // Positioned(
-            //   bottom: 0,
-            //   left: 0,
-            //   right: 0,
-            //   child: BackdropFilter(
-            //     filter: ImageFilter.blur(sigmaX: 200, sigmaY: 200),
-            //     child: SvgPicture.asset(
-            //       "assets/icons/bottom_ellipse.svg",
-            //       height: 672,
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.only(
                 left: 28,
@@ -80,9 +70,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     if (state is SocialSignInSuccessState) {
                       context.pushNamed(HomeScreen.routeName);
                     }
+
                     if (state is EmailNoExistsState) {
                       // context.pushNamed(RegisterScreen.routeName);
                     }
+
                     if (state is LoginErrorState) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -98,25 +90,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 17),
-                        const Align(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: ChangeLanguageAppBarButton(),
-                        ),
-                        const SizedBox(height: 66),
-                        Hero(
-                          tag: 'logo',
-                          child: SvgPicture.asset(
-                            "assets/icons/logo.svg",
-                            height: 60,
-                            colorFilter: const ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
-                          ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ChangeLanguageAppBarButton(),
+                            ChangeThemeButton(),
+                          ],
                         ),
                         const SizedBox(height: 12),
-                        const Hero(tag: 'word-logo', child: WordLogo()),
                         const Spacer(),
+                        const Hero(tag: 'word-logo', child: WordLogo()),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: 320,
                           child: Text.rich(
@@ -140,18 +124,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                         fontWeight: FontWeight.w800,
                                         foreground: Paint()
                                           ..shader =
-                                              const RadialGradient(
+                                              RadialGradient(
+                                                center: Alignment.center,
+                                                radius: 13,
                                                 colors: [
-                                                  Color(0xFF00A3A4),
-                                                  Color(0xFF00BCA1),
-                                                  Color(0xFF20639B),
-                                                  Color(0xFF1C2895),
+                                                  primaryColor.shade900,
+                                                  primaryColor.shade500,
+                                                  Colors.white,
+                                                  secondaryColor.shade300,
                                                 ],
-                                                stops: [0, 0.32, 0.74, 1],
-                                                center: Alignment.topLeft,
-                                                radius: 10,
+
+                                                stops: const [
+                                                  0.0,
+                                                  0.22,
+                                                  0.60,
+                                                  0.86,
+                                                ],
                                               ).createShader(
-                                                const Rect.fromLTWH(0, 0, 180, 120),
+                                                const Rect.fromLTWH(
+                                                  0,
+                                                  0,
+                                                  180,
+                                                  120,
+                                                ),
                                               ),
                                       ),
                                 ),
@@ -169,28 +164,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                         const SizedBox(height: 66),
                         ElevatedButton(
-                          style: gradientElevatedButtonStyle(context: context),
-                          onPressed: () =>
-                              context.pushNamed(StartScreen.routeName),
-                          child: Text(
-                            AppLocalizations.of(context)!.get_started,
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        ElevatedButton(
                           style: defaultElevatedButtonStyle(
                             context: context,
-                            backgroundColor: Theme.of(context).cardColor,
+                            backgroundColor: Colors.white,
                           ),
-                          onPressed: () =>
-                              context.pushNamed(StartScreen.routeName),
+                          onPressed: () => context.pushNamed(
+                            LoginOrCreateAccountScreen.routeName,
+                          ),
                           child: Text(
-                            AppLocalizations.of(context)!.login,
-                            style: Theme.of(context).textTheme.labelMedium,
+                            AppLocalizations.of(context)!.get_started,
                           ),
                         ),
                         const SizedBox(height: 32),
+                        const TermsOfUseRichText(),
                       ],
                     );
                   },

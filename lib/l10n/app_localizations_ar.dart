@@ -102,7 +102,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get get_started => 'ابدأ الآن';
 
   @override
+  String get enterYourEmailAddress => 'أدخل بريدك الإلكتروني';
+
+  @override
   String get hello => 'مرحبا !';
+
+  @override
+  String get selectLanguage => 'اختر اللغة';
+
+  @override
+  String get voteForMore => 'صوت للمزيد';
 
   @override
   String get howCanIHelpYou => 'كيف يمكنني مساعدتك اليوم؟';

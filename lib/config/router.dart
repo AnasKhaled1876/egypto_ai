@@ -7,8 +7,8 @@ import 'package:go_router/go_router.dart';
 import '../features/home/cubit/quick_prompts_cubit.dart';
 import '../features/auth/presentation/screens/otp.dart';
 import '../features/auth/presentation/screens/register.dart';
-import '../features/start/presentation/screens/login.dart';
-import '../features/start/presentation/screens/welcome/welcome_a.dart';
+import '../features/start/presentation/screens/login_or_create.dart';
+import '../features/start/presentation/screens/welcome/welcome.dart';
 
 // GoRouter configuration
 final router = GoRouter(
@@ -24,9 +24,9 @@ final router = GoRouter(
           builder: (context, state) => const WelcomeScreen(),
         ),
         GoRoute(
-          path: StartScreen.routeName,
-          name: StartScreen.routeName,
-          builder: (context, state) => const StartScreen(),
+          path: LoginOrCreateAccountScreen.routeName,
+          name: LoginOrCreateAccountScreen.routeName,
+          builder: (context, state) => const LoginOrCreateAccountScreen(),
         ),
         GoRoute(
           path: OTPScreen.routeName,

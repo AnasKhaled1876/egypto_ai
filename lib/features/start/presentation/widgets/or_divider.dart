@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import '../../../../l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
 
 class OrDivider extends StatelessWidget {
   const OrDivider({super.key});
@@ -29,11 +28,7 @@ class OrDivider extends StatelessWidget {
         Text(
           AppLocalizations.of(context)!.or,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Color(0xFF555555),
-            fontSize: 14.22,
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         Expanded(
           child: Container(

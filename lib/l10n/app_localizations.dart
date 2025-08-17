@@ -137,7 +137,7 @@ abstract class AppLocalizations {
   /// No description provided for @first.
   ///
   /// In en, this message translates to:
-  /// **'welcome to The '**
+  /// **'Welcome back to The '**
   String get first;
 
   /// No description provided for @password.
@@ -281,14 +281,32 @@ abstract class AppLocalizations {
   /// No description provided for @get_started.
   ///
   /// In en, this message translates to:
-  /// **'Get Started Now'**
+  /// **'Get Started'**
   String get get_started;
+
+  /// No description provided for @enterYourEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your Email Address'**
+  String get enterYourEmailAddress;
 
   /// No description provided for @hello.
   ///
   /// In en, this message translates to:
   /// **'Hello !'**
   String get hello;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguage;
+
+  /// No description provided for @voteForMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for more'**
+  String get voteForMore;
 
   /// No description provided for @howCanIHelpYou.
   ///

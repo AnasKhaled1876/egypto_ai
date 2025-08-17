@@ -1,12 +1,13 @@
+import 'package:egypto/features/auth/cubit/auth_cubit.dart';
 import 'package:egypto/features/profile/cubit/profile_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'features/home/cubit/quick_prompts_cubit.dart';
 import 'package:egypto/features/auth/domain/repositories/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:egypto/config/theme/theme.dart';
+import 'package:egypto/config/theme/theme_notifier.dart';
 import 'package:egypto/features/chat/domain/repositories/chat.dart';
 import 'package:egypto/config/di/locator.dart';
-import 'package:egypto/features/auth/cubit/auth_cubit.dart';
 import 'package:egypto/features/chat/cubit/chat_cubit.dart';
 import 'package:egypto/config/router.dart';
 import 'features/profile/domain/repositories/profile_repository.dart';
@@ -32,9 +33,6 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(GetIt.I<AuthRepository>()),
-        ),
         BlocProvider<ProfileCubit>(
           create: (context) => ProfileCubit(GetIt.I<ProfileRepository>()),
         ),
@@ -45,19 +43,28 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               QuickPromptsCubit(GetIt.I<QuickPromptsRepository>()),
         ),
+        BlocProvider<AuthCubit>(
+          create: (context) => AuthCubit(GetIt.I<AuthRepository>()),
+        ),
       ],
       child: ValueListenableBuilder<Locale>(
         valueListenable: localeNotifier,
-        builder: (BuildContext context, Locale value, Widget? child) =>
-            MaterialApp.router(
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              locale: value,
-              supportedLocales: AppLocalizations.supportedLocales,
-              debugShowCheckedModeBanner: false,
-              routerConfig: router,
-              darkTheme: buildDarkTheme(fontFamily: 'Outfit'),
-              theme: buildLightTheme(fontFamily: 'Outfit'),
-              themeMode: ThemeMode.dark,
+        builder: (BuildContext context, Locale localeValue, Widget? child) =>
+            ValueListenableBuilder<ThemeMode>(
+              valueListenable: themeNotifier,
+              builder:
+                  (BuildContext context, ThemeMode themeMode, Widget? child) =>
+                      MaterialApp.router(
+                        localizationsDelegates:
+                            AppLocalizations.localizationsDelegates,
+                        locale: localeValue,
+                        supportedLocales: AppLocalizations.supportedLocales,
+                        debugShowCheckedModeBanner: false,
+                        routerConfig: router,
+                        darkTheme: buildDarkTheme(fontFamily: 'Outfit'),
+                        theme: buildLightTheme(fontFamily: 'Outfit'),
+                        themeMode: themeMode,
+                      ),
             ),
       ),
     );

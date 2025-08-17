@@ -27,7 +27,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weSentCode => 'We sent a 5-digit code via your email';
 
   @override
-  String get first => 'welcome to The ';
+  String get first => 'Welcome back to The ';
 
   @override
   String get password => 'password';
@@ -99,10 +99,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSetup => 'Profile Setup';
 
   @override
-  String get get_started => 'Get Started Now';
+  String get get_started => 'Get Started';
+
+  @override
+  String get enterYourEmailAddress => 'Enter Your Email Address';
 
   @override
   String get hello => 'Hello !';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get voteForMore => 'Vote for more';
 
   @override
   String get howCanIHelpYou => 'How can I help you today ?';

@@ -16,7 +16,7 @@ class IconContainer extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          color: Theme.of(context).colorScheme.secondaryContainer,
+          color: Theme.of(context).colorScheme.surfaceBright,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(200),
           ),

@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter: Launch Dev Flavor",
+            "name": "Development Flavor",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
@@ -10,7 +10,7 @@
             "args": ["--flavor", "dev"]
         },
         {
-            "name": "Flutter: Launch Staging Flavor",
+            "name": "Staging Flavor",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
@@ -18,7 +18,7 @@
             "args": ["--flavor", "staging"]
         },
         {
-            "name": "Flutter: Launch Prod Flavor",
+            "name": "Production Flavor",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",

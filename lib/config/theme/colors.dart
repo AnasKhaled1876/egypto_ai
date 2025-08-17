@@ -11,6 +11,7 @@ const MaterialColor primaryColor = MaterialColor(0xFF00A3A4, <int, Color>{
 const MaterialColor secondaryColor = MaterialColor(0xFF657FCD, <int, Color>{
   50: Color(0xFFF0F2FA),
   100: Color(0xFFD0D7F0),
+  300: Color(0xFF98A9DE),
   500: Color(0xFF657FCD),
   700: Color(0xFF485A92),
   900: Color(0xFF2B3556),
@@ -61,3 +62,19 @@ const MaterialColor dangerColor = MaterialColor(0xFFDB2B41, <int, Color>{
   600: Color(0xFFC7273A),
   950: Color(0xFF420D11),
 });
+
+const darkMediumLineColor = Color(0xFF1F1F1F);
+
+const darkHighLineColor = Color(0xFF1F1F1F);
+
+const captionColor = Color(0xFF5C5C5C);
+
+const primaryBackgroundColor = Color(0xFF0F0F0F);
+
+const darkSurfaceHighColor = Color(0xFF0F0F0F);
+
+const darkSurfaceMediumColor = Color(0xFF141414);
+
+const darkSurfaceLowColor = Color(0xFF1A1A1A);
+
+const neutralColor = Color(0xFF1A1A1A);

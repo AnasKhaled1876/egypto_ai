@@ -1,4 +1,5 @@
 import 'package:egypto/config/theme/color_scheme.dart';
+import 'package:egypto/config/theme/colors.dart';
 import 'package:egypto/config/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -13,13 +14,29 @@ ThemeData buildDarkTheme({required String fontFamily}) {
     ),
     colorScheme: darkColorScheme,
     useMaterial3: true,
+    bottomSheetTheme: BottomSheetThemeData(
+      showDragHandle: true,
+      dragHandleColor: darkMediumLineColor,
+      backgroundColor: darkColorScheme.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: false,
-      hintStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(200),
+      hintStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: captionColor,
       ),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(200)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: darkMediumLineColor),
+      ),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -36,25 +53,25 @@ ThemeData buildDarkTheme({required String fontFamily}) {
 
 ThemeData buildLightTheme({required String fontFamily}) {
   return ThemeData(
-    scaffoldBackgroundColor: darkColorScheme.surface,
+    scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
     ),
-    colorScheme: darkColorScheme,
+    colorScheme: lightColorScheme,
     useMaterial3: true,
     inputDecorationTheme: InputDecorationTheme(
       filled: false,
       hintStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(200),
+        borderRadius: BorderRadius.circular(16),
       ),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(200)),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: darkColorScheme.primary,
+        backgroundColor: lightColorScheme.primary,
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
